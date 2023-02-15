@@ -17,6 +17,7 @@ class CreateDoctorsTable extends Migration
 
 
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('address');
             $table->string('cv')->nullable();
             $table->string('avatar')->nullable();
@@ -24,11 +25,11 @@ class CreateDoctorsTable extends Migration
             $table->string('performance')->nullable();
             $table->string('description')->nullable();
             $table->boolean('visibility')->default(1);
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-
             $table->timestamps();
+
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -40,9 +41,6 @@ class CreateDoctorsTable extends Migration
     public function down()
     {
 
-        Schema::dropIfExists('users', function (Blueprint $table) {
-            $table->dropForeign('doctor_user_id_foreign');
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('doctors');
     }
 }
