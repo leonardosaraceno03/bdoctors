@@ -19,7 +19,7 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
     Route::resource('/posts', 'PostController');
 });
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('{any?}', function () {
     return view('guest.home');
