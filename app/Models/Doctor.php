@@ -31,4 +31,9 @@ class Doctor extends Model
     {
         return $this->belongsToMany(Rating::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
