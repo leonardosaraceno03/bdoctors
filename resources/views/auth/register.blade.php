@@ -77,6 +77,32 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="specialization"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="specialization" class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+
+                                        @foreach ($specializations as $elem)
+
+                                            <option value="{{$elem->id}}">{{$elem->name}}</option>
+
+                                        @endforeach
+                                    </select>
+
+                                    {{-- <input  type="text"
+                                        class="form-control @error('address') is-invalid @enderror" name="address"
+                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
+
+                                    @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror --}}
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="password"

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Doctor;
+use App\Models\Specialization;
 use App\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -42,6 +44,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $specializations = Specialization::all();
+        return view('auth.register', compact('specializations'));
+
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -65,30 +74,24 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function register(Request $request)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->surname = $request->input('surname');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
 
+        // Crea un nuovo record nella tabella `doctors`
+        $doctor = new Doctor;
+        $doctor->user_id = $user->id;
+        $doctor->address = $request->input('address');
+        $doctor->save();
 
+        // Associa le specializzazioni selezionate dall'utente al record appena creato nella tabella `doctors`
+        $doctor->specializations()->attach($request->input('specializations'));
 
-        $doctordetail = Doctor::create([
-            'address',
-            'cv',
-            'avatar',
-            'telephone',
-            'performance',
-            'description',
-            'user_id' => $user->id
-        ]);
-
-        $doctordetail->specializations()->attach($data['specialization']);
-
-        $user->detail()->save($doctordetail);
-        return $user;
+        'Auth'::login($user);
     }
 }
