@@ -31,7 +31,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 // importiamo il componente App
-import App from './views/App';
+// import App from './views/App';
 
 const app = new Vue({
     el: '#root',

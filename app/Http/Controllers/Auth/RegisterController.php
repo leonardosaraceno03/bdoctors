@@ -75,7 +75,8 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function register(Request $request)
-    {
+    {   
+        
         $user = new User;
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
@@ -90,7 +91,7 @@ class RegisterController extends Controller
         $doctor->save();
 
         // Associa le specializzazioni selezionate dall'utente al record appena creato nella tabella `doctors`
-        $doctor->specializations()->attach($request->input('specializations'));
+        $doctor->specializations()->attach($request->input('specialization_id'));
 
         'Auth'::login($user);
     }
