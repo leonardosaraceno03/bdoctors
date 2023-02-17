@@ -93,6 +93,7 @@ class RegisterController extends Controller
         $doctor->specializations()->attach($request->input('specialization_id'));
 
         'Auth'::login($user);
+
         return redirect()->view('admin.home');
     }
 }

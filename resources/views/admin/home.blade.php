@@ -25,20 +25,38 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <ul>
+                        {{-- <ul>
                             <li>
-                                <h2>Edit Profile</h2>
+                                <h2>
+                                    <a href="{{ route('admin.edit') }}">
+                                        Edit Profile
+                                    </a>
+
+                                </h2>
                             </li>
                             <li>
-                                <h2>My Messages</h2>
+                                <h2>
+                                    <a href="{{ route('admin.messagges') }}">
+                                    My Messages
+                                    </a>
+                                </h2>
                             </li>
                             <li>
-                                <h2>My Reviews</h2>
+                                <h2>
+                                    <a href="{{ route('admin.reviews') }}">
+                                        My Reviews
+                                    </a>
+
+                                </h2>
                             </li>
                             <li>
-                                <h2>My Statistics</h2>
+                                <h2>
+                                    <a href="{{ route('admin.statistics') }}">
+                                        My Statistics
+                                    </a>
+                                </h2>
                             </li>
-                        </ul>
+                        </ul> --}}
 
                     </div>
                 </div>

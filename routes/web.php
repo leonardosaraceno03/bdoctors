@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@index')->name('index');
+
+    Route::resource('/dashboard', DoctorController::class);
 
 });
 
