@@ -48,7 +48,6 @@ class RegisterController extends Controller
     {
         $specializations = Specialization::all();
         return view('auth.register', compact('specializations'));
-
     }
 
     /**
@@ -75,8 +74,8 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function register(Request $request)
-    {   
-        
+    {
+
         $user = new User;
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
@@ -94,5 +93,6 @@ class RegisterController extends Controller
         $doctor->specializations()->attach($request->input('specialization_id'));
 
         'Auth'::login($user);
+        return redirect()->view('admin.home');
     }
 }
