@@ -32,10 +32,21 @@ Route::namespace('Api')
         Route::get('/', 'DoctorController@index');
 
         //localhost:8000/api/doctors/id
-        //Route::get('/{id}', 'DoctorController@show');
+        Route::get('/{id}', 'DoctorController@show');
     });
 
 
     //creare un controller dentro una cartelle API
     // php artisan make:controller Api/DoctorController --api //
     //ci ritornerà un controller di Risorsa per le API
+
+
+Route::namespace('Api')
+//namespace è il path che ci porta al file
+    ->prefix('/specializations')
+    ->group(function(){
+        //localhost:8000/api/posts
+        Route::get('/', 'SpecializationsController@index');
+        //scritta la Route, dovremo portarci in pagina la lista dei TAGS, coi POST allegati
+        Route::get('/{name}', 'SpecializationsController@show');
+    });
