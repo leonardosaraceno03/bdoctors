@@ -49,7 +49,7 @@
                   .then( (res) => {
                       console.log(res.data);
 
-                      this.tags = res.data;
+                      this.specializations = res.data;
 
 
                   }).catch(err => {

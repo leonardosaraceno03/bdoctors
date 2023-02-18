@@ -18,8 +18,8 @@ class SpecializationsController extends Controller
      */
     public function index()
     {
-        //$specializations = Specialization::With('doctors')->get();
-        $specializations = Specialization::All();
+        $specializations = Specialization::With('doctors')->get();
+        //$specializations = Specialization::All();
 
         return response()->json($specializations);
     }
