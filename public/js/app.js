@@ -2542,7 +2542,7 @@ var render = function render() {
       attrs: {
         to: "/doctors/".concat(elem.id)
       }
-    }, [_vm._v("\n                      " + _vm._s(elem.name) + "\n                  ")])], 1);
+    }, [_vm._v("\n                      " + _vm._s(elem.user_id) + "\n                  ")])], 1);
   }), 0) : _c("p", [_vm._v("\n              non ci sono post da visualizzare\n          ")]), _vm._v(" "), _c("Pagination", {
     attrs: {
       pagination: _vm.pagination

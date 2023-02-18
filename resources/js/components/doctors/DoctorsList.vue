@@ -11,7 +11,7 @@
 
                     <router-link :to="`/doctors/${elem.id}`">
                     <!-- <router-link :to"'/posts/${elem.id}'"> -->
-                        {{ elem.name }}
+                        {{ elem.user_id }}
                     </router-link>
 
                 </li>
