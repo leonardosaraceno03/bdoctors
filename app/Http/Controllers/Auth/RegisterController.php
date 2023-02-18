@@ -94,6 +94,6 @@ class RegisterController extends Controller
 
         'Auth'::login($user);
 
-        return redirect()->view('admin.home');
+        return redirect()->route('admin.index');
     }
 }

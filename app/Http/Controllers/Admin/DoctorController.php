@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 
-
+use App\User;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +19,32 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $doctors = [];
+
+        $doctorData = Doctor::with(['user', 'specializations'])->where('user_id', $user->id)->get();
+        
+        foreach ($doctorData as $doctor) {
+            $specializations = $doctor->specializations->pluck('name')->implode(', ');
+            $doctors[] = [
+                'name' => $doctor->user->name,
+                'surname' => $doctor->user->surname,
+                'address' => $doctor->address,
+                'telephone' => $doctor->telephone,
+                'performance' => $doctor->performance,
+                'description' => $doctor->description,
+                'specializations' => $specializations
+            ];
+        }
+
+        $data = [
+            'user' => $user,
+            'doctors' => $doctors
+        ];
+        
+        return view('admin.doctors.index', $data);
     }
+
 
     /**
      * Show the form for creating a new resource.
