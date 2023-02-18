@@ -78,9 +78,32 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $singleDoctor = Doctor::findorFail($id);
+        $user = Auth::user();
+        $doctors = [];
 
-        return view('admin.doctors.show', compact('singleDoctor'));
+        $doctorData = Doctor::with(['user', 'specializations'])->where('user_id', $user->id)->get();
+
+        foreach ($doctorData as $doctor) {
+            $specializations = $doctor->specializations->pluck('name')->implode(', ');
+            $doctors[] = [
+                'id' => $doctor->id,
+                'name' => $doctor->user->name,
+                'surname' => $doctor->user->surname,
+                'address' => $doctor->address,
+                'telephone' => $doctor->telephone,
+                'performance' => $doctor->performance,
+                'description' => $doctor->description,
+                'specializations' => $specializations
+            ];
+        }
+
+        $data = [
+            'user' => $user,
+            'doctors' => $doctors
+        ];
+        // $singleDoctor = Doctor::findorFail($id);
+
+        return view('admin.doctors.show', $data);
     }
 
     /**
