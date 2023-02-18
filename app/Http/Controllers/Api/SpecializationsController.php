@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Specialization;
+use App\Models\Doctor;
+use App\User;
 
 class SpecializationsController extends Controller
 {
@@ -38,7 +40,7 @@ class SpecializationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
         //recuperare la singola specializazzione cercata nella tab con i suoi rispettivi dottori
         //$tag = Tag::find($name);  find() recupera dati per numero, come gli id

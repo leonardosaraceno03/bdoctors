@@ -3,7 +3,7 @@
       <h1>
           CARD FRONT DEL SINGOLO DOTTORE
       </h1>
-      {{ doctor.name }}
+      {{ user.name }}
       <!-- {{ doctor.body }} -->
     </div>
   </template>

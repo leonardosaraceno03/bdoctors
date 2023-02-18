@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Doctor;
+use App\User;
+use App\Models\Specialization;
 
 class DoctorController extends Controller
 {
@@ -17,7 +19,7 @@ class DoctorController extends Controller
     public function index()
     {
         // QUA A PIACERE AGGIUNGIAMO LA QUERY ORDERBY, E LA PAGINAZIONE SE Pò CAMBIà
-        $doctors = Doctor::with('user', 'specialization')->paginate(3);
+        $doctors = Doctor::with('user', 'specializations')->paginate(3);
 
         return response()->json($doctors);
     }

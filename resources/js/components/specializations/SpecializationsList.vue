@@ -12,7 +12,7 @@
                   </li>
               </ul>
               <p v-else>
-                  non ci sono tag da visualizzare
+                  non ci sono specializzazioni da visualizzare
               </p>
 
               <!-- paginazione -->

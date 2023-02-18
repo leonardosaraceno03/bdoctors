@@ -2513,7 +2513,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("\n      CARD FRONT DEL SINGOLO DOTTORE\n  ")]), _vm._v("\n  " + _vm._s(_vm.doctor.name) + "\n  ")]);
+  return _c("div", [_c("h1", [_vm._v("\n      CARD FRONT DEL SINGOLO DOTTORE\n  ")]), _vm._v("\n  " + _vm._s(_vm.user.name) + "\n  ")]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -2580,7 +2580,7 @@ var render = function render() {
         to: "/specializations/".concat(elem.name)
       }
     }, [_vm._v("\n                      " + _vm._s(elem.name) + "\n                  ")])], 1);
-  }), 0) : _c("p", [_vm._v("\n              non ci sono tag da visualizzare\n          ")])], 1);
+  }), 0) : _c("p", [_vm._v("\n              non ci sono specializzazioni da visualizzare\n          ")])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
