@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 
@@ -24,7 +25,7 @@ class DoctorController extends Controller
         $doctors = [];
 
         $doctorData = Doctor::with(['user', 'specializations'])->where('user_id', $user->id)->get();
-        
+
         foreach ($doctorData as $doctor) {
             $specializations = $doctor->specializations->pluck('name')->implode(', ');
             $doctors[] = [
@@ -43,7 +44,7 @@ class DoctorController extends Controller
             'user' => $user,
             'doctors' => $doctors
         ];
-        
+
         return view('admin.doctors.index', $data);
     }
 
@@ -71,13 +72,15 @@ class DoctorController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * @param  int $id
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show($id)
     {
-        //
+        $singleDoctor = Doctor::findorFail($id);
+
+        return view('admin.doctors.show', compact('singleDoctor'));
     }
 
     /**
@@ -98,11 +101,19 @@ class DoctorController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Doctor  $doctor
+     * @param  \int $id
      * @return \Illuminate\Http\Response
+     * 
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $singleDoctor = Doctor::findOrFail($id);
+
+        $singleDoctor->update($data);
+
+        return redirect()->route('admin.doctors.show', $singleDoctor->id);
+        // return view('admin.doctors.edit', compact('data'));
     }
 
     /**
