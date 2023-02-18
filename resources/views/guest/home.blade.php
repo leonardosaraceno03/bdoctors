@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,12 +8,16 @@
     <title>Guest Home</title>
 </head>
 
-<body>
+<body> --}}
+
+@extends('layouts.app')
+
+@section('content')
     <!-- inseriamo un unico div #root a cui si aggancerà vue -->
     <div id="root"> </div>
-
-    <!-- colleghiamo il file js -->
-    <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
+@endsection
+    <!-- colleghiamo il file js -> AD ORA SONO LINKATI IN LAYOUTS.APP -->
+    {{-- <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
 </body>
 
-</html>
+</html> --}}

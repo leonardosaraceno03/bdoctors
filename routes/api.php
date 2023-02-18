@@ -17,3 +17,25 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//si generano URL che restituisce un oggetto json
+//ci servirà come API
+
+
+Route::namespace('Api')
+//namespace è il path che ci porta al file
+    ->prefix('/doctors')
+    ->group(function(){
+
+        //localhost:8000/api/doctors
+        Route::get('/', 'DoctorController@index');
+
+        //localhost:8000/api/doctors/id
+        //Route::get('/{id}', 'DoctorController@show');
+    });
+
+
+    //creare un controller dentro una cartelle API
+    // php artisan make:controller Api/DoctorController --api //
+    //ci ritornerà un controller di Risorsa per le API
