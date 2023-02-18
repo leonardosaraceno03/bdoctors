@@ -3,7 +3,9 @@
 @section('content')
 
 <h1>
-    edit
+    @foreach ($doctor->specializations as $specialization)
+        <div>{{ $specialization->name }}</div>
+    @endforeach
 </h1>
 
 @endsection

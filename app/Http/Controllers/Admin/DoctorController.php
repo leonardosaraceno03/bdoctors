@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 
 use App\User;
+use App\Models\Specialization;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,7 @@ class DoctorController extends Controller
         foreach ($doctorData as $doctor) {
             $specializations = $doctor->specializations->pluck('name')->implode(', ');
             $doctors[] = [
+                'id' => $doctor->id,
                 'name' => $doctor->user->name,
                 'surname' => $doctor->user->surname,
                 'address' => $doctor->address,
@@ -84,9 +86,11 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doctor $doctor)
+    public function edit($id)
     {
-        //
+        $doctor = Doctor::with('specializations')->findOrFail($id);
+        $specializations = Specialization::all();
+        return view('admin.doctors.edit', compact('doctor', 'specializations'));
     }
 
     /**

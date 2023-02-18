@@ -9,5 +9,8 @@
         <p>Description: {{ $doctor['description'] }}</p>
         <p>Specialization: {{ $doctor['specializations'] }}</p>
     </div>
+    <a href="{{route('admin.doctors.edit', $doctor['id'])}}">
+        <button class="btn btn-dark text-info">Edit</button>
+    </a>
 @endforeach
 @endsection

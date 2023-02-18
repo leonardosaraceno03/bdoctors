@@ -25,7 +25,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{route('admin.doctors.index')}}">clicca</a>
+                        <a href="{{route('admin.doctors.index')}}">Entra nella dashboard</a>
                         {{-- <ul>
                             <li>
                                 <h2>
