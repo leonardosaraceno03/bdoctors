@@ -113,7 +113,11 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+        if ($id != auth()->user()->doctor->id) {
+            abort(403, 'Non sei autorizzato a modificare questo profilo');
+        }
+
         $doctor = Doctor::findOrFail($id);
         $specializations = Specialization::all();
         return view('admin.doctors.edit', compact('doctor', 'specializations'));
