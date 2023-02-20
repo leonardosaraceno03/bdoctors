@@ -50,3 +50,10 @@ Route::namespace('Api')
         //scritta la Route, dovremo portarci in pagina la lista dei TAGS, coi POST allegati
         Route::get('/{name}', 'SpecializationsController@show');
     });
+
+
+//rotta per i messaggi
+Route::post('/messages', 'App\Http\Controllers\MessageController@store')->name('api.messages.store');
+
+//rotta per le recensioni
+Route::post('/reviews', 'App\Http\Controllers\ReviewController@store')->name('api.messages.store');

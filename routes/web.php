@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Rotte per i medici loggati
+
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@index')->name('index');
@@ -24,6 +26,15 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
 
 Auth::routes();
 
+//QUA INSERIAMO LE ROTTE PER I MESSAGGI, LE RECENSIONI ED I VOTI
+
+// Rotte per i messaggi
+Route::post('/messages', 'MessageController@store')->name('messages.store');
+
+// Rotte per le recensioni
+Route::post('/reviews', 'ReviewController@store')->name('reviews.store');
+
+// Rotta per i visitatori del sito
 Route::get('{any?}', function () {
     return view('guest.home');
 })->where("any", ".*");
