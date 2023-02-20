@@ -114,7 +114,7 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $doctor = Doctor::with('specializations')->findOrFail($id);
+        $doctor = Doctor::findOrFail($id);
         $specializations = Specialization::all();
         return view('admin.doctors.edit', compact('doctor', 'specializations'));
     }
@@ -130,12 +130,18 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $singleDoctor = Doctor::findOrFail($id);
+        $doctor = Doctor::findOrFail($id);
+        $doctor->address = $request->input('address');
+        $doctor->cv = $request->input('cv');
+        $doctor->telephone = $request->input('telephone');
+        $doctor->performance = $request->input('performance');
+        $doctor->description = $request->input('description');
+        $doctor->visibility = $request->input('visibility');
+        $doctor->save();
 
-        $singleDoctor->update($data);
+        $doctor->specializations()->sync($request->input('specializations', []));
 
-        return redirect()->route('admin.doctors.show', $singleDoctor->id);
+        return redirect()->route('admin.doctors.show',['doctor' => $doctor->id]);
         // return view('admin.doctors.edit', compact('data'));
     }
 

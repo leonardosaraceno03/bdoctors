@@ -3,14 +3,14 @@
 @section('content')
     
     <div class="container mt-5">
-        @foreach ($doctors as $doctor)
+        @foreach ($doctors as $elem)
             <div>
-                <h2>{{ $doctor['name'] }} {{ $doctor['surname'] }}</h2>
-                <p>Address: {{ $doctor['address'] }}</p>
-                <p>Telephone: {{ $doctor['telephone'] }}</p>
-                <p>Performance: {{ $doctor['performance'] }}</p>
-                <p>Description: {{ $doctor['description'] }}</p>
-                <p>Specialization: {{ $doctor['specializations'] }}</p>
+                <h2>{{ $elem['name'] }} {{ $elem['surname'] }}</h2>
+                <p>Address: {{ $elem['address'] }}</p>
+                <p>Telephone: {{ $elem['telephone'] }}</p>
+                <p>Performance: {{ $elem['performance'] }}</p>
+                <p>Description: {{ $elem['description'] }}</p>
+                <p>Specialization: {{ $elem['specializations'] }}</p>
             </div>
         @endforeach
     </div>

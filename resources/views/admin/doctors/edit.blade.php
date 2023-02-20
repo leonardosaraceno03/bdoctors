@@ -15,6 +15,16 @@
                     </div>
                 @enderror
             </div>
+            
+            <div class="my-3">
+                <label class="form-label" for="specializations">Specializations</label>
+                <select multiple class="form-control" id="specializations" name="specializations[]">
+                    @foreach($specializations as $specialization)
+                        <option value="{{ $specialization->id }}" {{ in_array($specialization->id, $doctor->specializations->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $specialization->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
             <div class="my-3">
                 <label class="form-label" for="">CV</label>
                 <input value="{{ $doctor->cv }}" class="form-control" @error('cv') is invalid @enderror type="text"
