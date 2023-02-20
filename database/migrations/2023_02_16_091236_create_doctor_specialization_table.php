@@ -15,11 +15,11 @@ class CreateDoctorSpecializationTable extends Migration
     {
         Schema::create('doctor_specialization', function (Blueprint $table) {
             $table->unsignedBigInteger('doctor_id');
-            $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
             // ->onDelete('cascade');
 
             $table->unsignedBigInteger('specialization_id');
-            $table->foreign('specialization_id')->references('id')->on('specializations');
+            $table->foreign('specialization_id')->references('id')->on('specializations')->onDelete('cascade');
             // ->onDelete('cascade');
 
             

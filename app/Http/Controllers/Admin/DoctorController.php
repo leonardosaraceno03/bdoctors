@@ -160,8 +160,21 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $doctor = $user->doctor;
+    
+        // Elimina i record corrispondenti nella tabella "doctor_specialization"
+        $doctor->specializations()->delete();
+    
+        // Elimina il record nella tabella "doctors"
+        $doctor->delete();
+    
+        // Elimina il record nella tabella "users"
+        $user->delete();
+    
+        return redirect()->route('admin.doctors.index')
+            ->with('success', 'User deleted successfully.');
     }
 }
