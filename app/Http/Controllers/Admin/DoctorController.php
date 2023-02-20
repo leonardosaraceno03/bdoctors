@@ -131,17 +131,22 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         $doctor = Doctor::findOrFail($id);
+        
         $doctor->address = $request->input('address');
         $doctor->cv = $request->input('cv');
         $doctor->telephone = $request->input('telephone');
         $doctor->performance = $request->input('performance');
         $doctor->description = $request->input('description');
         $doctor->visibility = $request->input('visibility');
+        
+        $specializations = $request->input('specializations', []);
+        $doctor->specializations()->sync($specializations);
+        
         $doctor->save();
 
-        $doctor->specializations()->sync($request->input('specializations', []));
+        
 
-        return redirect()->route('admin.doctors.show',['doctor' => $doctor->id]);
+        return redirect()->route('admin.doctors.show', $doctor->id);
         // return view('admin.doctors.edit', compact('data'));
     }
 
