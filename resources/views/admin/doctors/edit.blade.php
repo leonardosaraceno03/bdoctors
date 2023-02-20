@@ -119,5 +119,12 @@
             <button type="submit" class="btn btn-success">Edit</button>
 
         </form>
+        <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger btn-sm" type="submit">
+                ELIMINA
+            </button>
+        </form>
     </div>
 @endsection
