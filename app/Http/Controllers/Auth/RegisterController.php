@@ -71,7 +71,14 @@ class RegisterController extends Controller
             'name.max' => "Il campo 'nome' non deve superare i 30 caratteri",
             'surname.required' => "Il campo 'cognome' è obbligatorio",
             'surname.max' => "Il campo 'cognome' non deve superare i 30 caratteri",
-            'specialization.required' => 'Devi selezionare una specializzazione'
+            'email.required' => "Il campo 'email' è obbligatorio",
+            'email.max' => "Il campo 'email' non deve superare gli 80 caratteri",
+            'address.required' => "Il campo 'indirizzo' è obbligatorio",
+            'address.max' => "Il campo 'indirizzo' non deve superare i 30 caratteri",
+            'password.required' => "Il campo 'password' è obbligatorio",
+            'password.min' => "Il campo 'password' deve contenere almeno 8 caratteri",
+            'password.confirmed' => "Le password non combaciano",
+            'specialization.required' => 'Devi selezionare una specializzazione',
         ]
     );
     }
