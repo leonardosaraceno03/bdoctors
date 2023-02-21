@@ -59,11 +59,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'address' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:30'],
+            'surname' => ['required', 'string', 'max:30'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'address' => ['required', 'string', 'max:50'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'specialization_id' => ['required'],
         ]);
     }
 
@@ -73,27 +74,27 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function register(Request $request)
+    protected function create(array $data)
     {
+        $user =  User::create([
+            'name' => $data['name'],
+            'surname' => $data['surname'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
 
-        $user = new User;
-        $user->name = $request->input('name');
-        $user->surname = $request->input('surname');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
+        $doctor =  Doctor::create([
+            'user_id' => $user->id,
+            'address' => $data['address'],
+        ]);
 
-        // Crea un nuovo record nella tabella `doctors`
-        $doctor = new Doctor;
-        $doctor->user_id = $user->id;
-        $doctor->address = $request->input('address');
-        $doctor->save();
+        if (isset($data['specialization_id'])) {
+            $doctor->specializations()->sync($data['specialization_id']);
+        };
 
-        // Associa le specializzazioni selezionate dall'utente al record appena creato nella tabella `doctors`
-        $doctor->specializations()->attach($request->input('specialization_id'));
+        $user->doctor()->save($doctor);
+        return $user;
+        
 
-        'Auth'::login($user);
-
-        return redirect()->route('admin.doctors.index');
     }
 }
