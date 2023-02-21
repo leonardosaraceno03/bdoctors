@@ -61,11 +61,19 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:30'],
             'surname' => ['required', 'string', 'max:30'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:80', 'unique:users'],
             'address' => ['required', 'string', 'max:50'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'specialization_id' => ['required'],
-        ]);
+            'specialization' => ['required'],
+        ],
+        [
+            'name.required' => "Il campo 'nome' è obbligatorio",
+            'name.max' => "Il campo 'nome' non deve superare i 30 caratteri",
+            'surname.required' => "Il campo 'cognome' è obbligatorio",
+            'surname.max' => "Il campo 'cognome' non deve superare i 30 caratteri",
+            'specialization.required' => 'Devi selezionare una specializzazione'
+        ]
+    );
     }
 
     /**
