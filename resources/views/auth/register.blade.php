@@ -84,7 +84,7 @@
                                 <div class="col-md-6">
                                     <select id="specialization" class="form-select @error('specialization') is-invalid @enderror" aria-label="Default select example"
                                         name="specialization_id">
-                                        <option value="" selected>Select specialization</option>
+                                        <option value="" selected>Seleziona una specializzazione</option>
                                         @foreach ($specializations as $elem)
                                             <option value="{{ $elem->id }}">{{ $elem->name }}</option>
                                         @endforeach
