@@ -21,31 +21,34 @@ class DoctorController extends Controller
      */
     public function index()
     {
+        // $user = Auth::user();
+        // $doctors = [];
+
+        // $doctorData = Doctor::with(['user', 'specializations'])->where('user_id', $user->id)->get();
+
+        // foreach ($doctorData as $doctor) {
+        //     $specializations = $doctor->specializations->pluck('name')->implode(', ');
+        //     $doctors[] = [
+        //         'id' => $doctor->id,
+        //         'name' => $doctor->user->name,
+        //         'surname' => $doctor->user->surname,
+        //         'address' => $doctor->address,
+        //         'telephone' => $doctor->telephone,
+        //         'performance' => $doctor->performance,
+        //         'description' => $doctor->description,
+        //         'specializations' => $specializations
+        //     ];
+        // }
+
+        // $data = [
+        //     'user' => $user,
+        //     'doctors' => $doctors
+        // ];
+        
+        $doctor = Doctor::where('user_id', Auth::user()->id)->firstOrFail();
         $user = Auth::user();
-        $doctors = [];
-
-        $doctorData = Doctor::with(['user', 'specializations'])->where('user_id', $user->id)->get();
-
-        foreach ($doctorData as $doctor) {
-            $specializations = $doctor->specializations->pluck('name')->implode(', ');
-            $doctors[] = [
-                'id' => $doctor->id,
-                'name' => $doctor->user->name,
-                'surname' => $doctor->user->surname,
-                'address' => $doctor->address,
-                'telephone' => $doctor->telephone,
-                'performance' => $doctor->performance,
-                'description' => $doctor->description,
-                'specializations' => $specializations
-            ];
-        }
-
-        $data = [
-            'user' => $user,
-            'doctors' => $doctors
-        ];
-
-        return view('admin.doctors.index', $data);
+        
+        return view('admin.doctors.index', compact('doctor', 'user'));
     }
 
 
@@ -151,6 +154,11 @@ class DoctorController extends Controller
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar')->store('avatars', 'public');
             $doctor->avatar = $avatar;
+        }
+
+        if ($request->hasFile('cv')) {
+            $cv = $request->file('cv')->store('cv', 'public');
+            $doctor->cv = $cv;
         }
         
         $doctor->save();
