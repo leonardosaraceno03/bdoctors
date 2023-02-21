@@ -6,6 +6,7 @@
         @foreach ($doctors as $elem)
             <div>
                 <h2>{{ $elem['name'] }} {{ $elem['surname'] }}</h2>
+                <img src="{{ asset('storage/' . $elem['avatar']) }}" alt="">
                 <p>Address: {{ $elem['address'] }}</p>
                 <p>Telephone: {{ $elem['telephone'] }}</p>
                 <p>Performance: {{ $elem['performance'] }}</p>

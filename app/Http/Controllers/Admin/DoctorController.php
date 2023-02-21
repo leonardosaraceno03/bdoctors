@@ -82,7 +82,7 @@ class DoctorController extends Controller
         $doctors = [];
 
         $doctorData = Doctor::with(['user', 'specializations'])->where('user_id', $user->id)->get();
-
+        
         foreach ($doctorData as $doctor) {
             $specializations = $doctor->specializations->pluck('name')->implode(', ');
             $doctors[] = [
@@ -93,7 +93,9 @@ class DoctorController extends Controller
                 'telephone' => $doctor->telephone,
                 'performance' => $doctor->performance,
                 'description' => $doctor->description,
-                'specializations' => $specializations
+                'specializations' => $specializations,
+                'avatar' => $doctor->avatar,
+                'cv' => $doctor->cv
             ];
         }
 
@@ -150,7 +152,7 @@ class DoctorController extends Controller
             $avatar = $request->file('avatar')->store('avatars', 'public');
             $doctor->avatar = $avatar;
         }
-
+        
         $doctor->save();
 
         return redirect()->route('admin.doctors.show', $doctor->id);
