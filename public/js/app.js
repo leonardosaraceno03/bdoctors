@@ -2011,30 +2011,10 @@ __webpack_require__.r(__webpack_exports__);
       //this.isLoading = true;
       axios.get('http://localhost:8000/api/doctors/' + this.$route.params.id).then(function (res) {
         console.log(res.data);
-        //this.posts = res.data;
-        //dopo il PAGINATE nel Controller
-        //this.posts = res.data.data;
-        //qua possiamo indicare se lo stato è cambiato o meno
-
-        // destrutturizzazione
-        //const { data, current_page, last_page } = res.data;
-
-        //const data = res.data.data;
-        //const current_page = res.data.current_page;
-        //const last_page = res.data.last_page;
-
         _this.doctor = res.data;
-
-        // this.pagination = {
-        //     lastPage: last_page,
-        //     currentPage: current_page
-        // };
       })["catch"](function (err) {
         console.log(err);
       });
-      // }).then(() => {
-      //     this.isLoading = false;
-      // });
     }
   }
 });
@@ -2513,7 +2493,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("\n      CARD FRONT DEL SINGOLO DOTTORE\n  ")]), _vm._v("\n  " + _vm._s(_vm.user.name) + "\n  ")]);
+  return _c("div", [_c("h1", [_vm._v("\n      CARD FRONT DEL SINGOLO DOTTORE\n  ")]), _vm._v("\n  " + _vm._s(_vm.user.id) + "\n  ")]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -55408,8 +55388,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\bdoctors\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\bdoctors\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\hp\Desktop\Progetto Finale\bdoctors\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\hp\Desktop\Progetto Finale\bdoctors\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

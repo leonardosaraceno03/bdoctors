@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <form action="{{ route('admin.doctors.update', $doctor->id) }}" method="POST">
+        <form action="{{ route('admin.doctors.update', $doctor->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -45,6 +45,8 @@
                     </div>
                 @enderror
             </div>
+
+            
 
             <div class="my-3">
                 <div>

@@ -146,9 +146,12 @@ class DoctorController extends Controller
         $specializations = $request->input('specializations', []);
         $doctor->specializations()->sync($specializations);
         
-        $doctor->save();
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar')->store('avatars', 'public');
+            $doctor->avatar = $avatar;
+        }
 
-        
+        $doctor->save();
 
         return redirect()->route('admin.doctors.show', $doctor->id);
         // return view('admin.doctors.edit', compact('data'));
