@@ -49,32 +49,13 @@ export default {
         this.getDoctors();
     },
     methods: {
-        getDoctors(page){
+        getDoctors(){
             this.isLoading = true;
-            axios.get('http://localhost:8000/api/doctors?page=' + page)
+            axios.get('http://localhost:8000/api/doctors')
                 .then( (res) => {
                     console.log(res.data);
-                    //this.posts = res.data;
-                    //dopo il PAGINATE nel Controller
-                    //this.posts = res.data.data;
-                    //qua possiamo indicare se lo stato è cambiato o meno
-
-
-                    // destrutturizzazione
-                    const { data, current_page, last_page } = res.data;
-
-                    //const data = res.data.data;
-                    //const current_page = res.data.current_page;
-                    //const last_page = res.data.last_page;
 
                     this.doctors = data;
-
-                    this.pagination = {
-                        lastPage: last_page,
-                        currentPage: current_page
-                    };
-
-
 
                 }).catch(err => {
                     console.log(err);
