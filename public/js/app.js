@@ -2008,7 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("\n      CIAO SONO L'HEADER.. QUI ANDRà LA NAVBAR\n  ")]), _vm._v(" "), _c("nav", {
+  return _c("div", [_c("nav", {
     staticClass: "navbar navbar-expand-lg bg-light"
   }, [_c("div", {
     staticClass: "container-fluid"
@@ -2017,7 +2017,7 @@ var render = function render() {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Navbar")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._v("BDoctors")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "collapse navbar-collapse",
     attrs: {
       id: "navbarNav"
@@ -2031,7 +2031,7 @@ var render = function render() {
     attrs: {
       to: "/"
     }
-  }, [_vm._v("Home")])], 1)])])])])]);
+  }, [_vm._v("Home")])], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2049,6 +2049,28 @@ var staticRenderFns = [function () {
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
   })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link",
+    attrs: {
+      href: "/login"
+    }
+  }, [_vm._v("Accedi")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link",
+    attrs: {
+      href: "/register"
+    }
+  }, [_vm._v("Registrati")])]);
 }];
 render._withStripped = true;
 
