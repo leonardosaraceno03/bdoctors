@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRatingDoctorTable extends Migration
+class CreateDoctorRatingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRatingDoctorTable extends Migration
      */
     public function up()
     {
-        Schema::create('rating_doctor', function (Blueprint $table) {
+        Schema::create('doctor_rating', function (Blueprint $table) {
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
 
@@ -30,6 +30,6 @@ class CreateRatingDoctorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rating_doctor');
+        Schema::dropIfExists('doctor_rating');
     }
 }

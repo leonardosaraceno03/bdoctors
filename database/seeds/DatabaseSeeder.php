@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
             [
                 UsersTableSeeder::class,
                 SpecializationSeeder::class,
+                RatingSeeder::class,
                 DoctorSeeder::class,
                 // MessageSeeder::class,
                 // PlanSeeder::class,
-                // RatingSeeder::class,
                 // ReviewSeeder::class,
             ]
         );
