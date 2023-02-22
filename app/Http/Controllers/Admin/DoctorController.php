@@ -166,7 +166,6 @@ class DoctorController extends Controller
         $doctor = Doctor::findOrFail($id);
 
         $doctor->address = $request->input('address');
-        $doctor->cv = $request->input('cv');
         $doctor->telephone = $request->input('telephone');
         $doctor->performance = $request->input('performance');
         $doctor->description = $request->input('description');
@@ -174,6 +173,12 @@ class DoctorController extends Controller
 
         $specializations = $request->input('specializations', []);
         $doctor->specializations()->sync($specializations);
+
+        // Recupera il vecchio valore del campo 'cv' per riutilizzarlo in caso di mancata modifica del campo
+        $oldCv = $doctor->cv;
+
+        // Aggiorna i dati del record tranne 'cv' e 'avatar'
+        $doctor->fill($request->except('cv', 'avatar'))->save();
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar')->store('avatars', 'public');
@@ -183,12 +188,15 @@ class DoctorController extends Controller
         if ($request->hasFile('cv')) {
             $cv = $request->file('cv')->store('cv', 'public');
             $doctor->cv = $cv;
+        } else {
+            // Se non è stata fornita una nuova immagine cv, assegna il vecchio valore al campo 'cv'
+            $doctor->cv = $oldCv;
         }
 
         $doctor->save();
 
         return redirect()->route('admin.doctors.show', $doctor->id);
-        // return view('admin.doctors.edit', compact('data'));
+        
     }
 
     /**

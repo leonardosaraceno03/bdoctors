@@ -82,7 +82,7 @@
                                 <label for="specialization"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione') }}</label>
                                 <div class="col-md-6">
-                                    <select id="specialization" class="form-select @error('specialization') is-invalid @enderror" aria-label="Default select example"
+                                    <select id="specialization" class="form-select @error('specialization_id') is-invalid @enderror" aria-label="Default select example"
                                         name="specialization_id">
                                         <option value="" selected>Seleziona una specializzazione</option>
                                         @foreach ($specializations as $elem)
@@ -90,7 +90,7 @@
                                         @endforeach
                                     </select>
                                     
-                                    @error('specialization')
+                                    @error('specialization_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

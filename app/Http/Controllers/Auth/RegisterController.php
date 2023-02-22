@@ -64,7 +64,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:80', 'unique:users'],
             'address' => ['required', 'string', 'max:50'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'specialization' => ['required'],
+            'specialization_id' => ['required'],
         ],
         [
             'name.required' => "Il campo 'nome' è obbligatorio",
@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'password.required' => "Il campo 'password' è obbligatorio",
             'password.min' => "Il campo 'password' deve contenere almeno 8 caratteri",
             'password.confirmed' => "Le password non combaciano",
-            'specialization.required' => 'Devi selezionare una specializzazione',
+            'specialization_id.required' => 'Devi selezionare una specializzazione',
         ]
     );
     }
