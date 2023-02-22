@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Specialization;
 
 
 /*
@@ -19,20 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@index')->name('index');
-
     Route::resource('/doctors', DoctorController::class);
-
+    Route::resource('/messages', MessageController::class);
+    Route::resource('/reviews', ReviewController::class);
 });
 
 Auth::routes();
 
-//QUA INSERIAMO LE ROTTE PER I MESSAGGI, LE RECENSIONI ED I VOTI
-
-// Rotte per i messaggi
-Route::post('/messages', 'MessageController@store')->name('messages.store');
-
-// Rotte per le recensioni
-Route::post('/reviews', 'ReviewController@store')->name('reviews.store');
 
 // Rotta per i visitatori del sito
 Route::get('{any?}', function () {

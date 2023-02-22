@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\Message;
 
 class MessageController extends Controller
@@ -24,7 +26,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //return view('messages.create');
+        //
     }
 
     /**
@@ -35,23 +37,19 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-            'email' => 'required|email',
-            'body' => 'required',
-            'doctor_id' => 'required|exists:doctors,id',
+        $data = $request->All();
+
+        $request->validate([
+            'name' => 'required|max:15',
+            'surname' => 'required|max:20',
+            'email' => 'required|max:50',
+            'body' => 'required|max:500',
+            'doctor_id' => 'required'
         ]);
 
-        $message = new Message();
-        $message->name = $validatedData['name'];
-        $message->surname = $validatedData['surname'];
-        $message->email = $validatedData['email'];
-        $message->body = $validatedData['body'];
-        $message->doctor_id = $validatedData['doctor_id'];
-        $message->save();
-
-        return response()->json(['message' => 'Message saved'], 201);
+        $new_message = new Message();
+        $new_message->fill($data);
+        $new_message->save();
     }
 
     /**
@@ -62,7 +60,7 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        //return view('messages.show', ['message' => $message]);
+        //
     }
 
     /**

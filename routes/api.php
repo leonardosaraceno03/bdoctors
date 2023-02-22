@@ -52,8 +52,16 @@ Route::namespace('Api')
     });
 
 
-//rotta per i messaggi
-Route::post('/messages', 'App\Http\Controllers\MessageController@store')->name('api.messages.store');
+Route::namespace('Api')
+    ->prefix('/message')
+    ->group(function(){
+        Route::post('/', 'MessageController@store');
+    });
 
-//rotta per le recensioni
-Route::post('/reviews', 'App\Http\Controllers\ReviewController@store')->name('api.messages.store');
+
+
+Route::namespace('Api')
+    ->prefix('/review')
+    ->group(function(){
+        Route::post('/', 'ReviewController@store');
+    });

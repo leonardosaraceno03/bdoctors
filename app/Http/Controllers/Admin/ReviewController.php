@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use App\Models\Doctor;
 use App\Models\Review;
 
 class ReviewController extends Controller
@@ -14,7 +18,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $doctor = Auth::user();
+        $reviews = Review::where('doctor_id', Auth::user()->id)->get();
+
+        return view('admin.reviews', compact('reviews'));
     }
 
     /**
@@ -24,7 +31,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //return view('reviews.create');
+        //
     }
 
     /**
@@ -35,21 +42,7 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-            'body' => 'required',
-            'doctor_id' => 'required|exists:doctors,id',
-        ]);
-
-        $review = new Review();
-        $review->name = $validatedData['name'];
-        $review->surname = $validatedData['surname'];
-        $review->body = $validatedData['body'];
-        $review->doctor_id = $validatedData['doctor_id'];
-        $review->save();
-
-        return response()->json(['message' => 'review saved'], 201);
+        //
     }
 
     /**
@@ -60,7 +53,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        //return view('reviews.show', ['review' => $review]);
+        //
     }
 
     /**
