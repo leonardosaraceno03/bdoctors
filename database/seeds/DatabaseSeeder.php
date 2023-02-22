@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
                 SpecializationSeeder::class,
                 RatingSeeder::class,
                 DoctorSeeder::class,
-                // MessageSeeder::class,
+                ReviewSeeder::class,
+                MessageSeeder::class,
                 // PlanSeeder::class,
-                // ReviewSeeder::class,
             ]
         );
     }
