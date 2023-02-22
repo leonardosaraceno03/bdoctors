@@ -7,7 +7,7 @@
             @method('PUT')
 
             <div class="my-3">
-                <label class="form-label" for="">Address</label>
+                <label class="form-label" for="">Indirizzo</label>
                 <input value="{{ $doctor->address }}" class="form-control" @error('address') is invalid @enderror
                     type="text" name="address">
                 @error('address')
@@ -61,7 +61,7 @@
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="">Telephone</label>
+                <label class="form-label" for="">Telefono</label>
                 <input value="{{ $doctor->telephone }}" class="form-control" @error('telephone') is invalid @enderror
                     type="text" name="telephone">
                 @error('telephone')
@@ -72,7 +72,7 @@
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="">Performance</label>
+                <label class="form-label" for="">Prestazione/i</label>
                 <input value="{{ $doctor->performance }}" class="form-control" @error('performance') is invalid @enderror
                     type="text" name="performance">
                 @error('performance')
@@ -83,7 +83,7 @@
             </div>
 
             <div class="my-3">
-                <label class="form-label" for="">Description</label>
+                <label class="form-label" for="">Descrizione</label>
                 <input value="{{ $doctor->description }}" class="form-control" @error('description') is invalid @enderror
                     type="text" name="description">
                 @error('description')
