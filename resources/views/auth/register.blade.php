@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('Registrazione') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
@@ -89,7 +89,7 @@
                                             <option value="{{ $elem->id }}">{{ $elem->name }}</option>
                                         @endforeach
                                     </select>
-                                    
+
                                     @error('specialization_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
