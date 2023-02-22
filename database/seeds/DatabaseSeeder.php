@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,14 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(
             [
-                DoctorSeeder::class,
-                MessageSeeder::class,
-                PlanSeeder::class,
-                RatingSeeder::class,
-                ReviewSeeder::class,
+                UsersTableSeeder::class,
                 SpecializationSeeder::class,
-
-
+                DoctorSeeder::class,
+                // MessageSeeder::class,
+                // PlanSeeder::class,
+                // RatingSeeder::class,
+                // ReviewSeeder::class,
             ]
         );
     }
