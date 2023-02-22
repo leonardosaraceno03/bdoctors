@@ -1,20 +1,25 @@
 <template>
-  <div>
-    <h1>
-        Ciao sono la HOME PAGE
-    </h1>
-    <Loader v-if="isLoading"/>
-              <ul v-else-if="specializationsArray.length">
-                 <li v-for="elem in specializationsArray" :key="elem.id">
+    <div>
+        <h1>
+            Ciao sono la HOME PAGE
+        </h1>
 
-                      {{  elem.name  }}
+        <Loader v-if="isLoading"/>
 
-                  </li>
-              </ul>
-              <p v-else>
-                  non ci sono specializzazioni da visualizzare
-              </p>
-  </div>
+        <select v-else-if="specializationsArray.length">
+            <option value="" selected>Seleziona una specializzazione</option>
+            <option v-for="elem in specializationsArray" :key="elem.id">
+
+                {{  elem.name  }}
+
+            </option>
+        </select>
+
+        <p v-else>
+            non ci sono specializzazioni da visualizzare
+        </p>
+
+    </div>
 </template>
 
 <script>

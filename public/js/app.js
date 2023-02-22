@@ -2146,11 +2146,16 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("\n      Ciao sono la HOME PAGE\n  ")]), _vm._v(" "), _vm.isLoading ? _c("Loader") : _vm.specializationsArray.length ? _c("ul", _vm._l(_vm.specializationsArray, function (elem) {
-    return _c("li", {
+  return _c("div", [_c("h1", [_vm._v("\n        Ciao sono la HOME PAGE\n    ")]), _vm._v(" "), _vm.isLoading ? _c("Loader") : _vm.specializationsArray.length ? _c("select", [_c("option", {
+    attrs: {
+      value: "",
+      selected: ""
+    }
+  }, [_vm._v("Seleziona una specializzazione")]), _vm._v(" "), _vm._l(_vm.specializationsArray, function (elem) {
+    return _c("option", {
       key: elem.id
-    }, [_vm._v("\n\n                    " + _vm._s(elem.name) + "\n\n                ")]);
-  }), 0) : _c("p", [_vm._v("\n                non ci sono specializzazioni da visualizzare\n            ")])], 1);
+    }, [_vm._v("\n\n            " + _vm._s(elem.name) + "\n\n        ")]);
+  })], 2) : _c("p", [_vm._v("\n        non ci sono specializzazioni da visualizzare\n    ")])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -54096,8 +54101,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\LARAVEL_PROJECTS\bdoctors\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\LARAVEL_PROJECTS\bdoctors\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/cristianoaltomonte/Documents/boolean-esercizi/bdoctors/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/cristianoaltomonte/Documents/boolean-esercizi/bdoctors/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
