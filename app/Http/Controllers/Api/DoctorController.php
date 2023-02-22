@@ -19,9 +19,15 @@ class DoctorController extends Controller
     public function index()
     {
         // QUA A PIACERE AGGIUNGIAMO LA QUERY ORDERBY, E LA PAGINAZIONE SE Pò CAMBIà
-        $doctors = Doctor::with('user', 'specializations')->paginate(3);
+        $doctors = Doctor::with('user', 'specializations');
+        $specializations = Specialization::All();
 
-        return response()->json($doctors);
+        $data = [
+            'doctors' => $doctors,
+            'specializations' => $specializations,
+        ];
+
+        return response()->json($data);
     }
 
     /**
