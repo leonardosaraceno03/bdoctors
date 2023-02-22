@@ -18,7 +18,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        // QUA A PIACERE AGGIUNGIAMO LA QUERY ORDERBY, E LA PAGINAZIONE SE Pò CAMBIà
+        // step1 - mandiamo il json di Dottori e Specializzazioni in HomePage.vue
         $doctors = Doctor::with('user', 'specializations');
         $specializations = Specialization::All();
 

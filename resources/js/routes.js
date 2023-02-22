@@ -11,12 +11,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 //import componenti che fungono da pagine
-import AboutUs from './views/pages/AboutUs.vue'
-import DoctorsIndex from './views/pages/doctors/DoctorsIndex.vue'
 import HomePage from './views/pages/HomePage.vue'
-import DoctorShow from './views/pages/doctors/DoctorShow.vue'
-import SpecializationsIndex from './views/pages/specializations/SpecializationsIndex.vue'
-import SpecializationShow from './views/pages/specializations/SpecializationShow.vue'
 
 
 const router = new VueRouter({
@@ -34,31 +29,7 @@ const router = new VueRouter({
             name: '/',
             component: HomePage
         },
-        {
-            path: '/about-us',
-            name: 'about-us',
-            component: AboutUs
-        },
-        {
-            path: '/doctors',
-            name: 'doctors',
-            component: DoctorsIndex
-        },
-        {
-            path: '/doctors/:id',
-            name: 'singleDoctor',
-            component: DoctorShow
-        },
-        {
-            path: '/specializations',
-            name: 'specializations',
-            component: SpecializationsIndex
-        },
-        {
-            path: '/specializations/:name',
-            name: 'singleTag',
-            component: SpecializationShow
-        }
+
     ]
 
 

@@ -17,7 +17,7 @@
                     <li class="nav-item">
                         <router-link :to="'/'" class="nav-link">Home</router-link>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link :to="'/about-us'" class="nav-link">About Us</router-link>
                     </li>
                     <li class="nav-item">
@@ -25,7 +25,7 @@
                     </li>
                     <li class="nav-item">
                         <router-link :to="'/specializations'" class="nav-link">Mostra le specializzazioni</router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
