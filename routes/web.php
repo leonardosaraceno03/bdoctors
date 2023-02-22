@@ -30,6 +30,11 @@ Auth::routes();
 
 
 // Rotta per i visitatori del sito
+
+Route::get('/', function () {
+    return view('guest.home');
+})->name('guest.home');
+
 Route::get('{any?}', function () {
     return view('guest.home');
 })->where("any", ".*");

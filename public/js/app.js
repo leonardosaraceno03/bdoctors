@@ -2124,7 +2124,11 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", [_vm._v("\n      Ciao sono la HOME PAGE\n  ")]), _vm._v(" "), _c("Loader")], 1);
+  return _c("div", [_c("h1", [_vm._v("\n      Ciao sono la HOME PAGE\n  ")]), _vm._v(" "), _vm.isLoading ? _c("Loader") : _vm.specializationsArray.length ? _c("ul", _vm._l(_vm.specializationsArray, function (elem) {
+    return _c("li", {
+      key: elem.id
+    }, [_vm._v("\n\n                    " + _vm._s(elem.name) + "\n\n                ")]);
+  }), 0) : _c("p", [_vm._v("\n                non ci sono specializzazioni da visualizzare\n            ")])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;

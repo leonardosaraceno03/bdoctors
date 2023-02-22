@@ -19,15 +19,15 @@ class DoctorController extends Controller
     public function index()
     {
         // step1 - mandiamo il json di Dottori e Specializzazioni in HomePage.vue
-        $doctors = Doctor::with('user', 'specializations');
+        //$doctors = Doctor::with('user', 'specializations');
         $specializations = Specialization::All();
 
-        $data = [
-            'doctors' => $doctors,
-            'specializations' => $specializations,
-        ];
+        // $data = [
+        //     'doctors' => $doctors,
+        //     'specializations' => $specializations,
+        // ];
 
-        return response()->json($data);
+        return response()->json($specializations);
     }
 
     /**

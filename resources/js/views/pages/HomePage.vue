@@ -3,7 +3,17 @@
     <h1>
         Ciao sono la HOME PAGE
     </h1>
-    <Loader/>
+    <Loader v-if="isLoading"/>
+              <ul v-else-if="specializationsArray.length">
+                 <li v-for="elem in specializationsArray" :key="elem.id">
+
+                      {{  elem.name  }}
+
+                  </li>
+              </ul>
+              <p v-else>
+                  non ci sono specializzazioni da visualizzare
+              </p>
   </div>
 </template>
 
