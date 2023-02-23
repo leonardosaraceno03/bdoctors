@@ -8,10 +8,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
 Vue.use(VueRouter)
 
 //import componenti che fungono da pagine
 import HomePage from './views/pages/HomePage.vue'
+import FilterPage from './views/pages/FilterPage.vue'
 
 
 const router = new VueRouter({
@@ -29,6 +31,11 @@ const router = new VueRouter({
             name: '/',
             component: HomePage
         },
+        {
+            path: '/',
+            name: 'filterpage',
+            component: FilterPage
+        }
 
     ]
 

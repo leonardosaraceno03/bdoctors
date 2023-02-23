@@ -38,7 +38,22 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $specializationId = $request->input('specialization');
+
+        $doctors = Doctor::with('specializations', 'users', 'ratings', 'reviews')
+            ->whereHas('specializations', function ($query) use($specializationId){
+                $query->where('specializations.id', $specializationId);
+            })->get();
+
+        $specializations = Specialization::all();
+
+        $data = [
+            'doctors' => $doctors,
+            'specializations' => $specializations
+        ];
+        dd($request);
+        dd($data);
+        return response()->json($data);
     }
 
     /**
