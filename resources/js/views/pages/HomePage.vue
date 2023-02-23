@@ -6,9 +6,9 @@
 
         <Loader v-if="isLoading"/>
 
-        <select v-else-if="specializationsArray.length">
+        <select v-model="selectedSpecialization" v-else-if="specializationsArray.length">
             <option value="" selected>Seleziona una specializzazione</option>
-            <option v-for="elem in specializationsArray" :key="elem.id">
+            <option v-for="elem in specializationsArray" :key="elem.id " :value="elem.id">
 
                 {{  elem.name  }}
 
@@ -18,6 +18,17 @@
         <p v-else>
             non ci sono specializzazioni da visualizzare
         </p>
+
+        <router-link 
+            class="btn btn-primary" 
+            :to="{
+                name: 'filterpage',
+                params: {
+                    selectedSpec: selectedSpecialization
+                }
+            }">
+                Cerca
+        </router-link>
 
     </div>
 </template>
@@ -32,6 +43,7 @@ export default {
     data(){
         return {
             specializationsArray: [],
+            selectedSpecialization: null,
             isLoading: false,
         }
     },
@@ -55,6 +67,7 @@ export default {
                 this.isLoading = false;
             })
         },
+
 
     }
 }
