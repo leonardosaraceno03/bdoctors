@@ -91,6 +91,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // $validation = $this->validator($data);
+        // if($validator){
+
+        // }
         $user =  User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -109,7 +113,7 @@ class RegisterController extends Controller
 
         $user->doctor()->save($doctor);
         return $user;
-        
+
 
     }
 }
