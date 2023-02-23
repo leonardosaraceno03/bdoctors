@@ -17,18 +17,18 @@ export default {
             isLoading: false,
             doctors: [],
             specializationsArray: [],
-            selectedSpecialization: this.$route.params.selectedSpec,
+            spec: this.$route.params.selectedSpec,
         }
     },
     mounted() {
         this.filterDoctors();
-
     },
     methods: {
         
         filterDoctors(){
-            axios.post('http://localhost:8000/api/doctors', {
-                specialization: this.selectedSpecialization,
+            this.isLoading = true;
+            axios.post("http://localhost:8000/api/doctors", {
+                specialization: this.spec,
             }).then((res) =>{
                 console.log(res.data);
                 this.doctors = res.data.doctors;

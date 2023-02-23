@@ -32,8 +32,8 @@ const router = new VueRouter({
             component: HomePage
         },
         {
-            path: '/',
-            name: 'filterpage',
+            path: '/doctors',
+            name: 'doctors',
             component: FilterPage
         }
 

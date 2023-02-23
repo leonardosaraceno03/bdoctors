@@ -1970,7 +1970,7 @@ __webpack_require__.r(__webpack_exports__);
       isLoading: false,
       doctors: [],
       specializationsArray: [],
-      selectedSpecialization: this.$route.params.selectedSpec
+      spec: this.$route.params.selectedSpec
     };
   },
   mounted: function mounted() {
@@ -1979,8 +1979,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     filterDoctors: function filterDoctors() {
       var _this = this;
-      axios.post('http://localhost:8000/api/doctors', {
-        specialization: this.selectedSpecialization
+      this.isLoading = true;
+      axios.post("http://localhost:8000/api/doctors", {
+        specialization: this.spec
       }).then(function (res) {
         console.log(res.data);
         _this.doctors = res.data.doctors;
@@ -2015,7 +2016,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       specializationsArray: [],
-      selectedSpecialization: null,
+      selectedSpecialization: "",
       isLoading: false
     };
   },
@@ -2250,7 +2251,7 @@ var render = function render() {
     staticClass: "btn btn-primary",
     attrs: {
       to: {
-        name: "filterpage",
+        name: "doctors",
         params: {
           selectedSpec: _vm.selectedSpecialization
         }
@@ -54041,8 +54042,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: '/',
     component: _views_pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/',
-    name: 'filterpage',
+    path: '/doctors',
+    name: 'doctors',
     component: _views_pages_FilterPage_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 });

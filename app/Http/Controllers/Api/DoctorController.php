@@ -51,8 +51,7 @@ class DoctorController extends Controller
             'doctors' => $doctors,
             'specializations' => $specializations
         ];
-        dd($request);
-        dd($data);
+        
         return response()->json($data);
     }
 

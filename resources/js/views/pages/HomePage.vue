@@ -6,7 +6,7 @@
 
         <Loader v-if="isLoading"/>
 
-        <select v-model="selectedSpecialization" v-else-if="specializationsArray.length">
+        <select v-else-if="specializationsArray.length" v-model="selectedSpecialization" >
             <option value="" selected>Seleziona una specializzazione</option>
             <option v-for="elem in specializationsArray" :key="elem.id " :value="elem.id">
 
@@ -22,7 +22,7 @@
         <router-link 
             class="btn btn-primary" 
             :to="{
-                name: 'filterpage',
+                name: 'doctors',
                 params: {
                     selectedSpec: selectedSpecialization
                 }
@@ -43,7 +43,7 @@ export default {
     data(){
         return {
             specializationsArray: [],
-            selectedSpecialization: null,
+            selectedSpecialization: "",
             isLoading: false,
         }
     },
