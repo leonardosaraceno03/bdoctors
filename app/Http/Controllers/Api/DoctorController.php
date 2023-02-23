@@ -51,7 +51,7 @@ class DoctorController extends Controller
             'doctors' => $filteredDoctors,
             'specializations' => $specializations
         ];
-        
+
         return response()->json($data);
     }
 
@@ -63,11 +63,11 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $doctor = Doctor::With('user', 'specializations')->find($id);
+        $single_doctor = Doctor::With('user', 'specializations')->find($id);
 
-        if(!$doctor) return response('dottore non trovato', 404);
+        if(!$single_doctor) return response('dottore non trovato', 404);
 
-        return response()->json($doctor);
+        return response()->json($single_doctor);
     }
 
     /**

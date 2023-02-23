@@ -1975,7 +1975,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.filterDoctors();
+    //this.getSpecializations();
   },
+
   methods: {
     filterDoctors: function filterDoctors() {
       var _this = this;
@@ -2195,7 +2197,11 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_vm.isLoading ? _c("Loader") : _vm._e(), _vm._v(" "), _c("h1", [_vm._v("filterpage")])], 1);
+  return _c("div", [_c("h1", [_vm._v("\n        ECCOTI NELLA PAGINA DI : " + _vm._s(_vm.specializationsArray.id) + " !!\n    ")]), _vm._v(" "), _vm.isLoading ? _c("Loader") : _vm.doctors.length ? _c("div", _vm._l(_vm.doctors, function (elem) {
+    return _c("span", {
+      key: elem.user.id
+    }, [_vm._v("\n            " + _vm._s(elem.user.name) + "\n        ")]);
+  }), 0) : _vm._e()], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -54278,8 +54284,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\bdoctors\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\marco\OneDrive\Desktop\bdoctors\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\LARAVEL_PROJECTS\bdoctors\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\LARAVEL_PROJECTS\bdoctors\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

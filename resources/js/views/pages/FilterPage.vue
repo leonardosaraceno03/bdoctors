@@ -1,7 +1,19 @@
 <template>
     <div>
+        <h1>
+            PAGINA DEI DOTTORI PER SPECIALIZZAZIONE
+            <!-- ECCOTI NELLA PAGINA DI : {{ specializationsArray.id }} !! -->
+        </h1>
+
         <Loader v-if="isLoading"/>
-        <h1>filterpage</h1>
+
+        <div v-else-if="doctors.length">
+
+            <!-- lista dei medici per specializazzione -->
+            <span v-for="elem in doctors" :key="elem.user.id">
+                {{ elem.user.name }}
+            </span>
+        </div>
     </div>
 </template>
 
@@ -22,9 +34,10 @@ export default {
     },
     mounted() {
         this.filterDoctors();
+        //this.getSpecializations();
     },
     methods: {
-        
+
         filterDoctors(){
             this.isLoading = true;
             axios.post("http://localhost:8000/api/doctors", {
