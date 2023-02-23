@@ -40,7 +40,7 @@ class DoctorController extends Controller
     {
         $specializationId = $request->input('specialization');
 
-        $doctors = Doctor::with('specializations', 'users', 'ratings', 'reviews')
+        $filteredDoctors = Doctor::with('specializations','user','reviews','ratings')
             ->whereHas('specializations', function ($query) use($specializationId){
                 $query->where('specializations.id', $specializationId);
             })->get();
@@ -48,7 +48,7 @@ class DoctorController extends Controller
         $specializations = Specialization::all();
 
         $data = [
-            'doctors' => $doctors,
+            'doctors' => $filteredDoctors,
             'specializations' => $specializations
         ];
         
