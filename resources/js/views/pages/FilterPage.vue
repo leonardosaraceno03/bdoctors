@@ -1,96 +1,135 @@
 <template>
-    <div class="container">
-        <h1 class="text-center pb-5 mt-5">
-            Pagina di Ricerca Avanzata {{ selectedSpecName }}
-        </h1>
-        <div class="d-flex justify-content-center">
-            <select v-model="spec" class="form-select">
-                <option value="">Qualsiasi</option>
-                <option v-for="spec in specializationsArray" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
-            </select>
-            <button @click="filterDoctors" class="btn btn-primary">Filtra</button>
-        </div>
-        
-        <Loader v-if="isLoading"/>
+    <div>
+      <label for="specialization-filter">Specialization:</label>
+      <select id="specialization-filter" v-model="specializationFilter">
+        <option value="">All</option>
+        <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">{{ specialization.name }}</option>
+      </select>
 
-        <div v-else-if="doctors.length" class="d-flex flex-wrap justify-content-between pt-5 text-white">
+      <label for="reviews-filter">Reviews:</label>
+      <select id="reviews-filter" v-model="reviewsFilter">
+        <option value="">All</option>
+        <option value="1">1+</option>
+        <option value="2">2+</option>
+        <option value="3">3+</option>
+        <option value="4">4+</option>
+        <option value="5">5+</option>
+      </select>
 
-            <div v-for="elem in doctors" :key="elem.user.id" class="ms-card text-center pt-3">
-                <div>
-                    <h5>{{elem.user.name}} {{elem.user.surname}}</h5>
-                </div>
-                <div>
-                    <span>Specializzazione/i:
-                        <span v-for="specialization in elem.specializations" :key="specialization.id">
-                            {{specialization.name}}
-                        </span>
-                    </span>
-                </div>
-                <span>Indirizzo: {{elem.address}}</span>   
-            </div>
-            
-        </div>
+      <label for="ratings-filter">Ratings:</label>
+      <select id="ratings-filter" v-model="ratingsFilter">
+        <option value="">All</option>
+        <option value="1">1+</option>
+        <option value="2">2+</option>
+        <option value="3">3+</option>
+        <option value="4">4+</option>
+        <option value="5">5+</option>
+      </select>
 
-        <div v-else class="text-center pt-5">
-            <h4>Nessun dottore trovato per questa specializzazione</h4>
-        </div>
+      <button @click="applyFilters">Apply Filters</button>
 
+      <div v-if="filteredDoctors.length > 0">
+        <h2>Results:</h2>
+        <ul>
+          <li v-for="doctor in filteredDoctors" :key="doctor.id">
+            {{ doctor.name }} ({{ doctor.specializations.map(s => s.name).join(', ') }})
+            <div>Reviews: {{ doctor.reviews_count }} ({{ doctor.average_rating }}/5)</div>
+          </li>
+        </ul>
+      </div>
+
+      <div v-else>
+        <p>No results found.</p>
+      </div>
     </div>
-</template>
+  </template>
 
 <script>
-import Loader from '../../components/Loader.vue'
+//import Loader from '../../components/Loader.vue'
+
+//import axios from 'axios';
+
 export default {
     name: 'FilterPage',
     components: {
-        Loader,
+        //Loader,
     },
-    data(){
-        return {
-            isLoading: false,
-            doctors: [],
-            specializationsArray: [],
-            spec: this.$route.params.selectedSpec,
-            
-        }
+    data() {
+      return {
+        specializations: [],
+        specializationFilter: '',
+        reviewsFilter: '',
+        ratingsFilter: '',
+        doctors: [],
+      }
     },
     mounted() {
-        this.filterDoctors();
-        this.spec = '';
-        //this.getSpecializations();
+      // Load the specializations
+      axios.get('/api/specializations')
+        .then(response => {
+          this.specializations = response.data;
+        });
+
+      // Load all the doctors
+      axios.get('/api/doctors')
+        .then(response => {
+          this.doctors = response.data;
+        });
     },
     computed: {
-    selectedSpecName() {
-            const spec = this.specializationsArray.find(spec => spec.id === this.spec);
-            return spec ? spec.name : '';
+      filteredDoctors() {
+        let filtered = this.doctors;
+
+        // Filter by specialization
+        if (this.specializationFilter) {
+          filtered = filtered.filter(doctor => {
+            return doctor.specializations.some(spec => spec.id === parseInt(this.specializationFilter));
+          });
         }
+
+        // Filter by reviews
+        if (this.reviewsFilter) {
+          filtered = filtered.filter(doctor => {
+            return doctor.reviews_count >= parseInt(this.reviewsFilter);
+          });
+        }
+
+        // Filter by ratings
+        if (this.ratingsFilter) {
+          filtered = filtered.filter(doctor => {
+            return doctor.average_rating >= parseInt(this.ratingsFilter);
+          });
+        }
+
+        return filtered;
+      }
     },
     methods: {
-
-        filterDoctors(){
-            this.isLoading = true;
-            axios.post("http://localhost:8000/api/doctors", {
-                specialization: this.spec,
-            }).then((res) =>{
-                console.log(res.data);
-                this.doctors = res.data.doctors;
-                this.specializationsArray = res.data.specializations;
-
-            }).catch((err) => {
-                console.log(err);
-            }).then(() => {
-                this.isLoading = false;
-            });
+      applyFilters() {
+        const filters = {};
+        if (this.specializationFilter) {
+          filters.specialization = this.specializationFilter;
+        }
+        if (this.reviewsFilter) {
+          filters.reviews = this.reviewsFilter;
+        }
+        if (this.ratingsFilter) {
+            filters.ratings = this.ratingsFilter;
         }
 
+        const query = Object.keys(filters)
+            .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(filters[key])}`)
+            .join('&');
 
-
+        const url = `/doctors/filter?${query}`;
+        this.$router.push(url);
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    
+
     .form-select{
         width: 50%;
         display: inline-block;
@@ -103,7 +142,7 @@ export default {
         margin-bottom: 20px;
         background-color: rgba(0, 0, 0, 0.8);
         border-radius: 5px;
-        
+
     }
 
 </style>

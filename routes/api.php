@@ -33,7 +33,8 @@ Route::namespace('Api')
 
         //localhost:8000/api/doctors/id
         Route::get('/{id}', 'DoctorController@show');
-        Route::post('/', 'DoctorController@store');
+        //Route::post('/', 'DoctorController@store');
+        Route::get('/filter', 'DoctorController@filter');
     });
 
 
@@ -42,15 +43,15 @@ Route::namespace('Api')
     //ci ritornerà un controller di Risorsa per le API
 
 
-// Route::namespace('Api')
-// //namespace è il path che ci porta al file
-//     ->prefix('/specializations')
-//     ->group(function(){
-//         //localhost:8000/api/posts
-//         Route::get('/', 'SpecializationsController@index');
-//         //scritta la Route, dovremo portarci in pagina la lista dei TAGS, coi POST allegati
+Route::namespace('Api')
+//namespace è il path che ci porta al file
+     ->prefix('/specializations')
+     ->group(function(){
+         //localhost:8000/api/posts
+         Route::get('/', 'SpecializationsController@index');
+         //scritta la Route, dovremo portarci in pagina la lista dei TAGS, coi POST allegati
 //         Route::get('/{name}', 'SpecializationsController@show');
-//     });
+     });
 
 
 Route::namespace('Api')

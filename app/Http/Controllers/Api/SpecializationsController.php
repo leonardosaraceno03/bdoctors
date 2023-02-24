@@ -18,7 +18,7 @@ class SpecializationsController extends Controller
      */
     public function index()
     {
-        $specializations = Specialization::With('doctors')->get();
+        $specializations = Specialization::All();
         //$specializations = Specialization::All();
 
         return response()->json($specializations);
@@ -46,9 +46,9 @@ class SpecializationsController extends Controller
         //recuperare la singola specializazzione cercata nella tab con i suoi rispettivi dottori
         //$tag = Tag::find($name);  find() recupera dati per numero, come gli id
 
-        $specialization = Specialization::where('name', 'like', $name)->with('doctors')->get();
+        //$specialization = Specialization::where('name', 'like', $name)->with('doctors')->get();
 
-        return response()->json($specialization);
+        //return response()->json($specialization);
     }
 
     /**
