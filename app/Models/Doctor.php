@@ -30,7 +30,7 @@ class Doctor extends Model
 
     public function ratings()
     {
-        return $this->belongsToMany(Rating::class);
+        return $this->belongsToMany(Rating::class, 'doctor_rating');
     }
 
     public function messages()

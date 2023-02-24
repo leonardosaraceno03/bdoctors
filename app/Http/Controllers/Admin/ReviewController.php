@@ -21,7 +21,7 @@ class ReviewController extends Controller
         $doctor = Auth::user();
         $reviews = Review::where('doctor_id', Auth::user()->id)->get();
 
-        return view('admin.reviews', compact('reviews'));
+        return view('admin.doctors.reviews', compact('reviews'));
     }
 
     /**
