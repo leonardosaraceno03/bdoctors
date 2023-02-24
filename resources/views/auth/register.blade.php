@@ -18,7 +18,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" autofocus maxlength="30">
+                                        value="{{ old('name') }}" required autocomplete="name" autofocus maxlength="30">
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -35,7 +35,8 @@
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
                                         class="form-control @error('surname') is-invalid @enderror" name="surname"
-                                        value="{{ old('surname') }}" autofocus maxlength="30">
+                                        value="{{ old('surname') }}" required autocomplete="surname" autofocus
+                                        maxlength="30">
 
                                     @error('surname')
                                         <span class="invalid-feedback" role="alert">
@@ -52,7 +53,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" maxlength="80">
+                                        value="{{ old('email') }}" required autocomplete="email" maxlength="80">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -68,7 +69,8 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" autofocus maxlength="50">
+                                        value="{{ old('address') }}" required autocomplete="address" autofocus
+                                        maxlength="50">
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -82,7 +84,9 @@
                                 <label for="specialization"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione') }}</label>
                                 <div class="col-md-6">
-                                    <select id="specialization" class="form-select @error('specialization_id') is-invalid @enderror" aria-label="Default select example"
+                                    <select id="specialization"
+                                        class="form-select @error('specialization_id') is-invalid @enderror"
+                                        aria-label="Default select example" required autocomplete="specialization"
                                         name="specialization_id">
                                         <option value="" selected>Seleziona una specializzazione</option>
                                         @foreach ($specializations as $elem)
@@ -106,7 +110,8 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password">
+                                        class="form-control @error('password') is-invalid @enderror" required
+                                        autocomplete="password" name="password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -121,8 +126,8 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation">
+                                    <input id="password-confirm" type="password" class="form-control" required
+                                        autocomplete="password_confirmation" name="password_confirmation">
                                 </div>
                             </div>
 
