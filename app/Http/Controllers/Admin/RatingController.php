@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Rating;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
-use App\Models\Doctor;
-use App\Models\Message;
-
-class MessageController extends Controller
+class RatingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +15,10 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::where('doctor_id', Auth::user()->id)->get();
+        $doctor = 'Auth'::user();
+        $ratings = Rating::where('doctor_id', 'Auth'::user()->id)->get();
 
-        return view('admin.doctors.messages', compact('messages'));
+        return view('admin.doctors.reviews', compact('reviews'));
     }
 
     /**
