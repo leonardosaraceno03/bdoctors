@@ -23,8 +23,8 @@
                 </div>
                 @foreach ($specializations as $specialization)
                     <div class="form-check d-inline-block ml-2">
-                        <input class="form-check-input" required type="checkbox" name="specializations[]"
-                            value="{{ $specialization->id }}"
+                        <input class="form-check-input" type="checkbox" name="specializations[]"
+                            @error('specialization') is invalid @enderror value="{{ $specialization->id }}"
                             {{ $doctor->specializations->contains($specialization) ? 'checked' : '' }}>
                         <label class="form-check-label">{{ $specialization->name }}</label>
                     </div>
