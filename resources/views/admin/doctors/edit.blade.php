@@ -8,7 +8,7 @@
 
             <div class="my-3">
                 <label class="form-label" for="">Indirizzo</label>
-                <input value="{{ $doctor->address }}" class="form-control" @error('address') is invalid @enderror
+                <input value="{{ $doctor->address }}" required class="form-control" @error('address') is invalid @enderror
                     type="text" name="address">
                 @error('address')
                     <div class="alert alert-danger">
@@ -23,7 +23,7 @@
                 </div>
                 @foreach ($specializations as $specialization)
                     <div class="form-check d-inline-block ml-2">
-                        <input class="form-check-input" type="checkbox" name="specializations[]"
+                        <input class="form-check-input" required type="checkbox" name="specializations[]"
                             value="{{ $specialization->id }}"
                             {{ $doctor->specializations->contains($specialization) ? 'checked' : '' }}>
                         <label class="form-check-label">{{ $specialization->name }}</label>
@@ -39,6 +39,9 @@
                     <label class="form-label" for="">CV</label>
                 </div>
                 <input value="{{ $doctor->cv }}" @error('cv') is invalid @enderror type="file" name="cv">
+                <div class="">
+                    il formato del file deve essere .jpeg, .png
+                </div>
                 @error('cv')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -53,6 +56,9 @@
                     <label class="form-label" for="">Avatar</label>
                 </div>
                 <input value="{{ $doctor->avatar }}" @error('avatar') is invalid @enderror type="file" name="avatar">
+                <div class="">
+                    il formato del file deve essere .jpeg, .png
+                </div>
                 @error('avatar')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -116,17 +122,41 @@
                 @enderror
             </div>
 
+            <div class="d-flex justify-content-between">
+                <div><button type="submit" class="btn btn-success">Salva</button></div>
+
+                <div>
+                    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Elimina account</button>
+                </div>
 
 
-            <button type="submit" class="btn btn-success">Edit</button>
-
+            </div>
         </form>
-        <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger btn-sm" type="submit">
-                ELIMINA
-            </button>
-        </form>
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Sei sicuro di voler eliminare il tuo
+                    account?
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div></div>
+                <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger btn-sm" type="submit">
+                        Elimina
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
     </div>
 @endsection
