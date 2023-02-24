@@ -23,7 +23,7 @@ class DoctorController extends Controller
         // step1 - mandiamo il json di Dottori e Specializzazioni in HomePage.vue
         //$doctors = Doctor::with('user', 'specializations');
         //$specializations = Specialization::All();
-        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'messages')->get();
+        // $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'messages')->get();
         // $data = [
         //     'doctors' => $doctors,
         //     'specializations' => $specializations,
@@ -108,10 +108,10 @@ class DoctorController extends Controller
      * Filter the specified resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function filterDoctors(Request $request)
+    public function filter(Request $request)
     {
         $specializationId = $request->input('specialization');
         $rating = $request->input('rating');
@@ -133,7 +133,7 @@ class DoctorController extends Controller
 
         if ($reviewCount) {
             $doctors = $doctors->whereHas('reviews', function ($query) use ($reviewCount) {
-                $query->havingRaw('COUNT(*) >= ?', [$reviewCount]);
+                $query->having('COUNT(*) >= ?', [$reviewCount]);
             });
         }
 

@@ -34,7 +34,7 @@ Route::namespace('Api')
         //localhost:8000/api/doctors/id
         Route::get('/{id}', 'DoctorController@show');
         //Route::post('/', 'DoctorController@store');
-        Route::get('/filter', 'DoctorController@filter');
+        Route::get('/', 'DoctorController@filter');
     });
 
 
