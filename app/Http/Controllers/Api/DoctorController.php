@@ -111,34 +111,36 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function filter(Request $request)
+    public function filterDoctors(Request $request)
     {
-        $query = Doctor::query();
+        $specializationId = $request->input('specialization');
+        $rating = $request->input('rating');
+        $reviewCount = $request->input('review_count');
 
-        if ($request->has('specialization')) {
-            $specialization = $request->input('specialization');
-            $query->whereHas('specializations', function ($q) use ($specialization) {
-                $q->where('specialization_id', $specialization);
+        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'messages');
+
+        if ($specializationId) {
+            $doctors = $doctors->whereHas('specializations', function ($query) use ($specializationId) {
+                $query->where('specializations.id', $specializationId);
             });
         }
 
-        if ($request->has('reviews')) {
-            $reviews = $request->input('reviews');
-            $query->whereHas('reviews', function ($q) use ($reviews) {
-                $q->havingRaw('COUNT(*) >= ?', [$reviews]);
+        if ($rating) {
+            $doctors = $doctors->whereHas('ratings', function ($query) use ($rating) {
+                $query->where('ratings.rating', $rating);
             });
         }
 
-        if ($request->has('ratings')) {
-            $ratings = $request->input('ratings');
-            $query->whereHas('ratings', function ($q) use ($ratings) {
-                $q->havingRaw('AVG(rating) >= ?', [$ratings]);
+        if ($reviewCount) {
+            $doctors = $doctors->whereHas('reviews', function ($query) use ($reviewCount) {
+                $query->havingRaw('COUNT(*) >= ?', [$reviewCount]);
             });
         }
 
-        $doctors = $query->get();
+        $doctors = $doctors->get();
 
         return response()->json($doctors);
     }
+
 
 }
