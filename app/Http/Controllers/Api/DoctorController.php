@@ -40,10 +40,17 @@ class DoctorController extends Controller
     {
         $specializationId = $request->input('specialization');
 
-        $filteredDoctors = Doctor::with('specializations','user','reviews','ratings')
+        if ($specializationId){
+            $filteredDoctors = Doctor::with('specializations','user','reviews','ratings')
             ->whereHas('specializations', function ($query) use($specializationId){
                 $query->where('specializations.id', $specializationId);
             })->get();
+        
+        }else{
+            $filteredDoctors = Doctor::with('specializations', 'user', 'reviews', 'ratings')->get();
+        }
+
+        
 
         $specializations = Specialization::all();
 

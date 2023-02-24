@@ -21,7 +21,7 @@ return [
         'user_id' => 2, // ID dell'utente associato
     ],
     [
-        'address' => 'Via Milano, 456',
+        'address' => 'Via Milano, 132',
         'cv' => 'Lorem ipsum dolor sit amet...',
         'avatar' => 'default-avatar.jpg',
         'telephone' => '9876543210',

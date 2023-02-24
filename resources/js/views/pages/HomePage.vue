@@ -1,34 +1,32 @@
 <template>
-    <div>
-        <h1>
-            Ciao sono la HOME PAGE
+    <div class="container align-items-center h-100">
+        <h1 class="text-center pb-5 mt-5">
+            Home Page
         </h1>
 
-        <Loader v-if="isLoading"/>
-
-        <select v-else-if="specializationsArray.length" v-model="selectedSpecialization" >
-            <option value="" selected>Seleziona una specializzazione</option>
-            <option v-for="elem in specializationsArray" :key="elem.id " :value="elem.id">
+        <div class="d-flex justify-content-center">
+            <select v-model="selectedSpecialization" class="form-select">
+                <option value="" selected>Qualsiasi</option>
+                <option v-for="elem in specializationsArray" :key="elem.id " :value="elem.id">
 
                 {{  elem.name  }}
 
-            </option>
-        </select>
-
-        <p v-else>
-            non ci sono specializzazioni da visualizzare
-        </p>
-
-        <router-link 
-            class="btn btn-primary" 
+                </option>
+            </select>
+            <router-link
+            class="btn btn-primary d-inline" 
             :to="{
                 name: 'doctors',
                 params: {
                     selectedSpec: selectedSpecialization
                 }
-            }">
+                }">
                 Cerca
-        </router-link>
+            </router-link>
+        
+        </div>
+
+        
 
     </div>
 </template>
@@ -73,6 +71,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    
+    .form-select{
+        width: 50%;
+        display: inline-block;
+        margin-right: 10px;
+    }
 
 </style>
