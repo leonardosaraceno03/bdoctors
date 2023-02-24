@@ -22,14 +22,14 @@ class DoctorController extends Controller
     {
         // step1 - mandiamo il json di Dottori e Specializzazioni in HomePage.vue
         //$doctors = Doctor::with('user', 'specializations');
-        //$specializations = Specialization::All();
-        // $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'messages')->get();
+        $specializations = Specialization::All();
+        //$doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'messages')->get();
         // $data = [
         //     'doctors' => $doctors,
         //     'specializations' => $specializations,
         // ];
 
-        return response()->json($doctors);
+        return response()->json($specializations);
     }
 
     /**
@@ -127,7 +127,9 @@ class DoctorController extends Controller
 
         if ($rating) {
             $doctors = $doctors->whereHas('ratings', function ($query) use ($rating) {
-                $query->where('ratings.rating', $rating);
+                $query->select(DB::raw('AVG(stars) as avg_rating, doctor_id'))
+                      ->groupBy('doctor_id')
+                      ->having('avg_rating', '>=', $rating);
             });
         }
 

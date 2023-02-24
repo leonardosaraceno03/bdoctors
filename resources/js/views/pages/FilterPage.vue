@@ -77,7 +77,7 @@
           })
       },
     searchDoctors() {
-        let query = '/api/doctors'
+        let query = '/api/doctors/'
         let params = {}
         if (this.specialization) {
             params.specialization = this.specialization
@@ -91,7 +91,9 @@
         // aggiungi i parametri all'URL per visualizzare i filtri nell'indirizzo
         let queryParams = new URLSearchParams(params)
         history.replaceState(null, '', '?' + queryParams.toString())
-
+        
+        console.log(params.ratings);
+        
         // aggiungi la gestione dell'errore
         this.isLoading = true
         axios.get(query, { params })
