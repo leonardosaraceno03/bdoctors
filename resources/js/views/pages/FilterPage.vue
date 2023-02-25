@@ -10,25 +10,25 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="reviews">Recensioni</label>
-          <select id="reviews" class="form-control" v-model="reviews">
+          <label for="min_reviews">Minimo Numero di Recensioni</label>
+          <select id="min_reviews" class="form-control" v-model="min_reviews">
+            <option value="">Tutte</option>
+            <option value="1">1 recensioni</option>
+            <option value="2">2 recensioni</option>
+            <option value="3">3 recensioni</option>
+            <option value="4">4 recensioni</option>
+            <option value="5">5 recensioni</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="min_rating">Minima Valutazione</label>
+          <select id="min_rating" class="form-control" v-model="min_rating">
             <option value="">Tutte</option>
             <option value="1">1 stella</option>
             <option value="2">2 stelle</option>
             <option value="3">3 stelle</option>
             <option value="4">4 stelle</option>
             <option value="5">5 stelle</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="ratings">Voti</label>
-          <select id="ratings" class="form-control" v-model="ratings">
-            <option value="">Tutti</option>
-            <option value="1">1 voto</option>
-            <option value="2">2 voti</option>
-            <option value="3">3 voti</option>
-            <option value="4">4 voti</option>
-            <option value="5">5 voti</option>
           </select>
         </div>
         <button class="btn btn-primary" @click.prevent="searchDoctors">Cerca</button>
@@ -42,9 +42,9 @@
         </ul>
       </div>
     </div>
-  </template>
+</template>
 
-  <script>
+<script>
   import Loader from '../../components/Loader.vue'
   export default {
     name: 'FilterPage',
@@ -55,8 +55,8 @@
       return {
         specializations: [],
         specialization: '',
-        reviews: '',
-        ratings: '',
+        min_reviews: '',
+        min_rating: '',
         doctors: [],
         isLoading: false,
       }
@@ -77,22 +77,25 @@
           })
       },
     searchDoctors() {
-        let query = '/api/doctors/'
+        let query = '/api/doctors'
         let params = {}
         if (this.specialization) {
-            params.specialization = this.specialization
+          params.specialization = this.specialization
         }
-        if (this.reviews) {
-            params.reviews = this.reviews
+        if (this.min_reviews) {
+          params.min_reviews = this.min_reviews
         }
-        if (this.ratings) {
-            params.ratings = this.ratings
+        if (this.min_rating) {
+          params.min_rating = this.min_rating
         }
+        console.log(params.specialization);
+        console.log(params.min_reviews);
+        console.log(params.min_rating);
         // aggiungi i parametri all'URL per visualizzare i filtri nell'indirizzo
         let queryParams = new URLSearchParams(params)
         history.replaceState(null, '', '?' + queryParams.toString())
         
-        console.log(params.ratings);
+        
         
         // aggiungi la gestione dell'errore
         this.isLoading = true

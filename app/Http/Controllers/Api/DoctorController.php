@@ -10,6 +10,7 @@ use App\User;
 use App\Models\Specialization;
 use App\Models\Review;
 use App\Models\Rating;
+use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
@@ -111,38 +112,40 @@ class DoctorController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function filter(Request $request)
-    {
-        $specializationId = $request->input('specialization');
-        $rating = $request->input('rating');
-        $reviewCount = $request->input('review_count');
-
-        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'messages');
-
-        if ($specializationId) {
-            $doctors = $doctors->whereHas('specializations', function ($query) use ($specializationId) {
-                $query->where('specializations.id', $specializationId);
+        public function filter(Request $request)
+    {   
+        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews');
+                    
+        if ($request->has('specialization')) {
+            $specialization_id = $request->input('specialization');
+            $doctors = $doctors->whereHas('specializations', function ($query) use ($specialization_id) {
+                $query->where('specialization_id', '=', $specialization_id);
             });
         }
 
-        if ($rating) {
-            $doctors = $doctors->whereHas('ratings', function ($query) use ($rating) {
-                $query->select(DB::raw('AVG(stars) as avg_rating, doctor_id'))
-                      ->groupBy('doctor_id')
-                      ->having('avg_rating', '>=', $rating);
+        if ($request->has('min_reviews')) {
+            
+            $min_reviews = $request->input('min_reviews');
+            
+            $doctors = $doctors->whereHas('reviews', function($query) use ($min_reviews) {
+                $query->groupBy('doctor_id')->havingRaw('COUNT(reviews.id) >= ?', [$min_reviews]);
+                
             });
+            
         }
 
-        if ($reviewCount) {
-            $doctors = $doctors->whereHas('reviews', function ($query) use ($reviewCount) {
-                $query->having('COUNT(*) >= ?', [$reviewCount]);
+        if ($request->has('min_rating')) {
+            $min_rating = $request->input('min_rating');
+            $doctors = $doctors->whereHas('ratings', function($query) use ($min_rating) {
+                $query->selectRaw('AVG(stars) as avg_stars')->groupBy('doctor_id')->havingRaw('AVG(stars) >= ?', [$min_rating]);
             });
         }
 
         $doctors = $doctors->get();
-
+        // dd($doctors);
         return response()->json($doctors);
     }
 
 
+    // $query->groupBy('doctor_id')->havingRaw('COUNT(ratings.id) >= ?', [$min_reviews]);
 }

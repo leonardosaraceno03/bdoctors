@@ -1967,40 +1967,59 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      isLoading: false,
+      specializations: [],
+      specialization: '',
+      min_reviews: '',
+      min_rating: '',
       doctors: [],
-      specializationsArray: [],
-      spec: this.$route.params.selectedSpec
+      isLoading: false
     };
   },
   mounted: function mounted() {
-    this.filterDoctors();
-    this.spec = '';
-    //this.getSpecializations();
-  },
-
-  computed: {
-    selectedSpecName: function selectedSpecName() {
-      var _this = this;
-      var spec = this.specializationsArray.find(function (spec) {
-        return spec.id === _this.spec;
-      });
-      return spec ? spec.name : '';
-    }
+    this.getSpecializations();
   },
   methods: {
-    filterDoctors: function filterDoctors() {
-      var _this2 = this;
+    getSpecializations: function getSpecializations() {
+      var _this = this;
       this.isLoading = true;
-      axios.post("http://localhost:8000/api/doctors", {
-        specialization: this.spec
-      }).then(function (res) {
-        console.log(res.data);
-        _this2.doctors = res.data.doctors;
-        _this2.specializationsArray = res.data.specializations;
+      axios.get('/api/specializations').then(function (res) {
+        _this.specializations = res.data;
       })["catch"](function (err) {
-        console.log(err);
-      }).then(function () {
+        return console.error(err);
+      })["finally"](function () {
+        _this.isLoading = false;
+      });
+    },
+    searchDoctors: function searchDoctors() {
+      var _this2 = this;
+      var query = '/api/doctors';
+      var params = {};
+      if (this.specialization) {
+        params.specialization = this.specialization;
+      }
+      if (this.min_reviews) {
+        params.min_reviews = this.min_reviews;
+      }
+      if (this.min_rating) {
+        params.min_rating = this.min_rating;
+      }
+      console.log(params.specialization);
+      console.log(params.min_reviews);
+      console.log(params.min_rating);
+      // aggiungi i parametri all'URL per visualizzare i filtri nell'indirizzo
+      var queryParams = new URLSearchParams(params);
+      history.replaceState(null, '', '?' + queryParams.toString());
+
+      // aggiungi la gestione dell'errore
+      this.isLoading = true;
+      axios.get(query, {
+        params: params
+      }).then(function (res) {
+        _this2.doctors = res.data;
+      })["catch"](function (err) {
+        console.error(err);
+        _this2.doctors = [];
+      })["finally"](function () {
         _this2.isLoading = false;
       });
     }
@@ -2041,7 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
     getSpecializations: function getSpecializations() {
       var _this = this;
       this.isLoading = true;
-      axios.get("http://localhost:8000/api/doctors").then(function (res) {
+      axios.get("http://localhost:8000/api/doctors/").then(function (res) {
         console.log('questo è res.data', res.data);
         _this.specializationsArray = res.data;
       })["catch"](function (err) {
@@ -2207,20 +2226,23 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "container"
-  }, [_c("h1", {
-    staticClass: "text-center pb-5 mt-5"
-  }, [_vm._v("\n        Pagina di Ricerca Avanzata " + _vm._s(_vm.selectedSpecName) + "\n    ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-center"
-  }, [_c("select", {
+  return _c("div", [_c("h1", [_vm._v("Cerca Medici")]), _vm._v(" "), _c("form", [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "specialization"
+    }
+  }, [_vm._v("Specializzazione")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.spec,
-      expression: "spec"
+      value: _vm.specialization,
+      expression: "specialization"
     }],
-    staticClass: "form-select",
+    staticClass: "form-control",
+    attrs: {
+      id: "specialization"
+    },
     on: {
       change: function change($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
@@ -2229,39 +2251,139 @@ var render = function render() {
           var val = "_value" in o ? o._value : o.value;
           return val;
         });
-        _vm.spec = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+        _vm.specialization = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
       }
     }
   }, [_c("option", {
     attrs: {
       value: ""
     }
-  }, [_vm._v("Qualsiasi")]), _vm._v(" "), _vm._l(_vm.specializationsArray, function (spec) {
+  }, [_vm._v("Tutte")]), _vm._v(" "), _vm._l(_vm.specializations, function (spec) {
     return _c("option", {
       key: spec.id,
       domProps: {
         value: spec.id
       }
     }, [_vm._v(_vm._s(spec.name))]);
-  })], 2), _vm._v(" "), _c("button", {
+  })], 2)]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "min_reviews"
+    }
+  }, [_vm._v("Minimo Numero di Recensioni")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.min_reviews,
+      expression: "min_reviews"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      id: "min_reviews"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.min_reviews = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: ""
+    }
+  }, [_vm._v("Tutte")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("1 recensioni")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("2 recensioni")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("3 recensioni")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "4"
+    }
+  }, [_vm._v("4 recensioni")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "5"
+    }
+  }, [_vm._v("5 recensioni")])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "min_rating"
+    }
+  }, [_vm._v("Minima Valutazione")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.min_rating,
+      expression: "min_rating"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      id: "min_rating"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.min_rating = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: ""
+    }
+  }, [_vm._v("Tutte")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("1 stella")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("2 stelle")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("3 stelle")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "4"
+    }
+  }, [_vm._v("4 stelle")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "5"
+    }
+  }, [_vm._v("5 stelle")])])]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     on: {
-      click: _vm.filterDoctors
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.searchDoctors.apply(null, arguments);
+      }
     }
-  }, [_vm._v("Filtra")])]), _vm._v(" "), _vm.isLoading ? _c("Loader") : _vm.doctors.length ? _c("div", {
-    staticClass: "d-flex flex-wrap justify-content-between pt-5 text-white"
-  }, _vm._l(_vm.doctors, function (elem) {
-    return _c("div", {
-      key: elem.user.id,
-      staticClass: "ms-card text-center pt-3"
-    }, [_c("div", [_c("h5", [_vm._v(_vm._s(elem.user.name) + " " + _vm._s(elem.user.surname))])]), _vm._v(" "), _c("div", [_c("span", [_vm._v("Specializzazione/i:\n                    "), _vm._l(elem.specializations, function (specialization) {
-      return _c("span", {
-        key: specialization.id
-      }, [_vm._v("\n                        " + _vm._s(specialization.name) + "\n                    ")]);
-    })], 2)]), _vm._v(" "), _c("span", [_vm._v("Indirizzo: " + _vm._s(elem.address))])]);
-  }), 0) : _c("div", {
-    staticClass: "text-center pt-5"
-  }, [_c("h4", [_vm._v("Nessun dottore trovato per questa specializzazione")])])], 1);
+  }, [_vm._v("Cerca")])]), _vm._v(" "), _vm.isLoading ? _c("div", [_c("loader")], 1) : _c("div", [_c("ul", _vm._l(_vm.doctors, function (doc) {
+    return _c("li", {
+      key: doc.id
+    }, [_vm._v(_vm._s(doc.user.name) + " - " + _vm._s(doc.specializations.map(function (s) {
+      return s.name;
+    }).join(", ")))]);
+  }), 0)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
