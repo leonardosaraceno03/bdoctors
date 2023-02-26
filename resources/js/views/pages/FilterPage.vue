@@ -61,7 +61,7 @@ import CardsContainer from '../../components/CardsContainer.vue'
     data() {
       return {
         specializations: [],
-        specialization: '',
+        specialization: this.$route.params.selectedSpec,
         min_reviews: '',
         min_rating: '',
         doctors: [],
@@ -69,7 +69,9 @@ import CardsContainer from '../../components/CardsContainer.vue'
       }
     },
     mounted() {
-      this.getSpecializations()
+      this.getSpecializations();
+      this.searchDoctors();
+      this.specialization = '';
     },
     methods: {
       getSpecializations() {

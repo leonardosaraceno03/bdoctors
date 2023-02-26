@@ -53,7 +53,7 @@ export default {
         //per ciclare le Specializzazioni
         getSpecializations(){
             this.isLoading = true;
-            axios.get("http://localhost:8000/api/doctors/")
+            axios.get("http://localhost:8000/api/specializations/")
             .then((res) => {
                 console.log('questo è res.data', res.data);
                 this.specializationsArray = res.data;

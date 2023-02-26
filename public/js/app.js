@@ -1968,7 +1968,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       specializations: [],
-      specialization: '',
+      specialization: this.$route.params.selectedSpec,
       min_reviews: '',
       min_rating: '',
       doctors: [],
@@ -1977,6 +1977,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getSpecializations();
+    this.searchDoctors();
+    this.specialization = '';
   },
   methods: {
     getSpecializations: function getSpecializations() {
@@ -2060,7 +2062,7 @@ __webpack_require__.r(__webpack_exports__);
     getSpecializations: function getSpecializations() {
       var _this = this;
       this.isLoading = true;
-      axios.get("http://localhost:8000/api/doctors/").then(function (res) {
+      axios.get("http://localhost:8000/api/specializations/").then(function (res) {
         console.log('questo è res.data', res.data);
         _this.specializationsArray = res.data;
       })["catch"](function (err) {
