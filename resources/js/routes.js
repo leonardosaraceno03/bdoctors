@@ -14,7 +14,7 @@ Vue.use(VueRouter)
 //import componenti che fungono da pagine
 import HomePage from './views/pages/HomePage.vue'
 import FilterPage from './views/pages/FilterPage.vue'
-import ShowPage from './views/Pages/ShowPage.vue'
+import ShowPage from './views/pages/ShowPage.vue'
 
 
 const router = new VueRouter({
@@ -40,7 +40,8 @@ const router = new VueRouter({
         {
             path: '/show/:id',
             name: 'show',
-            component: ShowPage
+            component: ShowPage,
+            //props: route => ({ id: route.params.id || 'default' })
         }
 
     ]

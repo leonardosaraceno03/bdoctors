@@ -14,7 +14,7 @@
                 </option>
             </select>
             <router-link
-            class="btn btn-primary d-inline" 
+            class="btn btn-primary d-inline"
             :to="{
                 name: 'doctors',
                 params: {
@@ -23,10 +23,10 @@
                 }">
                 Cerca
             </router-link>
-        
+
         </div>
 
-        
+
 
     </div>
 </template>
@@ -55,7 +55,7 @@ export default {
             this.isLoading = true;
             axios.get("http://localhost:8000/api/specializations/")
             .then((res) => {
-                console.log('questo è res.data', res.data);
+                //console.log('questo è res.data', res.data);
                 this.specializationsArray = res.data;
             })
             .catch((err) => {
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    
+
     .form-select{
         width: 50%;
         display: inline-block;

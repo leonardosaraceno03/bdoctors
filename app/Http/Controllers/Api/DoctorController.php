@@ -73,7 +73,7 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $single_doctor = Doctor::With('user', 'specializations')->find($id);
+        $single_doctor = Doctor::Where('id', 'like', $id)->with('user', 'specializations')->find($id);
 
         if(!$single_doctor) return response('dottore non trovato', 404);
 
@@ -109,13 +109,13 @@ class DoctorController extends Controller
      * Filter the specified resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
         public function filter(Request $request)
-    {   
+    {
         $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews');
-                    
+
         if ($request->has('specialization')) {
             $specialization_id = $request->input('specialization');
             $doctors = $doctors->whereHas('specializations', function ($query) use ($specialization_id) {
@@ -124,14 +124,14 @@ class DoctorController extends Controller
         }
 
         if ($request->has('min_reviews')) {
-            
+
             $min_reviews = $request->input('min_reviews');
-            
+
             $doctors = $doctors->whereHas('reviews', function($query) use ($min_reviews) {
                 $query->groupBy('doctor_id')->havingRaw('COUNT(reviews.id) >= ?', [$min_reviews]);
-                
+
             });
-            
+
         }
 
         if ($request->has('min_rating')) {
@@ -141,7 +141,7 @@ class DoctorController extends Controller
             });
         }
         $doctors = $doctors->get();
-        
+
         return response()->json($doctors);
     }
 

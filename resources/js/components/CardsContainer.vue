@@ -6,7 +6,12 @@
 
     <router-link
         v-for="doc in doctors" :key="doc.id"
-        :to="`/show/${doc.id}`"
+        :to="{
+            name: 'show',
+            params: {
+                selectedDoctor: doc.id
+            }
+        }"
         >
             <CardComp
                 :doc="doc"
@@ -27,15 +32,23 @@ export default {
     },
     data() {
         return {
+            //selectedDoctor: "",
             //doctors: [],
             //specializations: [],
         }
     },
     mounted() {
-
+        //this.getDoctors();
     },
     methods: {
-
+        getDoctors(){
+            axios.get('api/doctors')
+            .then((res) => {
+                console.log('doctors', res.data)
+                this.doctors = res.data
+            })
+            .catch(err => console.error(err))
+        }
     }
 }
 </script>
