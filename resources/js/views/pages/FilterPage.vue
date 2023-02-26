@@ -37,10 +37,7 @@
         <loader></loader>
       </div>
       <div v-else>
-        <ul>
-          <li v-for="doc in doctors" :key="doc.id">{{ doc.user.name }} - {{ doc.specializations.map(s => s.name).join(', ') }}</li>
-        </ul>
-        <!-- qua inseriamo il CardsContainer -->
+
         <CardsContainer
             :doctors="doctors"
             :specializations="specializations"

@@ -10,12 +10,10 @@
         >
             <CardComp
                 :doc="doc"
+                :specializations="specializations"
             />
     </router-link>
 
-    <div v-for="doc in doctors" :key="doc.id">
-        {{ doc.user.name }}
-    </div>
   </div>
 </template>
 
@@ -29,8 +27,8 @@ export default {
     },
     data() {
         return {
-            doctors: [],
-            specializations: [],
+            //doctors: [],
+            //specializations: [],
         }
     },
     mounted() {
