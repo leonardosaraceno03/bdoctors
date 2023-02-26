@@ -9,14 +9,28 @@
             e ssò dottò de {{ spec.name }}
         </div> -->
     </span>
+    <br>
+    <h3>
+        inviami un messaggio, risponderò per email
+    </h3>
+    <SendMessage/>
+    <br>
+    <h3>
+        lascia una recensione
+    </h3>
+    <LetReview/>
   </div>
 </template>
 
 <script>
+import SendMessage from '../../components/SendMessage.vue'
+import LetReview from '../../components/LetReview.vue'
+
 export default {
     name: 'ShowPage',
     components: {
-
+        SendMessage,
+        LetReview
     },
     data() {
         return {
