@@ -54,7 +54,7 @@
     data() {
       return {
         specializations: [],
-        specialization: '',
+        specialization: this.$route.params.selectedSpec,
         min_reviews: '',
         min_rating: '',
         doctors: [],
@@ -62,7 +62,9 @@
       }
     },
     mounted() {
-      this.getSpecializations()
+      this.getSpecializations();
+      this.searchDoctors();
+      this.specialization = '';
     },
     methods: {
       getSpecializations() {

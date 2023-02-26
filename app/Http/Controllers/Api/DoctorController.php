@@ -140,9 +140,8 @@ class DoctorController extends Controller
                 $query->selectRaw('AVG(stars) as avg_stars')->groupBy('doctor_id')->havingRaw('AVG(stars) >= ?', [$min_rating]);
             });
         }
-
         $doctors = $doctors->get();
-        // dd($doctors);
+        
         return response()->json($doctors);
     }
 
