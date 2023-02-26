@@ -40,16 +40,23 @@
         <ul>
           <li v-for="doc in doctors" :key="doc.id">{{ doc.user.name }} - {{ doc.specializations.map(s => s.name).join(', ') }}</li>
         </ul>
+        <!-- qua inseriamo il CardsContainer -->
+        <CardsContainer
+            :doctors="doctors"
+            :specializations="specializations"
+            />
       </div>
     </div>
 </template>
 
 <script>
-  import Loader from '../../components/Loader.vue'
+import Loader from '../../components/Loader.vue'
+import CardsContainer from '../../components/CardsContainer.vue'
   export default {
     name: 'FilterPage',
     components: {
       Loader,
+      CardsContainer
     },
     data() {
       return {
@@ -94,9 +101,9 @@
         // aggiungi i parametri all'URL per visualizzare i filtri nell'indirizzo
         let queryParams = new URLSearchParams(params)
         history.replaceState(null, '', '?' + queryParams.toString())
-        
-        
-        
+
+
+
         // aggiungi la gestione dell'errore
         this.isLoading = true
         axios.get(query, { params })
