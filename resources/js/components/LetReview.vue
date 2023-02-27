@@ -1,15 +1,15 @@
 <template>
     <div>
-        <form v-on:submit="letReview">
+        <div>
             <input type="text" v-model="name" placeholder="nome" />
             <input type="text" v-model="surname" placeholder="cognome" />
-            <textarea name="body" v-model="body"></textarea>
-            <button type="submit">INVIA</button>
-        </form>
+            <textarea v-model="body"></textarea>
+            <button type="button" @click="sendReview">INVIA</button>
+        </div>
     </div>
-  </template>
+</template>
 
-  <script>
+<script>
   export default {
       name: 'LetReview',
       components: {
@@ -26,8 +26,8 @@
 
       },
       methods: {
-        letReview(){
-            axios.post('/api/message', {
+        sendReview(){
+            axios.post('/api/review', {
                 name: this.name,
                 surname: this.surname,
                 body: this.body,
@@ -36,7 +36,13 @@
             .then((res) => {
                 console.log(res.data)
             })
-            .catch(err => console.error(err))
+            .catch(err => 
+                console.error(err))
+            .finally(() => {
+                this.name = "",
+                this.surname = "",
+                this.body = ""
+            })
         }
       }
   }

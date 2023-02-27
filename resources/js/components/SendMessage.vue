@@ -1,16 +1,16 @@
 <template>
     <div>
-        <form v-on:submit="sendMessage">
+        <div>
             <input type="text" v-model="name" placeholder="nome" />
             <input type="text" v-model="surname" placeholder="cognome" />
             <input type="email" v-model="email" placeholder="email" />
-            <textarea name="body" v-model="body"></textarea>
-            <button type="submit">INVIA</button>
-        </form>
+            <textarea v-model="body"></textarea>
+            <button type="button" @click="sendMessage">INVIA</button>
+        </div>
     </div>
-  </template>
+</template>
 
-  <script>
+<script>
   export default {
       name: 'SendMessage',
       components: {
@@ -39,12 +39,20 @@
             .then((res) => {
                 console.log(res.data)
             })
-            .catch(err => console.error(err))
-        }
+            .catch(err => 
+                console.error(err))
+            .finally(() => {
+                this.name = "",
+                this.surname = "",
+                this.email = "",
+                this.body = ""
+            })
+
+        }   
       }
   }
-  </script>
+</script>
 
-  <style>
+<style>
 
-  </style>
+</style>

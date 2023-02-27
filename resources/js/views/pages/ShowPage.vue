@@ -1,24 +1,23 @@
 <template>
-  <div>
+  <div class="container">
     <h4>
         ciao, sono la showPage
     </h4>
-    <span>
-        ciao belli, io so : {{ doctor.user.name }} {{ doctor.user.surname }} <br>
+    <span v-if="doctor">
+        ciao belli, io so : {{ doctor.user.name }} {{ doctor.user.surname }} 
         <!-- <div v-for="spec in doc.specializations" :key="spec.id">
             e ssò dottò de {{ spec.name }}
         </div> -->
     </span>
-    <br>
+    
     <h3>
         inviami un messaggio, risponderò per email
     </h3>
-    <SendMessage/>
-    <br>
+        <SendMessage/>
     <h3>
         lascia una recensione
     </h3>
-    <LetReview/>
+        <LetReview/>
   </div>
 </template>
 
@@ -35,22 +34,23 @@ export default {
     data() {
         return {
             //doc: this.$route.params.selectedDoctor,
-            doctor: [],
+            doctor: null,
         }
     },
     mounted() {
-        console.log(doc);
-        this.getSelectedDoctor();
+        this.getDoctor();
+        
     },
     methods: {
-        getSelectedDoctor(){
-            axios.get(`api/doctors/${this.$route.params.selectedDoctor}`)
+        getDoctor(){
+            axios.get("http://localhost:8000/api/doctors/" + this.$route.params.id)
             .then((res) => {
-                console.log('questo è single_doctor', res.data)
-                this.doctor = res.data
+                this.doctor = res.data;
+                console.log(this.doctor);
             })
             .catch(err => console.error(err))
         }
+        
     }
 }
 </script>

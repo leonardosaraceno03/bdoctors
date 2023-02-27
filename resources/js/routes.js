@@ -38,7 +38,7 @@ const router = new VueRouter({
             component: FilterPage
         },
         {
-            path: '/show/:id',
+            path: '/doctors/:id',
             name: 'show',
             component: ShowPage,
             //props: route => ({ id: route.params.id || 'default' })

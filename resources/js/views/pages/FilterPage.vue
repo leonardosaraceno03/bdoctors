@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
       <h1>Cerca Medici</h1>
       <form>
         <div class="form-group">

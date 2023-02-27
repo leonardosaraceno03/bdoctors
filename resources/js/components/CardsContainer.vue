@@ -6,17 +6,8 @@
 
     <router-link
         v-for="doc in doctors" :key="doc.id"
-        :to="{
-            name: 'show',
-            params: {
-                selectedDoctor: doc.id
-            }
-        }"
-        >
-            <CardComp
-                :doc="doc"
-                :specializations="specializations"
-            />
+        :to="`/doctors/${doc.id}`">
+            <CardComp :doc="doc" :specializations="specializations"/>
     </router-link>
 
   </div>
@@ -39,6 +30,7 @@ export default {
     },
     mounted() {
         //this.getDoctors();
+        
     },
     methods: {
         getDoctors(){
