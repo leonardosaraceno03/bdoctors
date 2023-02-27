@@ -16,8 +16,25 @@
             <label for="c4l-rate5"></label>
         </div>
         <div>
-            <button type="button" class="btn btn-primary mt-3" @click="sendRating">Invia Voto</button>
+            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalRat" @click="sendRating">Invia Voto</button>
         </div>
+
+        <div class="modal fade" id="exampleModalRat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="offcanvas-title">
+                            Il voto è stato inviato! <i class="fa-solid fa-circle-check"></i>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Grazie per il tuo feedback!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     
 </template>

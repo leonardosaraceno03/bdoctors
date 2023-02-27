@@ -4,7 +4,7 @@
     <h2 class="mb-5">ShowPage</h2>
     
     <div v-if="doctor">
-        <h5 > {{ doctor.user.name }} {{ doctor.user.surname }} </h5> 
+        <h4 > {{ doctor.user.name }} {{ doctor.user.surname }} </h4> 
         <!-- <div v-for="spec in doc.specializations" :key="spec.id">
             e ssò dottò de {{ spec.name }}
         </div> -->

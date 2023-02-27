@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <h1>Cerca Medici</h1>
+      <h1 class="my-5">Cerca Medici</h1>
       
       <div class="row">
           
@@ -55,7 +55,7 @@
         <CardsContainer :doctors="doctors" :specializations="specializations"/>
       
       </div>
-      <div v-else>
+      <div v-else class="d-flex justify-content-center pt-5">
         <h2>Nessun elemento trovato</h2>
       </div>
       

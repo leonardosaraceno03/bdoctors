@@ -18,8 +18,25 @@
             </div>
         </div>
         <div class="pt-3">
-            <button type="button" class="btn btn-primary" @click="sendMessage">Invia Messaggio</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMess" @click="sendMessage">Invia Messaggio</button>
         </div>
+
+        <div class="modal fade" id="exampleModalMess" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="offcanvas-title">
+                            Messaggio inviato con successo! <i class="fa-solid fa-circle-check"></i>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Verrai contattato al più presto tramite  e-mail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -66,6 +83,10 @@
   }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    
+    .fa-circle-check{
+        color: #28A745;
+    }
+    
 </style>
