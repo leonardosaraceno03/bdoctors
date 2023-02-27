@@ -67,3 +67,9 @@ Route::namespace('Api')
     ->group(function(){
         Route::post('/', 'ReviewController@store');
     });
+
+Route::namespace('Api')
+->prefix('/rating')
+->group(function(){
+    Route::post('/', 'RatingController@store');
+});

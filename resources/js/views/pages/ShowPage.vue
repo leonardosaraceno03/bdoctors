@@ -10,26 +10,32 @@
         </div> -->
     </span>
     
-    <h3>
+    <h3 class="my-3">
         inviami un messaggio, risponderò per email
     </h3>
         <SendMessage/>
-    <h3>
+    <h3 class="my-3">
         lascia una recensione
     </h3>
         <LetReview/>
+    <h3 class="my-3">
+        Dai un voto al medico
+    </h3>
+        <LetRate/>
   </div>
 </template>
 
 <script>
 import SendMessage from '../../components/SendMessage.vue'
 import LetReview from '../../components/LetReview.vue'
+import LetRate from '../../components/LetRate.vue'
 
 export default {
     name: 'ShowPage',
     components: {
         SendMessage,
-        LetReview
+        LetReview,
+        LetRate
     },
     data() {
         return {
