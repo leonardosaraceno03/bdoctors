@@ -1,14 +1,8 @@
 <template>
-  <div>
-    <h3>
-        ciao, sono il CardsContainer
-    </h3>
-
-    <router-link
-        v-for="doc in doctors" :key="doc.id"
-        :to="`/doctors/${doc.id}`">
-            <CardComp :doc="doc" :specializations="specializations"/>
-    </router-link>
+  <div class="d-flex flex-wrap justify-content-between mt-5">
+    
+            <CardComp v-for="doc in doctors" :key="doc.id" :doc="doc" :specializations="specializations"/>
+    
 
   </div>
 </template>
@@ -47,9 +41,6 @@ export default {
 
 <style lang="scss" scoped>
     
-    a{
-        text-decoration: none;
-        color: inherit;
-    }
+    
 
 </style>

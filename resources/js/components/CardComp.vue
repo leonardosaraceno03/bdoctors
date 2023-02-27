@@ -1,16 +1,16 @@
 <template>
-    <div>
-        <h4>
-            ciao, sono il CardComp
-        </h4>
-        {{ doc.user.name }} - {{ doc.user.surname }}
-        <div v-for="spec in doc.specializations" :key="spec.id">
-            specializzato in {{ spec.name }}
-        </div>
+    <div class="ms-card bg-light rounded my-3 p-3">
+        <router-link :to="`/doctors/${doc.id}`">
+            <h5>{{ doc.user.name }} - {{ doc.user.surname }}</h5>
+        
+            <div v-for="spec in doc.specializations" :key="spec.id">
+                <h6>{{ spec.name }}</h6>
+            </div>
+        </router-link> 
     </div>
-  </template>
+</template>
 
-  <script>
+<script>
   export default {
       name: 'CardComp',
       props: ['doc', 'specializations'],
@@ -31,6 +31,13 @@
   }
   </script>
 
-  <style>
+  <style lang="scss" scoped>
+    .ms-card{
+        width: calc(94% / 3);
+    }
 
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
   </style>

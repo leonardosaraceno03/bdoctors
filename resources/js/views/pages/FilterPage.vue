@@ -1,38 +1,52 @@
 <template>
     <div class="container">
       <h1>Cerca Medici</h1>
-      <form>
-        <div class="form-group">
-          <label for="specialization">Specializzazione</label>
-          <select id="specialization" class="form-control" v-model="specialization">
-            <option value="">Tutte</option>
-            <option v-for="spec in specializations" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
-          </select>
+      
+      <div class="row">
+          
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="specialization" class="mb-2">Specializzazione</label>
+              <select id="specialization" class="form-control" v-model="specialization">
+                <option value="">Tutte</option>
+                <option v-for="spec in specializations" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="min_reviews" class="mb-2">Minimo Numero di Recensioni</label>
+              <select id="min_reviews" class="form-control" v-model="min_reviews">
+                <option value="">Tutte</option>
+                <option value="1">1 recensioni</option>
+                <option value="2">2 recensioni</option>
+                <option value="3">3 recensioni</option>
+                <option value="4">4 recensioni</option>
+                <option value="5">5 recensioni</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="min_rating" class="mb-2">Minima Valutazione</label>
+              <select id="min_rating" class="form-control" v-model="min_rating">
+                <option value="">Tutte</option>
+                <option value="1">1 stella</option>
+                <option value="2">2 stelle</option>
+                <option value="3">3 stelle</option>
+                <option value="4">4 stelle</option>
+                <option value="5">5 stelle</option>
+              </select>
+            </div>
+          </div>
+        
         </div>
-        <div class="form-group">
-          <label for="min_reviews">Minimo Numero di Recensioni</label>
-          <select id="min_reviews" class="form-control" v-model="min_reviews">
-            <option value="">Tutte</option>
-            <option value="1">1 recensioni</option>
-            <option value="2">2 recensioni</option>
-            <option value="3">3 recensioni</option>
-            <option value="4">4 recensioni</option>
-            <option value="5">5 recensioni</option>
-          </select>
+        <div class="d-flex justify-content-center mt-3">
+          <button class="btn btn-primary mt-3 w-25" @click.prevent="searchDoctors">Cerca</button>
         </div>
-        <div class="form-group">
-          <label for="min_rating">Minima Valutazione</label>
-          <select id="min_rating" class="form-control" v-model="min_rating">
-            <option value="">Tutte</option>
-            <option value="1">1 stella</option>
-            <option value="2">2 stelle</option>
-            <option value="3">3 stelle</option>
-            <option value="4">4 stelle</option>
-            <option value="5">5 stelle</option>
-          </select>
-        </div>
-        <button class="btn btn-primary" @click.prevent="searchDoctors">Cerca</button>
-      </form>
+        
       <div v-if="isLoading">
         <loader></loader>
       </div>
@@ -42,7 +56,7 @@
       
       </div>
       <div v-else>
-        <p>nessun elem</p>
+        <h2>Nessun elemento trovato</h2>
       </div>
       
     </div>
