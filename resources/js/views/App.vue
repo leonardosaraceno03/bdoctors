@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
 
     <Header/>
 
@@ -25,5 +25,10 @@ export default {
 </script>
 
 <style>
+
+body {
+  font-family: "Open Sans", sans-serif;
+
+}
 
 </style>

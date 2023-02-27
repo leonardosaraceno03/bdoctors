@@ -126,32 +126,39 @@
                 <div><button type="submit" class="btn btn-success">Salva</button></div>
 
                 <div>
-                    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Elimina account</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Elimina
+                    </button>
                 </div>
 
 
             </div>
         </form>
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Sei sicuro di voler eliminare il tuo
-                    account?
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div></div>
-                <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-sm" type="submit">
-                        Elimina
-                    </button>
-                </form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="offcanvas-title">Sei sicuro di voler eliminare il tuo
+                            account?
+                        </p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+
+                        <form action="{{ route('admin.doctors.destroy', $doctor->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Elimina</button>
+
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
+
 
 
 
