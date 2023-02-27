@@ -73,11 +73,18 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $single_doctor = Doctor::with('user', 'specializations')->find($id);
+        $single_doctor = Doctor::with('user', 'specializations', 'ratings')->find($id);
 
         if(!$single_doctor) return response('dottore non trovato', 404);
 
-        return response()->json($single_doctor);
+        $avg_vote = $single_doctor->ratings->avg('stars');
+        
+        $data = [
+            'single_doctor' => $single_doctor,
+            'avg_vote' => $avg_vote
+        ];
+
+        return response()->json($data);
     }
 
     /**

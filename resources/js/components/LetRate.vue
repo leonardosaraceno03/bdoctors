@@ -33,7 +33,7 @@
         sendRating(){
             axios.post('/api/rating', {
                     
-                    rating_id: this.stars,
+                    stars: this.stars,
                     doctor_id : this.doctor_id
             })
             .then((res) => {
@@ -75,5 +75,5 @@
     .c4l-rating input[name="c4l-rating"] + label:hover ~ input + label:before { opacity: 0.6; }
 
     // stars style end
-
+    
 </style>
