@@ -36,13 +36,15 @@
       <div v-if="isLoading">
         <loader></loader>
       </div>
-      <div v-else>
+      <div v-else-if="this.doctors.length > 0">
 
-        <CardsContainer
-            :doctors="doctors"
-            :specializations="specializations"
-            />
+        <CardsContainer :doctors="doctors" :specializations="specializations"/>
+      
       </div>
+      <div v-else>
+        <p>nessun elem</p>
+      </div>
+      
     </div>
 </template>
 

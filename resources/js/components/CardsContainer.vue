@@ -45,6 +45,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
 
 </style>

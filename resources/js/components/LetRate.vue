@@ -1,17 +1,25 @@
 <template>
-    <div class="c4l-rating">
-        <input name="c4l-rating" type="radio" id="c4l-rate1" value="1" v-model="stars"/>
-        <label for="c4l-rate1"></label>
-        <input name="c4l-rating" type="radio" id="c4l-rate2" value="2" v-model="stars"/>
-        <label for="c4l-rate2"></label>
-        <input name="c4l-rating" type="radio" id="c4l-rate3" value="3" v-model="stars"/>
-        <label for="c4l-rate3"></label>
-        <input name="c4l-rating" type="radio" id="c4l-rate4" value="4" v-model="stars"/>
-        <label for="c4l-rate4"></label>
-        <input name="c4l-rating" type="radio" id="c4l-rate5" value="5" v-model="stars" />
-        <label for="c4l-rate5"></label>
-        <button type="button" class="btn btn-dark" @click="sendRating">INVIA VOTO</button>
+    <div class="mb-3">
+        <div>
+            <h3 class="mb-3">Dai un voto al medico</h3>
+        </div>
+        <div class="c4l-rating">
+            <input name="c4l-rating" type="radio" id="c4l-rate1" value="1" v-model="stars"/>
+            <label for="c4l-rate1"></label>
+            <input name="c4l-rating" type="radio" id="c4l-rate2" value="2" v-model="stars"/>
+            <label for="c4l-rate2"></label>
+            <input name="c4l-rating" type="radio" id="c4l-rate3" value="3" v-model="stars"/>
+            <label for="c4l-rate3"></label>
+            <input name="c4l-rating" type="radio" id="c4l-rate4" value="4" v-model="stars"/>
+            <label for="c4l-rate4"></label>
+            <input name="c4l-rating" type="radio" id="c4l-rate5" value="5" v-model="stars" />
+            <label for="c4l-rate5"></label>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary mt-3" @click="sendRating">Invia Voto</button>
+        </div>
     </div>
+    
 </template>
 
 <script>
@@ -33,7 +41,7 @@
         sendRating(){
             axios.post('/api/rating', {
                     
-                    stars: this.stars,
+                    rating_id: this.stars,
                     doctor_id : this.doctor_id
             })
             .then((res) => {

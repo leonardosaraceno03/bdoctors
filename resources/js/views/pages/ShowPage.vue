@@ -1,29 +1,22 @@
 <template>
-  <div class="container pt-5">
-    <h4>
-        ciao, sono la showPage
-    </h4>
+  <div class="container mt-5 p-3 bg-light rounded">
+    
+    <h2 class="mb-5">ShowPage</h2>
+    
     <div v-if="doctor">
-        <h5 > ciao belli, io so : {{ doctor.user.name }} {{ doctor.user.surname }} </h5> 
+        <h5 > {{ doctor.user.name }} {{ doctor.user.surname }} </h5> 
         <!-- <div v-for="spec in doc.specializations" :key="spec.id">
             e ssò dottò de {{ spec.name }}
         </div> -->
         <p>Media Voti : {{(this.avg_vote).toFixed(1)}}<i class="fa-solid fa-star"></i></p>
     </div>
-    
-    
-    <h3 class="my-3">
-        inviami un messaggio, risponderò per email
-    </h3>
+        
         <SendMessage/>
-    <h3 class="my-3">
-        lascia una recensione
-    </h3>
+    
         <LetReview/>
-    <h3 class="my-3">
-        Dai un voto al medico
-    </h3>
+    
         <LetRate/>
+
   </div>
 </template>
 
@@ -65,6 +58,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .fa-star{
+        color: #ffc107;
+    }
 </style>
