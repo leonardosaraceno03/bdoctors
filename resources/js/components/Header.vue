@@ -2,7 +2,8 @@
     <div>
       <nav class="navbar navbar-expand-lg bg-light d-flex justify-content-between align-items-center container-fluid px-5">
         <div>
-            <a class="navbar-brand" href="#">BDoctors</a>
+            <a class="navbar-brand" href="/">BDoctors</a>
+            <a class="navbar-brand" href="/doctors">FilterPage</a>
         </div>
         <div class="">
 
