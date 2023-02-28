@@ -26,8 +26,8 @@ class RatingController extends Controller
             return $doctor->ratings;
         })->avg('stars');;
 
-
-
+        // Arrotonda la media a 2 cifre decimali
+        $averageRating = round($averageRating, 2);
 
         return view('admin.doctors.statistics', compact('doctors', 'averageRating'));
     }

@@ -1,8 +1,8 @@
 <template>
   <div class="d-flex flex-wrap justify-content-between mt-5">
-    
-            <CardComp v-for="doc in doctors" :key="doc.id" :doc="doc" :specializations="specializations"/>
-    
+
+    <CardComp v-for="doc in doctors" :key="doc.id" :doc="doc" :specializations="specializations"/>
+
 
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     },
     mounted() {
         //this.getDoctors();
-        
+
     },
     methods: {
         getDoctors(){
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    
-    
+
+
 
 </style>

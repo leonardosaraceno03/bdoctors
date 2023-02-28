@@ -1,22 +1,22 @@
 <template>
     <div class="ms-card bg-light rounded my-3 p-3">
         <router-link :to="`/doctors/${doc.id}`">
-            
+
             <h5>{{ doc.user.name }} - {{ doc.user.surname }}</h5>
-        
+
             <div v-for="spec in doc.specializations" :key="spec.id">
                 <h6>{{ spec.name }}</h6>
             </div>
 
             <div>
-                Valutazione: {{ getAverageRating() }} <i class="fa-solid fa-star"></i>
+                Valutazione: {{ getAverageRating() }} <i class="fa-solid fa-star text-warning"></i>
             </div>
 
             <div>
-                <span> N° recensioni : {{doc.reviews.length}}</span> 
+                <span> N° recensioni : {{doc.reviews.length}}</span>
             </div>
 
-        </router-link> 
+        </router-link>
     </div>
 </template>
 
@@ -24,19 +24,19 @@
   export default {
       name: 'CardComp',
       props: ['doc', 'specializations'],
-      
+
       components: {
 
       },
-      
+
       data() {
           return {
-            
+
           }
       },
 
       mounted() {
-        
+
       },
       methods: {
             getAverageRating() {
@@ -48,7 +48,7 @@
                 }, 0);
                     return (totalStars / this.doc.ratings.length).toFixed(1);
             }
-        
+
       }
   }
   </script>
