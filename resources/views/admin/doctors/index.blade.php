@@ -3,7 +3,7 @@
     <div class="container mt-2">
         <div class="row d-flex justify-content-around">
 
-            <a href="{{ route('admin.doctors.edit', $doctor->id) }}"
+            <a href="{{ route('admin.doctors.show', $doctor->id) }}"
                 class="col-5 d-flex flex-column justify-content-center align-items-center">
                 <div><i class="fa-solid fa-user "></i></div>
                 <h2 class="mt-3">Profilo</h2>

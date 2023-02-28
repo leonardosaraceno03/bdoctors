@@ -152,7 +152,7 @@ class DoctorController extends Controller
                 'specializations.*' => 'integer|exists:specializations,id',
 
             ],
-            [   
+            [
                 'cv.mimes' => "Il file deve essere di tipo jpeg, jpg, o png",
                 'address.required' => "Il campo 'indirizzo' è obbligatorio",
                 'address.max' => "Il campo 'Indirizzo' non deve superare i 50 caratteri",
@@ -197,7 +197,7 @@ class DoctorController extends Controller
         $doctor->save();
 
         return redirect()->route('admin.doctors.show', $doctor->id);
-        
+
     }
 
     /**
