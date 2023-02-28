@@ -23,6 +23,14 @@
                 <h2 class="mt-3">Statistiche</h2>
 
             </a>
+
+            <a href="{{ route('admin.plans.index', $doctor->id) }}"
+                class="col-5 mt-5 d-flex flex-column justify-content-center align-items-center">
+                <div><i class="fa-solid fa-chart-simple "></i></div>
+                <h2 class="mt-3">Sponsor</h2>
+
+            </a>
+
             <a href="{{ route('admin.reviews.index', $doctor->id) }}"
                 class="col-5 mt-5 d-flex flex-column justify-content-center align-items-center">
                 <div class="">

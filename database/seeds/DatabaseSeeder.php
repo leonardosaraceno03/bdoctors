@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
                 DoctorSeeder::class,
                 ReviewSeeder::class,
                 MessageSeeder::class,
-                // PlanSeeder::class,
+                PlanSeeder::class,
             ]
         );
     }
