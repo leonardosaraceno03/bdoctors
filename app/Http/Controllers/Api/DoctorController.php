@@ -78,7 +78,7 @@ class DoctorController extends Controller
         if(!$single_doctor) return response('dottore non trovato', 404);
 
         $avg_vote = $single_doctor->ratings->avg('stars');
-        
+
         $data = [
             'single_doctor' => $single_doctor,
             'avg_vote' => $avg_vote
@@ -148,8 +148,13 @@ class DoctorController extends Controller
             });
         }
         $doctors = $doctors->get();
+        $currentSpec = $request->input('specialization');
+        $data = [
+            'doctors' => $doctors,
+            'currentSpec' => $currentSpec
+        ];
 
-        return response()->json($doctors);
+        return response()->json($data);
     }
 
 
