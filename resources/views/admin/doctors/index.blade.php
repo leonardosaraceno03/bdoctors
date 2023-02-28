@@ -26,7 +26,7 @@
 
             <a href="{{ route('admin.plans.index', $doctor->id) }}"
                 class="col-5 mt-5 d-flex flex-column justify-content-center align-items-center">
-                <div><i class="fa-solid fa-chart-simple "></i></div>
+                <div><i class="fa-solid fa-trophy"></i></div>
                 <h2 class="mt-3">Sponsor</h2>
 
             </a>
@@ -72,6 +72,7 @@
             animation-duration: 1s;
             animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
+
         }
 
         @keyframes trillo {
