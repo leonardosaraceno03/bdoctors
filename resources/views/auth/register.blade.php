@@ -172,8 +172,7 @@
                 document.getElementById('password-confirm').className = "form-control red"
                 let text = "Le password non corrispondono";
                 document.getElementById("avviso").innerHTML = text;
-                let text = "Name*";
-                document.getElementById('name').innerHTML = name;
+
             }
         });
     </script>
