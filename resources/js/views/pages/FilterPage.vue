@@ -5,7 +5,7 @@
             TUTTE LE SPECIALITA'
         </h1>
         <h1 v-else>
-            MEDICI SPECIALIZZATI IN {{ currentSpec }}
+            MEDICI SPECIALIZZATI IN {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
         </h1>
 
       <h1 class="my-5">Cerca Medici</h1>
