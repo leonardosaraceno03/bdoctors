@@ -121,7 +121,7 @@ class DoctorController extends Controller
      */
         public function filter(Request $request)
     {
-        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews');
+        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'ratings');
 
         if ($request->has('specialization')) {
             $specialization_id = $request->input('specialization');
