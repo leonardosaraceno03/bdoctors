@@ -38,9 +38,9 @@
     </div>
     <style scoped>
         .col-5 {
-            border: 2px solid green;
+            border: 1px solid lightgray;
             height: 400px;
-
+            border-radius: 10px
         }
 
         .fa-solid {
@@ -53,9 +53,35 @@
         }
 
         a:hover {
-            color: black;
+
             text-decoration-line: none;
             cursor: pointer;
+
+        }
+
+        a:hover .fa-solid {
+            animation-name: trillo;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes trillo {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(5deg);
+            }
+
+            75% {
+                transform: rotate(-5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
         }
     </style>
 @endsection

@@ -1,28 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center my-5">
-        STATISTICS
-    </h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-3 d-flex flex-column justify-content-center">
-                <h5>Questi sono i tuoi voti:</h5>
-                @foreach ($doctors as $doctor)
-                    <ul>
-                        @foreach ($doctor->ratings as $rating)
-                            <li>{{ $rating->stars }} </li>
-                        @endforeach
-                    </ul>
-                    <div>La tua media voto è:
-                        <h1>{{ $averageRating }}
-                        </h1>
-                    </div>
-                @endforeach
+    <section>
+        <h1 class="text-center ">
+            LE TUE STATISTICHE
+        </h1>
+        <div class="container">
+            <div class="row">
+                {{-- <div class="col-12 container-statistics d-flex flex-column justify-content-center">
+                    <h5>Questi sono i tuoi voti:</h5>
+                    @foreach ($doctors as $doctor)
+                        <ul>
+                            @foreach ($doctor->ratings as $rating)
+                                <li>{{ $rating->stars }} </li>
+                            @endforeach
+                        </ul>
+                    @endforeach
+                </div> --}}
             </div>
-            <div class="col-9 text-align-center"><canvas id="myChart"></canvas></div>
+            <div class="row p-3 my-2 container-statistics bg-white">La media dei tuoi voti è:
+                <h1>{{ $averageRating }}
+                </h1>
+            </div>
+            <div class="row bg-white my-3">
+                <div class="col-12 w-100 container-statistics text-align-center"><canvas class="w-75"
+                        id="myChart"></canvas></div>
+            </div>
         </div>
-    </div>
+
+    </section>
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -65,7 +71,23 @@
 
 
 <style scoped>
+    section {
+        background-color: rgb(246, 246, 246);
+        height: 94vh;
+    }
 
+    .container-statistics {
+        border: 1px solid lightgray;
+        border-radius: 10px
+    }
 
+    .col-3 {
+        border: 1px solid lightgray;
+        border-radius: 10px
+    }
 
+    .col-9 {
+        border: 1px solid lightgray;
+        border-radius: 10px
+    }
 </style>
