@@ -2,17 +2,17 @@
 return [
     [
         'address' => 'Via Roma, 123',
-        'cv' => 'Lorem ipsum dolor sit amet...',
-        'avatar' => 'avatars/avatar1.jpeg',
+        'cv' => 'cv/cv-default.jpg',
+        'avatar' => 'avatars/default-avatar.png',
         'telephone' => '0123456789',
         'performance' => 'Eccellente',
         'description' => 'Lorem ipsum dolor sit amet...',
         'visibility' => true,
-        'user_id' => 1, // ID dell'utente associato  
+        'user_id' => 1, // ID dell'utente associato
     ],
     [
         'address' => 'Via Milano, 456',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '9876543210',
         'performance' => 'Buona',
@@ -22,7 +22,7 @@ return [
     ],
     [
         'address' => 'Via Milano, 132',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '9876543210',
         'performance' => 'Ottimo',
@@ -32,7 +32,7 @@ return [
     ],
     [
         'address' => 'Via Dante, 234',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '3334445555',
         'performance' => 'Molto buono',
@@ -42,7 +42,7 @@ return [
     ],
     [
         'address' => 'Piazza del Popolo, 567',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '9998887777',
         'performance' => 'Eccellente',
@@ -52,7 +52,7 @@ return [
     ],
     [
         'address' => 'Via Garibaldi, 890',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '1112223333',
         'performance' => 'Discreto',
@@ -62,7 +62,7 @@ return [
     ],
     [
         'address' => 'Via delle Rose, 123',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '4445556666',
         'performance' => 'Molto buono',
@@ -72,7 +72,7 @@ return [
     ],
     [
         'address' => 'Via dei Mille, 456',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '7778889999',
         'performance' => 'Ottimo',
@@ -82,7 +82,7 @@ return [
     ],
     [
         'address' => 'Via dei Tigli, 234',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '4443332222',
         'performance' => 'Eccellente',
@@ -92,7 +92,7 @@ return [
     ],
     [
         'address' => 'Via del Corso, 567',
-        'cv' => 'Lorem ipsum dolor sit amet...',
+        'cv' => 'cv/cv-default.jpg',
         'avatar' => 'avatars/default-avatar.png',
         'telephone' => '8887776666',
         'performance' => 'Molto buono',
