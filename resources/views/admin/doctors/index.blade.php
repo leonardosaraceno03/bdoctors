@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.doctors')
 @section('content')
     <div class="container mt-2">
         <div class="row d-flex justify-content-around">
