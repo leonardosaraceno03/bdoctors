@@ -25,6 +25,7 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
     Route::resource('/messages', MessageController::class);
     Route::resource('/reviews', ReviewController::class);
     Route::resource('/statistics', RatingController::class);
+    Route::resource('/plans', PlanController::class);
 });
 
 Auth::routes();
