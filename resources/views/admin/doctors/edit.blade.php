@@ -7,7 +7,7 @@
             @method('PUT')
 
             <div class="my-3">
-                <label class="form-label" for="">Indirizzo</label>
+                <label class="form-label" for="">Indirizzo<span class="asterisco">*</span></label>
                 <input value="{{ $doctor->address }}" required class="form-control" @error('address') is invalid @enderror
                     type="text" name="address">
                 @error('address')
@@ -17,16 +17,16 @@
                 @enderror
             </div>
 
-            <div class="my-3 border p-2">
+            <div id="container-spec" class="my-3  border p-2">
                 <div>
-                    <label class="form-label" for="">Specializzazioni</label>
+                    <label class="form-label" for="">Specializzazioni<span class="asterisco">*</span></label>
                 </div>
                 @foreach ($specializations as $specialization)
                     <div class="form-check d-inline-block ml-2">
-                        <input class="form-check-input" type="checkbox" name="specializations[]"
+                        <input class="form-check-input option" type="checkbox" name="specializations[]"
                             @error('specialization') is invalid @enderror value="{{ $specialization->id }}"
                             {{ $doctor->specializations->contains($specialization) ? 'checked' : '' }}>
-                        <label class="form-check-label">{{ $specialization->name }}</label>
+                        <label class="form-check-label option-label">{{ $specialization->name }}</label>
                     </div>
                 @endforeach
                 @error('specializations')
@@ -123,7 +123,7 @@
             </div>
 
             <div class="d-flex justify-content-between">
-                <div><button type="submit" class="btn btn-success">Salva</button></div>
+                <div><button id="submit-btn1" type="submit" class="btn btn-success">Salva</button></div>
 
                 <div>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -166,4 +166,42 @@
 
 
     </div>
+
+    <script>
+        const options = document.querySelectorAll('.option');
+        const optionLabels = document.querySelectorAll('.option-label');
+        const submitBtn = document.getElementById('submit-btn1');
+
+        function enableSubmitBtn() {
+            let atLeastOneChecked = false;
+
+            options.forEach(function(option) {
+                if (option.checked) {
+                    atLeastOneChecked = true;
+                }
+            });
+
+            submitBtn.disabled = !atLeastOneChecked;
+
+            if (atLeastOneChecked) {
+                optionLabels.forEach(function(label) {
+                    label.classList.remove('red-text');
+                });
+            } else {
+                optionLabels.forEach(function(label) {
+                    label.classList.add('red-text');
+                });
+            }
+        }
+
+        options.forEach(function(option) {
+            option.addEventListener('change', enableSubmitBtn);
+        });
+    </script>
+
+    <style>
+        .red-text {
+            color: red;
+        }
+    </style>
 @endsection

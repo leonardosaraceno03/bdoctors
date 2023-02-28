@@ -12,8 +12,8 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}<span
+                                        class="asterisco">*</span> </label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -29,8 +29,8 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="surname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}<span
+                                        class="asterisco">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
@@ -48,7 +48,8 @@
 
                             <div class="form-group row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo mail') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo mail') }}<span
+                                        class="asterisco">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -64,7 +65,8 @@
                             </div>
                             <div class="form-group row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}<span
+                                        class="asterisco">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -82,7 +84,8 @@
 
                             <div class="form-group row">
                                 <label for="specialization"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione') }}<span
+                                        class="asterisco">*</span></label>
                                 <div class="col-md-6">
                                     <select id="specialization"
                                         class="form-select @error('specialization_id') is-invalid @enderror"
@@ -106,12 +109,14 @@
 
                             <div class="form-group row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}<span
+                                        class="asterisco">*</span></label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" required
-                                        autocomplete="password" name="password">
+                                    <input id="password" type="password" class="form-control"
+                                        @error('password') is-invalid @enderror" required autocomplete="password"
+                                        name="password">
+                                    <div class="text-danger" id="avviso"></div>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -123,25 +128,64 @@
 
                             <div class="form-group row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }}<span
+                                        class="asterisco">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control" required
                                         autocomplete="password_confirmation" name="password_confirmation">
+
                                 </div>
                             </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="submit-btn" type="submit" class="btn btn-primary">
                                         {{ __('Registrati') }}
                                     </button>
+
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('password-confirm');
+        const submitBtn = document.getElementById('submit-btn');
+
+        confirmPasswordInput.addEventListener('input', function() {
+            if (confirmPasswordInput.value === passwordInput.value) {
+                submitBtn.disabled = false;
+                let text = "";
+                document.getElementById("avviso").innerHTML = text;
+                document.getElementById('password').className = "form-control";
+                document.getElementById('password-confirm').className = "form-control"
+
+            } else {
+                submitBtn.disabled = true;
+                document.getElementById('password').className = "form-control red";
+                document.getElementById('password-confirm').className = "form-control red"
+                let text = "Le password non corrispondono";
+                document.getElementById("avviso").innerHTML = text;
+                let text = "Name*";
+                document.getElementById('name').innerHTML = name;
+            }
+        });
+    </script>
+    <style>
+        .red {
+            border: 1px solid red;
+        }
+
+
+
+        .asterisco {
+            font-size: 0.9rem;
+        }
+    </style>
 @endsection
