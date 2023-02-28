@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-      <h1 class="my-5">Cerca Medici</h1>
-      
+      <h1 class="my-5 text-center">Cerca Medici</h1>
+
       <div class="row">
-          
+
           <div class="col-12 col-md-4">
             <div class="form-group">
               <label for="specialization" class="mb-2">Specializzazione</label>
@@ -13,7 +13,7 @@
               </select>
             </div>
           </div>
-          
+
           <div class="col-12 col-md-4">
             <div class="form-group">
               <label for="min_reviews" class="mb-2">Minimo Numero di Recensioni</label>
@@ -27,7 +27,7 @@
               </select>
             </div>
           </div>
-          
+
           <div class="col-12 col-md-4">
             <div class="form-group">
               <label for="min_rating" class="mb-2">Minima Valutazione</label>
@@ -41,24 +41,24 @@
               </select>
             </div>
           </div>
-        
+
         </div>
         <div class="d-flex justify-content-center mt-3">
           <button class="btn btn-primary mt-3 w-25" @click.prevent="searchDoctors">Cerca</button>
         </div>
-        
+
       <div v-if="isLoading">
         <loader></loader>
       </div>
       <div v-else-if="this.doctors.length > 0">
 
         <CardsContainer :doctors="doctors" :specializations="specializations"/>
-      
+
       </div>
       <div v-else class="d-flex justify-content-center pt-5">
         <h2>Nessun elemento trovato</h2>
       </div>
-      
+
     </div>
 </template>
 

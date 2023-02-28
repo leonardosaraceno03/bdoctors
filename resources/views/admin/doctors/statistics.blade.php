@@ -11,10 +11,10 @@
                 @foreach ($doctors as $doctor)
                     <ul>
                         @foreach ($doctor->ratings as $rating)
-                            <li>{{ $rating->stars }}</li>
+                            <li>{{ $rating->stars }} </li>
                         @endforeach
                     </ul>
-                    <div>La tua media recensioni è:
+                    <div>La tua media voto è:
                         <h1>{{ $averageRating }}
                         </h1>
                     </div>
@@ -62,3 +62,10 @@
         });
     </script>
 @endsection
+
+
+<style scoped>
+
+
+
+</style>
