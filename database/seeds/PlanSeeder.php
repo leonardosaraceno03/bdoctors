@@ -19,12 +19,12 @@ class PlanSeeder extends Seeder
         ],
         [
             'name' => 'Silver',
-            'duration' => 48,
+            'duration' => 72,
             'price' => 5.99
         ],
         [
             'name' => 'Gold',
-            'duration' => 72,
+            'duration' => 144,
             'price' => 9.99
         ]
     ];
