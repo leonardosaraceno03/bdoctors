@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+use Carbon\Carbon;
+
 class DoctorController extends Controller
 {
     /**
@@ -47,6 +49,8 @@ class DoctorController extends Controller
 
         $doctor = Doctor::where('user_id', Auth::user()->id)->firstOrFail();
         $user = Auth::user();
+
+        //dd($doctor);
 
         return view('admin.doctors.index', compact('doctor', 'user'));
     }

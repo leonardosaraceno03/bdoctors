@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Plan extends Model
 {
@@ -17,5 +18,10 @@ class Plan extends Model
     public function doctors()
     {
         return $this->belongsToMany(Doctor::class);
+    }
+
+    public function date()
+    {
+        return Carbon::create( $this->created_at )->format('d-m-y');
     }
 }

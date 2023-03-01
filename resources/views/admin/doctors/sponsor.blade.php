@@ -11,5 +11,8 @@
 <div>
     {{ $gold->name }}
 </div>
+<div>
+    {{ $bronze->date() }}
+</div>
 
 @endsection
