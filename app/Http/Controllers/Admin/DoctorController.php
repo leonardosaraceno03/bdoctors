@@ -144,7 +144,7 @@ class DoctorController extends Controller
 
                 'address' => 'required|string|max:50',
                 'cv' => ['file', 'mimes:jpeg,jpg,png', 'max:10000', 'nullable'],
-                'telephone' => 'nullable|string|max:15',
+                'telephone' => 'nullable|string|max:10',
                 'performance' => 'nullable|string|max:255',
                 'description' => 'nullable|string|max:255',
                 'visibility' => 'required|boolean',
@@ -156,7 +156,7 @@ class DoctorController extends Controller
                 'cv.mimes' => "Il file deve essere di tipo jpeg, jpg, o png",
                 'address.required' => "Il campo 'indirizzo' è obbligatorio",
                 'address.max' => "Il campo 'Indirizzo' non deve superare i 50 caratteri",
-                'telephone.max' => "Il campo 'Telefono' non deve superare i 15 caratteri",
+                'telephone.max' => "Il campo 'Telefono' non deve superare i 10 caratteri",
                 'performance.max' => "Il campo 'Prestazioni' non deve superare i 255 caratteri",
                 'description.max' => "Il campo 'Descrizione' non deve superare i 255 caratteri",
                 'visibility.required' => "Il campo 'Profilo' è obbligatorio",

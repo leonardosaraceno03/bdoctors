@@ -71,7 +71,7 @@
                 <div class="my-3">
                     <label class="form-label" for="">Telefono</label>
                     <input value="{{ $doctor->telephone }}" class="form-control" @error('telephone') is invalid @enderror
-                        type="text" name="telephone">
+                        type="text" name="telephone" min="0" maxlength="10" minlength="10" pattern="[0-9]{10}">
                     @error('telephone')
                         <div class="alert alert-danger">
                             {{ $message }}
@@ -82,7 +82,7 @@
                 <div class="my-3">
                     <label class="form-label" for="">Prestazione/i</label>
                     <input value="{{ $doctor->performance }}" class="form-control"
-                        @error('performance') is invalid @enderror type="text" name="performance">
+                        @error('performance') is invalid @enderror type="text" name="performance" maxlength="255">
                     @error('performance')
                         <div class="alert alert-danger">
                             {{ $message }}
@@ -93,7 +93,7 @@
                 <div class="my-3">
                     <label class="form-label" for="">Descrizione</label>
                     <input value="{{ $doctor->description }}" class="form-control"
-                        @error('description') is invalid @enderror type="text" name="description">
+                        @error('description') is invalid @enderror type="text" name="description" maxlength="255">
                     @error('description')
                         <div class="alert alert-danger">
                             {{ $message }}
