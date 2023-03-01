@@ -16,6 +16,8 @@ class PlanController extends Controller
         $gold = Plan::whereId(3)->first();
         $doctor = Auth::user();
 
-        return view('admin.doctors.sponsor', compact('bronze', 'silver', 'gold', 'doctor'));
+        return view('admin.plans.index', compact('bronze', 'silver', 'gold', 'doctor'));
     }
+
+    
 }

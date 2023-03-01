@@ -22,6 +22,6 @@ class Plan extends Model
 
     public function date()
     {
-        return Carbon::create( $this->created_at )->format('d-m-y');
+        return Carbon::now();
     }
 }
