@@ -1,5 +1,5 @@
 <template>
-    <div class="ms-card bg-light rounded my-3 p-3">
+    <div class="ms-card rounded my-3 p-3">
         <router-link :to="`/doctors/${sponsoredDoc.id}`">
 
             <h5>{{ sponsoredDoc.user.name }} - {{ sponsoredDoc.user.surname }}</h5>
@@ -23,7 +23,7 @@
 <script>
   export default {
       name: 'SponsoredCardComp',
-      props: ['sponsoredDoc', 'specializations'],
+      props: ['sponsoredDoc'],
 
       components: {
 
@@ -56,6 +56,8 @@
   <style lang="scss" scoped>
     .ms-card{
         width: calc(94% / 3);
+        background-color: gold;
+
     }
 
     a{

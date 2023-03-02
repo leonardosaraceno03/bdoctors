@@ -7,7 +7,7 @@
             </h4>
         </div>
         <div v-else class="d-flex flex-wrap justify-content-between mt-5">
-            <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" :specializations="specializations"/>
+            <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc"/>
         </div>
     </div>
 
