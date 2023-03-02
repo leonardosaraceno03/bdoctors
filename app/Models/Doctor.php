@@ -25,7 +25,7 @@ class Doctor extends Model
 
     public function plans()
     {
-        return $this->belongsToMany(Plan::class, 'doctor_plan');
+        return $this->belongsToMany(Plan::class, 'doctor_plan')->withPivot(['expiration_date']);;
     }
 
     public function ratings()

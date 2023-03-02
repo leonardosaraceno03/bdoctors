@@ -60,7 +60,7 @@
       </div>
       <div v-else-if="this.doctors.length > 0">
 
-        <CardsContainer :doctors="doctors" :specializations="specializations"/>
+        <CardsContainer :doctors="doctors" :specializations="specializations" :sponsoredDoctors="sponsoredDoctors"/>
 
       </div>
       <div v-else class="d-flex justify-content-center pt-5">
@@ -87,7 +87,8 @@ import CardsContainer from '../../components/CardsContainer.vue'
         min_rating: '',
         doctors: [],
         isLoading: false,
-        currentSpec: ''
+        currentSpec: '',
+        sponsoredDoctors: []
       }
     },
     mounted() {
@@ -132,12 +133,27 @@ import CardsContainer from '../../components/CardsContainer.vue'
         this.isLoading = true
         axios.get(query, { params })
             .then(res => {
-            this.doctors = res.data.doctors
+            this.doctors = []
+            this.sponsoredDoctors = []
+            this.doctors = res.data.doctors.filter(doctor => {
+              const lastPlan = doctor.plans[doctor.plans.length - 1];
+              if(!lastPlan)return doctor;
+              else{
+                const expirationDate = lastPlan.pivot.expiration_date;
+                const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+                if(now > expirationDate)return doctor;
+                else this.sponsoredDoctors.push(doctor);
+
+              }
+              
+              
+            })
             this.currentSpec = res.data.currentSpec
             })
             .catch(err => {
             console.error(err)
             this.doctors = []
+            this.sponsoredDoctors = []
             })
             .finally(() => {
             this.isLoading = false

@@ -17,7 +17,8 @@ class Plan extends Model
 
     public function doctors()
     {
-        return $this->belongsToMany(Doctor::class, 'doctor_plan');
+        return $this->belongsToMany('app\Models\Plan'); 
+        
     }
 
     public function date()
