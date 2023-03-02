@@ -11,13 +11,19 @@ class PlanController extends Controller
 {
     public function index()
     {
-        $bronze = Plan::whereId(1)->first();
-        $silver = Plan::whereId(2)->first();
-        $gold = Plan::whereId(3)->first();
+        $plans = Plan::all();
+        // $bronze = Plan::whereId(1)->first();
+        // $silver = Plan::whereId(2)->first();
+        // $gold = Plan::whereId(3)->first();
         $doctor = Auth::user();
 
-        return view('admin.plans.index', compact('bronze', 'silver', 'gold', 'doctor'));
+        return view('admin.plans.index', compact('plans', 'doctor'));
     }
 
+    public function showPayment($plan)
+    {
+        $plan = Plan::findOrFail($plan);
+        return view('admin.plans.payment', compact('plan'));
+    }
     
 }

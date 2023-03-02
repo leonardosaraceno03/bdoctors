@@ -1,30 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-
-<form id="plan-form" method="POST" action="{{ route('admin.messages.create') }}">
-    @csrf
-    <input type="hidden" name="plan_id" value="{{ $bronze->id }}">
-    <input type="hidden" name="price" value="{{ $bronze->price }}">
-    <button type="submit" class="btn btn-primary">Select</button>
-</form>
-
-<form id="plan-form" method="POST" action="{{ route('admin.messages.create') }}">
-    @csrf
-    <input type="hidden" name="plan_id" value="{{ $silver->id }}">
-    <input type="hidden" name="price" value="{{ $silver->price }}">
-    <button type="submit" class="btn btn-primary">Select</button>
-</form>
-
-<form id="plan-form" method="POST" action="{{ route('admin.messages.create') }}">
-    @csrf
-    <input type="hidden" name="plan_id" value="{{ $gold->id }}">
-    <input type="hidden" name="price" value="{{ $gold->price }}">
-    <button type="submit" class="btn btn-primary">Select</button>
-</form>
+<div class="container pt-5">
+    @foreach ($plans as $plan)
+        <div>
+            <h3>{{ $plan->name }}</h3>
+            <p>{{ $plan->description }}</p>
+            <a href="{{ route('admin.plans.payment.show', ['plan' => $plan->id]) }}">Seleziona questo piano</a>
+        </div>
+    @endforeach
+</div>
 
 
-<div>
+
+{{-- <div>
     {{ $bronze->name }}
 </div>
 <div>
@@ -35,6 +24,6 @@
 </div>
 <div>
     {{ $bronze->date() }}
-</div>
+</div> --}}
 
 @endsection
