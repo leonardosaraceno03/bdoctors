@@ -4,10 +4,11 @@
         <h1 v-if="(!currentSpec)">
             TUTTE LE SPECIALITA'
         </h1>
+        
         <h1 v-else>
             MEDICI SPECIALIZZATI IN {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
         </h1>
-
+        
       <h1 class="my-5">Cerca Medici</h1>
 
       <div class="row">
@@ -58,7 +59,7 @@
       <div v-if="isLoading">
         <loader></loader>
       </div>
-      <div v-else-if="this.doctors.length > 0">
+      <div v-else-if="this.doctors.length > 0 || this.sponsoredDoctors.length > 0">
 
         <CardsContainer :doctors="doctors" :specializations="specializations" :sponsoredDoctors="sponsoredDoctors"/>
 
@@ -120,9 +121,7 @@ import CardsContainer from '../../components/CardsContainer.vue'
         if (this.min_rating) {
           params.min_rating = this.min_rating
         }
-        console.log(params.specialization);
-        console.log(params.min_reviews);
-        console.log(params.min_rating);
+        
         // aggiungi i parametri all'URL per visualizzare i filtri nell'indirizzo
         let queryParams = new URLSearchParams(params)
         history.replaceState(null, '', '?' + queryParams.toString())
@@ -133,6 +132,7 @@ import CardsContainer from '../../components/CardsContainer.vue'
         this.isLoading = true
         axios.get(query, { params })
             .then(res => {
+              console.log(res.data.doctors);
             this.doctors = []
             this.sponsoredDoctors = []
             this.doctors = res.data.doctors.filter(doctor => {

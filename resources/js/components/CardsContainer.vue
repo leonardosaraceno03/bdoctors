@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div
-    v-if="(sponsoredDoctors.length != 0)">
+    <div>
+        
         <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" :specializations="specializations"/>
 
     </div>
