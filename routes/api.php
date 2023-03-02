@@ -36,8 +36,15 @@ Route::namespace('Api')
         //Route::post('/', 'DoctorController@store');
         Route::get('/', 'DoctorController@filter');
 
-        Route::get('/', 'DoctorController@sponsored');
     });
+
+    Route::namespace('Api')
+    //namespace è il path che ci porta al file
+        ->prefix('/sponsors')
+        ->group(function(){
+            Route::get('/', 'DoctorController@sponsored');
+
+        });
 
 
     //creare un controller dentro una cartelle API
