@@ -38,8 +38,15 @@
       </div>
     </div>
 
+    <div>
+        <h4>
+            ecco li mejoooo dottoooooo
+        </h4>
+        <SponsoredCardsContainer/>
+    </div>
+
     <!-- ======= Doctors Section ======= -->
-    <section id="doctors" class="doctors mt-5">
+    <!-- <section id="doctors" class="doctors mt-5">
 
       <div class="container">
         <div>
@@ -130,17 +137,21 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- End Doctors Section -->
   </div>
 </template>
 
 <script>
+
 import Loader from "../../components/Loader.vue";
+import SponsoredCardsContainer from "../../components/SponsoredCardsContainer.vue"
+
 export default {
   name: "HomePage",
   components: {
     Loader,
+    SponsoredCardsContainer
   },
   data() {
     return {

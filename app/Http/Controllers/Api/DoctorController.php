@@ -11,6 +11,9 @@ use App\Models\Specialization;
 use App\Models\Review;
 use App\Models\Rating;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\Models\Plan;
+use App\Models\DoctorPlan;
 
 class DoctorController extends Controller
 {
@@ -155,6 +158,17 @@ class DoctorController extends Controller
         ];
 
         return response()->json($data);
+    }
+
+    public function sponsored(Request $request)
+    {
+        $sponsoredDoctors = Doctor::with(['user', 'specializations', 'ratings', 'reviews', 'plans'])
+            ->whereHas('plans', function($query){
+                $query->where('expiration_date', '>', now());
+            })
+            ->get();
+
+        return response()->json($sponsoredDoctors);
     }
 
 
