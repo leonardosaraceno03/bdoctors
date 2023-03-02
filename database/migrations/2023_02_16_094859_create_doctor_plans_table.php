@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDoctorPlanTable extends Migration
+class CreateDoctorPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDoctorPlanTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctor_plan', function (Blueprint $table) {
+        Schema::create('doctor_plans', function (Blueprint $table) {
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
 
@@ -21,6 +21,7 @@ class CreateDoctorPlanTable extends Migration
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
 
             $table->dateTime('expiration_date')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,6 @@ class CreateDoctorPlanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctor_plan');
+        Schema::dropIfExists('doctor_plans');
     }
 }

@@ -27,6 +27,8 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
     Route::resource('/statistics', RatingController::class);
     Route::resource('/plans', PlanController::class);
     Route::get('/plans/{plan}/payment', 'PlanController@showPayment')->name('plans.payment.show');
+    Route::post('/plans/checkout/{plan}', 'PlanController@checkout')->name('plans.checkout');
+
 });
 
 Auth::routes();

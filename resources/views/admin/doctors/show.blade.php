@@ -3,6 +3,11 @@
 @section('content')
     <div class="container mt-5 rounded-3 bg-light">
         <div class="row">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="col-3 text-center d-flex justify-content-center align-items-center flex-column p-5 rounded-3"
                 style="background-color: #9CE2DB">
                 @foreach ($doctors as $elem)
