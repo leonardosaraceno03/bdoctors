@@ -36,7 +36,7 @@ Route::namespace('Api')
         //Route::post('/', 'DoctorController@store');
         Route::get('/', 'DoctorController@filter');
 
-        Route::get('/sponsored', 'DoctorController@sponsored');
+        Route::get('/', 'DoctorController@sponsored');
     });
 
 

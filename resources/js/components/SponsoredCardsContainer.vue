@@ -34,7 +34,7 @@
       },
       methods: {
           getSponsoredDoctors(){
-              axios.get('api/doctors/sponsored')
+              axios.get('api/doctors')
               .then((res) => {
                   console.log('sponsored doctors', res.data)
                   this.sponsoredDoctors = res.data;

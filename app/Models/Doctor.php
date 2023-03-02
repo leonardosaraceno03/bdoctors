@@ -25,7 +25,7 @@ class Doctor extends Model
 
     public function plans()
     {
-        return $this->belongsToMany(Plan::class);
+        return $this->belongsToMany(Plan::class, 'doctor_plan');
     }
 
     public function ratings()

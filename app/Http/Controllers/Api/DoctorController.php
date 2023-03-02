@@ -76,7 +76,7 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $single_doctor = Doctor::with('user', 'specializations', 'ratings')->find($id);
+        $single_doctor = Doctor::with('user', 'specializations', 'ratings', 'plans')->find($id);
 
         if(!$single_doctor) return response('dottore non trovato', 404);
 
@@ -124,7 +124,7 @@ class DoctorController extends Controller
      */
         public function filter(Request $request)
     {
-        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'ratings');
+        $doctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'ratings', 'plans');
 
         if ($request->has('specialization')) {
             $specialization_id = $request->input('specialization');
@@ -162,7 +162,7 @@ class DoctorController extends Controller
 
     public function sponsored(Request $request)
     {
-        $sponsoredDoctors = Doctor::with(['user', 'specializations', 'ratings', 'reviews', 'plans'])
+        $sponsoredDoctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'plans')
             ->whereHas('plans', function($query){
                 $query->where('expiration_date', '>', now());
             })
