@@ -6,10 +6,10 @@
         </h1>
 
         <h1 v-else class="pt-3">
-            Medici specilizzati in {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
+            Medici specilizzati in <span class="text-primary">{{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}</span>
         </h1>
 
-      <h1 class="my-5">Cerca Medici</h1>
+      <h1 class="my-5 text-primary">Cerca Medici</h1>
 
       <div class="row">
 
@@ -17,9 +17,10 @@
             <div class="form-group">
               <label for="specialization" class="mb-2">Specializzazione</label>
               <select id="specialization" class="form-control" v-model="specialization">
-                <option value="">
+                <option value="" disabled selected>Seleziona un'opzione</option>
+                <!-- <option value="">
                     {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
-                </option>
+                </option> -->
                 <option v-for="spec in specializations" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
               </select>
             </div>

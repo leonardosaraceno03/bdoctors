@@ -3,11 +3,12 @@
     <div>
       <div>
         <div class="p-5 bg-primary text-white w-100">
-          <h1 class="pb-3">BDoctors</h1>
+          <h1 class="text-center text-white">Trova il Dottore che fa per te!!</h1>
           
-          <div class="form-style">
+          <div class="form-style my-4">
+            
           <select v-model="selectedSpecialization" class="form-select">
-            <option value="" selected>Qualsiasi</option>
+            <option value="" disabled selected>Seleziona un'opzione</option>
             <option
               v-for="elem in specializationsArray"
               :key="elem.id"

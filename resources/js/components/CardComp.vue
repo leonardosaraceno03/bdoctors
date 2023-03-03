@@ -1,5 +1,5 @@
 <template>
-    <div class="ms-card bg-light rounded my-3 p-3">
+    <div class="ms-card bg-primary rounded my-3 p-3">
         <router-link :to="`/doctors/${doc.id}`">
 
             <h5>{{ doc.user.name }} - {{ doc.user.surname }}</h5>

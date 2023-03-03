@@ -5,7 +5,7 @@
         <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" :specializations="specializations"/>
 
     </div>
-    <div class="d-flex flex-wrap justify-content-between mt-5">
+    <div class="d-flex flex-wrap justify-content-around mt-5">
 
     
     <CardComp v-for="doc in doctors" :key="doc.id" :doc="doc" :specializations="specializations"/>
