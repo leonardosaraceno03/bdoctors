@@ -55,7 +55,7 @@
           </div>
 
         </div>
-        <div class="d-flex justify-content-center mt-3">
+        <div class="d-flex justify-content-center mt-3 mb-10">
           <button class="btn btn-primary mt-3 w-25" @click.prevent="searchDoctors">Cerca</button>
         </div>
 
@@ -187,6 +187,9 @@ import CardsContainer from '../../components/CardsContainer.vue'
         background-color: rgba(0, 0, 0, 0.8);
         border-radius: 5px;
 
+    }
+    .mb-10{
+      margin-bottom: 80px;
     }
 
 </style>

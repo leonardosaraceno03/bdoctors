@@ -1,9 +1,9 @@
 <template>
     <div>
-      <nav class="navbar navbar-expand-lg bg-light d-flex justify-content-between align-items-center container-fluid px-5">
+      <nav class="navbar navbar-expand-lg bg-primary d-flex justify-content-between align-items-center container-fluid px-5">
         <div>
-            <a class="navbar-brand" href="/">BDoctors</a>
-            <a class="navbar-brand" href="/doctors">FilterPage</a>
+            <a class="navbar-brand text-white" href="/">BDoctors</a>
+            <a class="navbar-brand text-white" href="/doctors">FilterPage</a>
         </div>
         <div class="">
 
@@ -14,10 +14,10 @@
                   <ul class="navbar-nav">
 
                       <li class="nav-item">
-                          <a href="/login" class="nav-link">Accedi</a>
+                          <a href="/login" class="nav-link text-white">Accedi</a>
                       </li>
                       <li class="nav-item">
-                          <a href="/register" class="nav-link">Registrati</a>
+                          <a href="/register" class="nav-link text-white">Registrati</a>
                       </li>
 
                   </ul>

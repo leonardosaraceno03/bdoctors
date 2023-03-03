@@ -1,7 +1,7 @@
 <template>
 
-    <div>
-        <div v-if="(!sponsoredDoctors.length)">
+    <div class="my-4 ">
+        <div v-if="(!sponsoredDoctors.length)" class="text-primary text-center">
             <h4>
                 Attualmente non ci sono medici in evidenza
             </h4>
@@ -9,9 +9,15 @@
         
         <div v-else class="my-3">
             <div>
-                <h2>Medici in evidenza</h2>
+                <h2 class="text-primary text-center">Medici in evidenza</h2>
             </div>
-            <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc"/>
+            <div class="d-flex flex-wrap mt-5 container"> 
+                <div class="row w-100">
+                    <div class="d-flex flex-wrap">
+                        <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" class="classe-prova col-lg-4 col-md-6 col-sm-12  mt-5 " />
+                    </div> 
+                </div>
+            </div>
         </div>
     </div>
 
@@ -51,6 +57,9 @@
 
   <style lang="scss" scoped>
 
+        .classe-prova{
+            gap: 20px;
+        }
 
 
   </style>

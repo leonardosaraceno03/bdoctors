@@ -2,12 +2,12 @@
   <div>
     <div>
       <div>
-        <div class="p-5 bg-primary text-white w-100">
+        <div class="p-5 bg-ms text-white w-100">
           <h1 class="text-center text-white">Trova il Dottore che fa per te!!</h1>
           
           <div class="form-style my-4">
             
-          <select v-model="selectedSpecialization" class="form-select">
+          <select v-model="selectedSpecialization" class="form-select text-white bg-primary">
             <option value="" disabled selected>Seleziona un'opzione</option>
             <option
               v-for="elem in specializationsArray"
@@ -183,6 +183,12 @@ img {
   width: 50%;
 }
 
+.bg-ms{
+  background: linear-gradient(to bottom, #0088ff, #003c53, );
+
+}
+
+
 .doctors .member {
   position: relative;
   box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
@@ -229,7 +235,7 @@ img {
   display: block;
   width: 50px;
   height: 1px;
-  background: #b2c8dd;
+  background: #0077e7;
   bottom: 0;
   left: 0;
 }
