@@ -160,16 +160,16 @@ class DoctorController extends Controller
         return response()->json($data);
     }
 
-    // public function sponsored(Request $request)
-    // {
-    //     $sponsoredDoctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'plans')
-    //         ->whereHas('plans', function($query){
-    //             $query->where('expiration_date', '>', now());
-    //         })
-    //         ->get();
+     public function sponsored(Request $request)
+     {
+         $sponsoredDoctors = Doctor::with('user', 'specializations', 'ratings', 'reviews', 'plans')
+             ->whereHas('plans', function($query){
+                 $query->where('expiration_date', '>', now());
+             })
+             ->get();
 
-    //     return response()->json($sponsoredDoctors);
-    // }
+         return response()->json($sponsoredDoctors);
+     }
 
 
     // $query->groupBy('doctor_id')->havingRaw('COUNT(ratings.id) >= ?', [$min_reviews]);

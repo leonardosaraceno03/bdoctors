@@ -1,11 +1,11 @@
 <template>
     <div class="container">
 
-        <h1 v-if="(!currentSpec)">
+        <h1 v-if="(!currentSpec)" class="pt-3">
             Tutte le specializzazioni
         </h1>
         
-        <h1 v-else>
+        <h1 v-else class="pt-3">
             Medici specilizzati in {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
         </h1>
         

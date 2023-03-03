@@ -3,15 +3,19 @@
     <div>
         <div v-if="(!sponsoredDoctors.length)">
             <h4>
-                ATTUALMENTE NON CI SONO MEDICI IN EVIDENZA
+                Attualmente non ci sono medici in evidenza
             </h4>
         </div>
-        <div v-else class="d-flex flex-wrap justify-content-between mt-5">
+        
+        <div v-else class="my-3">
+            <div>
+                <h2>Medici in evidenza</h2>
+            </div>
             <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc"/>
         </div>
     </div>
 
-  </template>
+</template>
 
   <script>
   import SponsoredCardComp from './SponsoredCardComp.vue'

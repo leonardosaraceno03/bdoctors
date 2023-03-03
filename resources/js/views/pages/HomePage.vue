@@ -1,15 +1,10 @@
 <template>
-  <div class="">
-    <div class="d-flex space justify-content-around align-items-center">
-      <div class="">
-        <div class="p-5 bg-primary">
-          <h1>Jumbotron Example</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat..
-          </p>
+  <div>
+    <div>
+      <div>
+        <div class="p-5 bg-primary text-white w-100">
+          <h1 class="pb-3">BDoctors</h1>
+          
           <div class="form-style">
           <select v-model="selectedSpecialization" class="form-select">
             <option value="" selected>Qualsiasi</option>
@@ -38,10 +33,7 @@
       </div>
     </div>
 
-    <div>
-        <h4>
-            ecco li mejoooo dottoooooo
-        </h4>
+    <div class="pt-3 container">
         <SponsoredCardsContainer/>
     </div>
 
