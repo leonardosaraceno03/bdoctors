@@ -13,30 +13,18 @@ class SpecializationSeeder extends Seeder
     public function run()
     {
         $specializations = [
+
             'Andrologia',
             'Cardiologia',
             'Dermatologia',
-            'Diabetologia',
-            'Dietologia',
-            'Endocrinologia',
-            'Fisioterapia',
             'Ginecologia',
-            'Infettivologia',
-            'Medicina dello Sport',
-            'Medico Legale',
             'Neurologia',
-            'Oculistica',
-            'Odontoiatria',
-            'Oncologia',
             'Ortopedia',
             'Otorinolaringoiatria',
-            'Pediatria',
-            'Pneumologia',
             'Psichiatria',
-            'Psicologia',
             'Radiologia',
             'Senologia',
-            'Urologia'
+
         ];
 
         foreach ($specializations as $specialization) {
