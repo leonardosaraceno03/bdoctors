@@ -4,11 +4,11 @@
         <h1 v-if="(!currentSpec)" class="pt-3">
             Tutte le specializzazioni
         </h1>
-        
+
         <h1 v-else class="pt-3">
             Medici specilizzati in {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
         </h1>
-        
+
       <h1 class="my-5">Cerca Medici</h1>
 
       <div class="row">
@@ -17,7 +17,9 @@
             <div class="form-group">
               <label for="specialization" class="mb-2">Specializzazione</label>
               <select id="specialization" class="form-control" v-model="specialization">
-                <option value="">Tutte</option>
+                <option value="">
+                    {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
+                </option>
                 <option v-for="spec in specializations" :key="spec.id" :value="spec.id">{{ spec.name }}</option>
               </select>
             </div>
@@ -121,7 +123,7 @@ import CardsContainer from '../../components/CardsContainer.vue'
         if (this.min_rating) {
           params.min_rating = this.min_rating
         }
-        
+
         // aggiungi i parametri all'URL per visualizzare i filtri nell'indirizzo
         let queryParams = new URLSearchParams(params)
         history.replaceState(null, '', '?' + queryParams.toString())
@@ -145,8 +147,8 @@ import CardsContainer from '../../components/CardsContainer.vue'
                 else this.sponsoredDoctors.push(doctor);
 
               }
-              
-              
+
+
             })
             this.currentSpec = res.data.currentSpec
             })

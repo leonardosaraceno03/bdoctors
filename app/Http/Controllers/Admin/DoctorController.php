@@ -11,6 +11,8 @@ use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Plan;
+use App\Models\DoctorPlan;
 
 use Carbon\Carbon;
 
@@ -105,6 +107,8 @@ class DoctorController extends Controller
                 'cv' => $doctor->cv
             ];
         }
+
+
 
         $data = [
             'user' => $user,
