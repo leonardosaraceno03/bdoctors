@@ -90,7 +90,7 @@ class DoctorController extends Controller
         $user = Auth::user();
         $doctors = [];
 
-        $doctorData = Doctor::with(['user', 'specializations'])->where('user_id', $user->id)->get();
+        $doctorData = Doctor::with(['user', 'specializations', 'plans'])->where('user_id', $user->id)->get();
 
         foreach ($doctorData as $doctor) {
             $specializations = $doctor->specializations->pluck('name')->implode(', ');
@@ -108,11 +108,24 @@ class DoctorController extends Controller
             ];
         }
 
+        $expiration = DoctorPlan::where('doctor_id', Auth::user()->id)->pluck('expiration_date')->last();
 
+        $expiration_now = Carbon::now();
+
+
+
+        if (Carbon::parse($expiration) < $expiration_now) {
+            $plan_status = "Se ti sei trovato bene, prova un'altra delle nostre Formule Premium";
+        } else if (is_null($expiration)) {
+            $plan_status = 'Il tuo profilo non è sponsorizzato';
+        } else {
+            $plan_status = date('d M Y - g:i A', strtotime($expiration));
+        }
 
         $data = [
             'user' => $user,
-            'doctors' => $doctors
+            'doctors' => $doctors,
+            'plan_status' => $plan_status
         ];
         // $singleDoctor = Doctor::findorFail($id);
 

@@ -7,7 +7,7 @@
           
           <div class="form-style my-4">
             
-          <select v-model="selectedSpecialization" class="form-select text-white bg-primary">
+          <select v-model="selectedSpecialization" class="form-select text-white bg-ms2">
             <option value="" disabled selected>Seleziona un'opzione</option>
             <option
               v-for="elem in specializationsArray"
@@ -184,7 +184,7 @@ img {
 }
 
 .bg-ms{
-  background: linear-gradient(to bottom, #0088ff, #003c53, );
+  background: linear-gradient(to bottom,  #003c53, #0088ff,);
 
 }
 

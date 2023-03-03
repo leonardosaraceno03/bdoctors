@@ -8,6 +8,14 @@
                     {{ session('success') }}
                 </div>
             @endif
+
+            <div>
+                <h3>
+                    sarai cliente premium fino a : {{ $plan_status }}
+                </h3>
+
+            </div>
+
             <div class="col-3 text-center d-flex justify-content-center align-items-center flex-column p-5 rounded-3"
                 style="background-color: #9CE2DB">
                 @foreach ($doctors as $elem)

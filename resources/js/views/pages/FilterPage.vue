@@ -17,7 +17,7 @@
             <div class="form-group">
               <label for="specialization" class="mb-2">Specializzazione</label>
               <select id="specialization" class="form-control" v-model="specialization">
-                <option value="" disabled selected>Seleziona un'opzione</option>
+                <option value="">Qualsiasi</option>
                 <!-- <option value="">
                     {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
                 </option> -->

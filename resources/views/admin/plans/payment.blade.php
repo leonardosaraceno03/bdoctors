@@ -87,17 +87,4 @@
         });
     </script>
 
-
-    {{-- <div>
-    {{ $bronze->name }}
-</div>
-<div>
-    {{ $silver->name }}
-</div>
-<div>
-    {{ $gold->name }}
-</div>
-<div>
-    {{ $bronze->date() }}
-</div> --}}
 @endsection
