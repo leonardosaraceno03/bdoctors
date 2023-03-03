@@ -2,11 +2,11 @@
     <div class="container">
 
         <h1 v-if="(!currentSpec)">
-            TUTTE LE SPECIALITA'
+            Tutte le specializzazioni
         </h1>
         
         <h1 v-else>
-            MEDICI SPECIALIZZATI IN {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
+            Medici specilizzati in {{ this.specializations.find((specialization) => specialization.id == this.currentSpec ).name }}
         </h1>
         
       <h1 class="my-5">Cerca Medici</h1>

@@ -76,7 +76,7 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $single_doctor = Doctor::with('user', 'specializations', 'ratings', 'plans')->find($id);
+        $single_doctor = Doctor::with('user', 'specializations', 'ratings', 'plans','reviews')->find($id);
 
         if(!$single_doctor) return response('dottore non trovato', 404);
 

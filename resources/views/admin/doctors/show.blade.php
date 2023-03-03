@@ -33,8 +33,7 @@
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasRightLabel">Cv di {{ $elem['name'] }}
                                 {{ $elem['surname'] }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <img src="{{ asset('storage/' . $elem['cv']) }}" alt="" height="1000px"

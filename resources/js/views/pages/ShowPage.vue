@@ -1,14 +1,18 @@
 <template>
   <div class="container mt-5 p-3 bg-light rounded">
     
-    <h2 class="mb-5">ShowPage</h2>
-    
     <div v-if="doctor">
-        <h4 > {{ doctor.user.name }} {{ doctor.user.surname }} </h4> 
-        <!-- <div v-for="spec in doc.specializations" :key="spec.id">
-            e ssò dottò de {{ spec.name }}
-        </div> -->
-        <p>Media Voti : {{(this.avg_vote).toFixed(1)}}<i class="fa-solid fa-star"></i></p>
+        <h3 > {{ doctor.user.name }} {{ doctor.user.surname }} </h3> 
+        <h5>{{doctor.description}}</h5>
+        <h5>Specializzazioni</h5>
+        <ul v-for="spec in doctor.specializations" :key="spec.id">
+            <li>{{ spec.name }}</li>
+        </ul>
+        <h6>Prestazioni: {{doctor.performance}}</h6>
+        <h6>Tel: {{doctor.telephone}}</h6>
+        <h6>Media Voti : {{(this.avg_vote).toFixed(1)}}<i class="fa-solid fa-star"></i></h6>
+        <h6>Totale recensioni : {{doctor.reviews.length}}</h6>
+        
     </div>
         
         <SendMessage/>
@@ -41,6 +45,7 @@ export default {
     },
     mounted() {
         this.getDoctor();
+        
         
     },
     methods: {
