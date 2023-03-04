@@ -5,20 +5,21 @@
 
         <div class="row">
             <div class="col-6 col-sm-4 pt-3">
-                <input type="text" v-model="name" placeholder="Nome" class="input-group form-control"/>
+                <input type="text" v-model="name" placeholder="Nome*" class="input-group form-control" />
             </div>
             <div class="col-6 col-sm-4 pt-3">
-                <input type="text" v-model="surname" placeholder="Cognome" class="input-group form-control"/>
+                <input type="text" v-model="surname" placeholder="Cognome*" class="input-group form-control"/>
             </div>
              <div class="col-12 col-sm-4 pt-3">
-                <input type="email" v-model="email" placeholder="email" class="input-group form-control"/>
+                <input type="email" v-model="email" placeholder="Email*" class="input-group form-control"/>
             </div>
             <div class="col-12 pt-3">
-                <textarea v-model="body" class="form-control" placeholder="Messaggio"></textarea>
+                <textarea v-model="body" class="form-control" placeholder="Messaggio*"></textarea>
             </div>
         </div>
         <div class="pt-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMess" @click="sendMessage">Invia Messaggio</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMess" @click="sendMessage" :disabled="name === '' || surname === '' || email === '' || body === ''">Invia Messaggio</button>
+            <span v-if="name === '' || surname === '' || email === '' || body === ''" class="ms-form-warn text-danger">Compila tutti i campi (*)</span>
         </div>
 
         <div class="modal fade" id="exampleModalMess" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,6 +60,11 @@
       },
       methods: {
         sendMessage(){
+            if(this.name === '' || this.surname === '' || this.email === '' || this.body === ''){
+                    alert('Per favore, compila tutti i campi del modulo.')
+            }
+            else{
+
             axios.post('/api/message', {
                 name: this.name,
                 surname: this.surname,
@@ -80,6 +86,7 @@
 
         }   
       }
+    }
   }
 </script>
 
@@ -87,6 +94,12 @@
     
     .fa-circle-check{
         color: #28A745;
+    }
+
+    .ms-form-warn{
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-left: 20px;
     }
     
 </style>
