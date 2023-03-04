@@ -150,7 +150,8 @@ class DoctorController extends Controller
                 $query->selectRaw('AVG(stars) as avg_stars')->groupBy('doctor_id')->havingRaw('AVG(stars) >= ?', [$min_rating]);
             });
         }
-        $doctors = $doctors->get();
+        
+        $doctors = $doctors->where('visibility', true)->get();
         $currentSpec = $request->input('specialization');
         $data = [
             'doctors' => $doctors,
