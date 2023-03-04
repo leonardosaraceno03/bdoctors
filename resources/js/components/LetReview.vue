@@ -1,21 +1,24 @@
 <template>
-    <div class="p-5 bg-light">
+    <div class="p-4 bg-light">
         
         <h3 class="mb-3">Lascia una recensione</h3>
 
         <div class="row">
             <div class="col-6 pt-3">
-                <input type="text" v-model="name" placeholder="Nome" class="input-group form-control"/>
+                <input type="text" v-model="name" placeholder="Nome*" class="input-group form-control" maxlength="30"/>
             </div>
             <div class="col-6 pt-3">
-                <input type="text" v-model="surname" placeholder="Cognome" class="input-group form-control"/>
+                <input type="text" v-model="surname" placeholder="Cognome*" class="input-group form-control" maxlength="30"/>
             </div>
             <div class="col-12 pt-3">
-                <textarea v-model="body" class="form-control" placeholder="Messaggio"></textarea>
+                <textarea v-model="body" class="form-control" placeholder="Messaggio*" maxlength="255"></textarea>
             </div>
         </div>
         <div class="pt-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalRev" @click="sendReview">Invia Recensione</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalRev" @click="sendReview" :disabled="name === '' || surname === '' ||  body === ''">Invia Recensione</button>
+        </div>
+        <div>
+            <span v-if="name === '' || surname === '' || body === ''" class="ms-form-warn text-danger">Compila tutti i campi (*)</span>
         </div>
 
         <div class="modal fade" id="exampleModalRev" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,10 +79,16 @@
   }
   </script>
 
-  <style>
+  <style lang="scss" scoped>
     
     .fa-circle-check{
         color: #28A745;
+    }
+
+    .ms-form-warn{
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-left: 5px;
     }
 
   </style>

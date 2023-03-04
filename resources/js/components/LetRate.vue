@@ -1,5 +1,5 @@
 <template>
-    <div class="p-5 mb-5 bg-light ms-border-bot">
+    <div class="p-4 mb-5 bg-light ms-border-bot">
         <div>
             <h3 class="mb-3">Dai un voto al medico</h3>
         </div>
@@ -16,7 +16,10 @@
             <label for="c4l-rate5"></label>
         </div>
         <div>
-            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalRat" @click="sendRating">Invia Voto</button>
+            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModalRat" @click="sendRating" :disabled="stars === ''">Invia Voto</button>
+        </div>
+        <div class="pt-2">
+            <span v-if="stars === ''" class="ms-form-warn text-danger">Seleziona un valore</span>
         </div>
 
         <div class="modal fade" id="exampleModalRat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,9 +81,16 @@
 
 <style lang="scss" scoped>
     
+
     .ms-border-bot{
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
+    }
+
+    .ms-form-warn{
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-left: 5px;
     }
 
 

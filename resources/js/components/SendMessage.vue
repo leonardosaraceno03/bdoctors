@@ -1,24 +1,26 @@
 <template>
-    <div class="p-5 bg-light">
+    <div class="p-4 bg-light">
         
         <h3 class="mb-3"> Inviami un messaggio, risponderò per email</h3>
 
         <div class="row">
             <div class="col-6 col-sm-4 pt-3">
-                <input type="text" v-model="name" placeholder="Nome*" class="input-group form-control" />
+                <input type="text" v-model="name" placeholder="Nome*" class="input-group form-control" maxlength="30"/>
             </div>
             <div class="col-6 col-sm-4 pt-3">
-                <input type="text" v-model="surname" placeholder="Cognome*" class="input-group form-control"/>
+                <input type="text" v-model="surname" placeholder="Cognome*" class="input-group form-control" maxlength="30"/>
             </div>
              <div class="col-12 col-sm-4 pt-3">
-                <input type="email" v-model="email" placeholder="Email*" class="input-group form-control"/>
+                <input type="email" v-model="email" placeholder="Email*" class="input-group form-control" maxlength="40"/>
             </div>
             <div class="col-12 pt-3">
-                <textarea v-model="body" class="form-control" placeholder="Messaggio*"></textarea>
+                <textarea v-model="body" class="form-control" placeholder="Messaggio*" maxlength="255"></textarea>
             </div>
         </div>
         <div class="pt-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMess" @click="sendMessage" :disabled="name === '' || surname === '' || email === '' || body === ''">Invia Messaggio</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMess" @click="sendMessage" :disabled="name === '' || surname === '' || email === '' || body === ''">Invia Messaggio</button>   
+        </div>
+        <div class="pt-2">
             <span v-if="name === '' || surname === '' || email === '' || body === ''" class="ms-form-warn text-danger">Compila tutti i campi (*)</span>
         </div>
 
@@ -99,7 +101,7 @@
     .ms-form-warn{
         font-size: 0.7rem;
         font-weight: 600;
-        margin-left: 20px;
+        margin-left: 5px;
     }
     
 </style>
