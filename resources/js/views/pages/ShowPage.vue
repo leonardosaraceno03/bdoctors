@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-light mt-5 rounded">
+  <div class="container mt-5 pb-5">
     
     <div v-if="doctor" class="p-5 text-white ms-container-bg">
         <div class="row justify-content-between">

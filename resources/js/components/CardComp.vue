@@ -1,22 +1,38 @@
 <template>
-    <div class="ms-card bg-primary rounded my-3 p-3">
-        <router-link :to="`/doctors/${doc.id}`">
+    <div class="p-2 col-sm-12 col-md-6 col-lg-4">
+        <div class="bg-dark text-white rounded p-3 ms-card">
+            <router-link :to="`/doctors/${doc.id}`">
 
-            <h5>{{ doc.user.name }} - {{ doc.user.surname }}</h5>
+                <div class="row">
+                    
+                    <div class="col-lg-12 col-5 pt-4">
+                        <div class="ms-profile-img-box">
+                            <img :src="`/storage/${doc.avatar}`" class="ms-profile-img" alt="">
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-12 col-7 pt-4 d-flex justify-content-lg-center">
+                        <div>
+                            <h5>{{ doc.user.name }} {{ doc.user.surname }}</h5>
 
-            <div v-for="spec in doc.specializations" :key="spec.id">
-                <h6>{{ spec.name }}</h6>
-            </div>
+                            <div v-for="spec in doc.specializations" :key="spec.id">
+                                <h6>{{ spec.name }}</h6>
+                            </div>
 
-            <div>
-                Valutazione: {{ getAverageRating() }} <i class="fa-solid fa-star text-warning"></i>
-            </div>
+                            <div>
+                                Valutazione: {{ getAverageRating() }} <i class="fa-solid fa-star text-warning"></i>
+                            </div>
 
-            <div>
-                <span> N° recensioni : {{doc.reviews.length}}</span>
-            </div>
+                            <div>
+                                <span> N° recensioni : {{doc.reviews.length}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
 
-        </router-link>
+            </router-link>
+        </div>
     </div>
 </template>
 
@@ -54,8 +70,22 @@
   </script>
 
   <style lang="scss" scoped>
-    .ms-card{
-        width: calc(94% / 3);
+    
+   
+
+    .ms-profile-img-box{
+        margin-inline: auto;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+    }
+
+    .ms-profile-img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
     }
 
     a{

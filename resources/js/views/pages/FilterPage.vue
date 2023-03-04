@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container bg-light p-5 mt-5 rounded">
 
         <h1 v-if="(!currentSpec)" class="pt-3">
             Tutte le specializzazioni
@@ -28,7 +28,7 @@
 
           <div class="col-12 col-md-4">
             <div class="form-group">
-              <label for="min_reviews" class="mb-2">Minimo Numero di Recensioni</label>
+              <label for="min_reviews" class="mb-2">Minimo N° Recensioni</label>
               <select id="min_reviews" class="form-control" v-model="min_reviews">
                 <option value="">Tutte</option>
                 <option value="1">1 recensioni</option>

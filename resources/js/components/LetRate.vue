@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 mb-5 bg-light ms-border-bot">
+    <div class="p-4 pb-5 bg-light ms-border-bot">
         <div>
             <h3 class="mb-3">Dai un voto al medico</h3>
         </div>

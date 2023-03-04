@@ -1,17 +1,18 @@
 <template>
   <div>
+    
     <div>
         
         <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" :specializations="specializations"/>
 
     </div>
-    <div class="d-flex flex-wrap justify-content-around mt-5">
-
     
-    <CardComp v-for="doc in doctors" :key="doc.id" :doc="doc" :specializations="specializations"/>
+    <div class="d-flex row mt-5">
 
+        <CardComp v-for="doc in doctors" :key="doc.id" :doc="doc" :specializations="specializations"/>
 
-  </div>
+    </div>
+
   </div>
   
 </template>
@@ -72,6 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 
+    
 
 
 </style>

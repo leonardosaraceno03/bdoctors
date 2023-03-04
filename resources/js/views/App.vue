@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="ms-bg-app-image">
 
     <Header/>
 
@@ -29,6 +29,10 @@ export default {
 body {
   font-family: "Open Sans", sans-serif;
 
+}
+
+.ms-bg-app-image{
+  background-color: #5498f1;
 }
 
 </style>
