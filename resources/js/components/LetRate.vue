@@ -93,6 +93,9 @@
         margin-left: 5px;
     }
 
+    .fa-circle-check{
+        color: #28A745;
+    }
 
     // stars style
 

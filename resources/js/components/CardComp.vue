@@ -1,6 +1,6 @@
 <template>
     <div class="p-2 col-sm-12 col-md-6 col-lg-4">
-        <div class="bg-dark text-white rounded p-3 ms-card">
+        <div class="text-white rounded p-3 ms-card">
             <router-link :to="`/doctors/${doc.id}`">
 
                 <div class="row">
@@ -71,7 +71,9 @@
 
   <style lang="scss" scoped>
     
-   
+    .ms-card{
+        background: linear-gradient(to top,  #045ca9, #0088ff,);
+    }
 
     .ms-profile-img-box{
         margin-inline: auto;
