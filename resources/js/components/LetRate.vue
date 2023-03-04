@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-3">
+    <div class="p-5 mb-5 bg-light ms-border-bot">
         <div>
             <h3 class="mb-3">Dai un voto al medico</h3>
         </div>
@@ -78,6 +78,12 @@
 
 <style lang="scss" scoped>
     
+    .ms-border-bot{
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+
     // stars style
 
     .c4l-rating input[name="c4l-rating"] { display: none; }

@@ -1,5 +1,5 @@
 <template>
-    <div class="py-5">
+    <div class="p-5 bg-light">
         
         <h3 class="mb-3"> Inviami un messaggio, risponderò per email</h3>
 
