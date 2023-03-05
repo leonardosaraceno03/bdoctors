@@ -18,8 +18,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::where('doctor_id', Auth::user()->id)->get();
-
+        $messages = Message::where('doctor_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        
         return view('admin.doctors.messages', compact('messages'));
     }
 
