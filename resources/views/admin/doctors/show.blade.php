@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5 rounded-3 bg-light">
-        <div class="row">
-            @if (session('success'))
+    <div class="container mt-5 rounded-3">
+        
+        <h2 class="py-5 text-center">
+            Il tuo Profilo
+        </h2>
+        
+        @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
-            @endif
+        @endif
 
-            <div>
-                <h3>
-                    sarai cliente premium fino a : {{ $plan_status }}
-                </h3>
-
-            </div>
-
-            <div class="col-3 text-center d-flex justify-content-center align-items-center flex-column p-5 rounded-3"
-                style="background-color: #9CE2DB">
+        <div class="row ms-profile-bg text-white">
+            
+            <div class="col-lg-5 col-xl-4 col-12 text-center d-flex justify-content-center align-items-center flex-column p-5 rounded-3">
                 @foreach ($doctors as $elem)
                     <div class="d-flex align-items-center justify-content-center rounded-circle"
                         style="min-width: 250px; width: 250px; height: 250px; background-color: #e9ecef;">
@@ -28,38 +26,39 @@
                         <a href="{{ route('admin.doctors.edit', $elem['id']) }}" class="btn btn-light"
                             type="button">Modifica Profilo</a>
                     </div>
-                    <div class="mt-5">
-                        <button class="btn btn-light" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Visualizza CV</button>
-                    </div>
+                    
                 @endforeach
             </div>
-            <div class="col-9 p-5">
+            <div class="col-lg-6 col-xl-8 col-sm-12 p-5">
                 @foreach ($doctors as $elem)
-                    <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasRight"
-                        aria-labelledby="offcanvasRightLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasRightLabel">Cv di {{ $elem['name'] }}
-                                {{ $elem['surname'] }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <img src="{{ asset('storage/' . $elem['cv']) }}" alt="" height="1000px"
-                                class="mt-3 mb-3">
-                        </div>
-                    </div>
+                    
                     <div class="pb-5">
                         <h2>{{ $elem['name'] }} {{ $elem['surname'] }}</h2>
                     </div>
-                    <div class="fs-5">
-                        <p><span class="text-primary">Descrizione:</span> {{ $elem['description'] }}</p>
-                        <p><span class="text-primary">Specializzazione/i:</span> {{ $elem['specializations'] }}</p>
-                        <p><span class="text-primary">Indirizzo:</span> {{ $elem['address'] }}</p>
-                        <p><span class="text-primary">Telefono:</span> {{ $elem['telephone'] }}</p>
-                        <p><span class="text-primary">Prestazioni:</span> {{ $elem['performance'] }}</p>
+                    <div>
+                        
+                        <h4 class="py-2">Sarai cliente premium fino a : {{ $plan_status }}</h4>
+                        
+                        <h5> Bio: {{ $elem['description'] }}</h5>
+                        <h5> Specializzazioni: {{ $elem['specializations'] }}</h5>
+                        <h5> Indirizzo: {{ $elem['address'] }}</h5>
+                        <h5> Tel: {{ $elem['telephone'] }}</h5>
+                        <h5> Prestazioni: {{ $elem['performance'] }}</h5>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
 @endsection
+
+<style lang="scss" scoped>
+
+    .ms-profile-bg{
+        background-color: #0088ff;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)
+    }
+
+    
+
+</style>
