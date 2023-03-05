@@ -1,11 +1,16 @@
 <template>
   <div>
-    
-    <div>
+    <div v-if="this.sponsoredDoctors.length > 0">
         
-        <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" :specializations="specializations"/>
+        <h2 class="text-center">Medici in primo piano</h2>
 
+        <div class="d-flex row mt-5">
+        
+            <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" :specializations="specializations"/>
+
+        </div>
     </div>
+    
     
     <div class="d-flex row mt-5">
 

@@ -11,13 +11,13 @@
             <div>
                 <h2 class="text-primary text-center">Medici in evidenza</h2>
             </div>
-            <div class="d-flex flex-wrap mt-5 container"> 
-                <div class="row w-100">
-                    <div class="d-flex flex-wrap">
-                        <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" class="classe-prova col-lg-4 col-md-6 col-sm-12  mt-5 " />
-                    </div> 
-                </div>
-            </div>
+            
+                
+            <div class="d-flex row mt-5">
+                <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" class="classe-prova col-lg-4 col-md-6 col-sm-12  mt-5 " />
+            </div> 
+                
+            
         </div>
     </div>
 
