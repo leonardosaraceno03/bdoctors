@@ -3,12 +3,12 @@
     <div>
       <div>
         <div class="p-5 bg-ms text-white w-100">
-          <h1 class="text-center text-white">Trova il Dottore che fa per te!!</h1>
+          <h1 class="text-center text-white">Trova il Dottore che fa per te!</h1>
           
           <div class="form-style my-4">
             
           <select v-model="selectedSpecialization" class="form-select text-white bg-ms2">
-            <option value="" disabled selected>Seleziona un'opzione</option>
+            <option value="">Qualsiasi</option>
             <option
               v-for="elem in specializationsArray"
               :key="elem.id"
@@ -91,7 +91,7 @@ img {
 }
 
 .bg-ms{
-  background: linear-gradient(to bottom,  #003c53, #0088ff,);
+  background: linear-gradient(to bottom, #0088ff, #006891,);
 
 }
 

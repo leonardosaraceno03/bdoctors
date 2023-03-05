@@ -2,14 +2,14 @@
 
     <div class="my-4 ">
         <div v-if="(!sponsoredDoctors.length)" class="text-primary text-center">
-            <h4>
+            <h4 class="text-white">
                 Attualmente non ci sono medici in evidenza
             </h4>
         </div>
         
         <div v-else class="my-3">
             <div>
-                <h2 class="text-primary text-center">Medici in evidenza</h2>
+                <h2 class="text-white text-center">Medici in evidenza</h2>
             </div>
             
                 
