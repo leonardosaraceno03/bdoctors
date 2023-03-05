@@ -2,40 +2,56 @@
 
 @section('content')
     <div class="container pt-5">
-
-        <h3>Nome Piano: {{ $plan->name }}</h3>
-        <h3>Durata: {{ $plan->duration }} ore</h3>
-        <h3>Prezzo: € {{ $plan->price }}</h3>
-
-        <form id="form" action="{{ route('admin.plans.checkout', $plan->id) }}" method="POST">
-            @csrf
-            <div class="py-3">
-                <label class="form-label" for="">Nome sulla carta<span class="asterisco">*</span></label>
-                <input id="nome-sulla-carta" value="" required class="form-control" type="text"
-                    name="Nome sulla carta">
-
+        <div class="card w-50 m-auto mb-5">
+            <div class="card-body">
+                <h3>Nome Piano: {{ $plan->name }}</h3>
+                <h3>Durata: {{ $plan->duration }} ore</h3>
+                <h3>Prezzo: € {{ $plan->price }}</h3>
             </div>
-            <div class="py-3">
-                <label class="form-label" for="">Numero carta<span class="asterisco">*</span></label>
-                <input id="numero-carta" value="" required class="form-control" min="0" maxlength="16"
-                    pattern="[0-9]{16}" type="text" name="numero-carta">
+        </div>
 
+        <div class="card">
+            <div class="card-body w-75 m-auto">
+                <form class="w-100" id="form" action="{{ route('admin.plans.checkout', $plan->id) }}" method="POST">
+                    @csrf
+                    <div class="py-3">
+                        <label class="form-label" for="">Nome sulla carta<span class="asterisco">*</span></label>
+                        <input id="nome-sulla-carta" value="" required class="form-control" type="text"
+                            name="Nome sulla carta">
+
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 w-100">
+                            <label class="form-label" for="">Numero carta<span class="asterisco">*</span></label>
+                            <input id="numero-carta" value="" required class="form-control" min="0"
+                                maxlength="16" pattern="[0-9]{16}" type="text" name="numero-carta">
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 w-100">
+                            <label class="form-label" for="">CVV-CVC<span class="asterisco">*</span></label>
+                            <input id="CVV-CVC" value="" required class="form-control" min="0" maxlength="3"
+                                pattern="[0-9]{3}" type="text" name="CVV-CVC">
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 w-100">
+                            <label class="form-label" for="">Scadenza carta<span class="asterisco">*</span></label>
+                            <input id="scadenza-carta" value="" required class="form-control" type="month"
+                                name="scadenza-carta">
+
+                        </div>
+                    </div>
+
+
+                    <button id="submit-btn" type="submit" class="btn btn-primary">Checkout</button>
+                </form>
             </div>
-            <div class="py-3">
-                <label class="form-label" for="">CVV-CVC<span class="asterisco">*</span></label>
-                <input id="CVV-CVC" value="" required class="form-control" min="0" maxlength="3"
-                    pattern="[0-9]{3}" type="text" name="CVV-CVC">
 
-            </div>
-            <div class="py-3">
-                <label class="form-label" for="">Scadenza carta<span class="asterisco">*</span></label>
-                <input id="scadenza-carta" value="" required class="form-control" type="month"
-                    name="scadenza-carta">
+        </div>
 
-            </div>
-
-            <button id="submit-btn" type="submit" class="btn btn-primary">Checkout</button>
-        </form>
 
     </div>
 
@@ -86,5 +102,77 @@
             }
         });
     </script>
+    <style>
+        .title {
+            font-size: 2rem;
+            color: white
+        }
 
+        .form-control {
+            border-radius: 0px;
+
+        }
+
+        .form-select {
+            border-radius: 0px;
+
+        }
+
+
+        #submit-btn {
+            background-color: #243b55;
+            border: 0px;
+            border-radius: 0px;
+            color: white;
+            letter-spacing: 0.3rem
+        }
+
+        #submit-btn:hover {
+            background-color: #3fb1ce;
+
+        }
+
+
+        .card {
+
+
+            background: rgba(23, 23, 41, 0.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            border-radius: 10px;
+        }
+
+        .red {
+            border: 1px solid red;
+        }
+
+
+
+        .asterisco {
+            font-size: 0.9rem;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(#141e30, #243b55);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            color: white
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 @endsection
