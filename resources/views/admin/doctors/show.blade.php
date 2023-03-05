@@ -37,8 +37,10 @@
                     </div>
                     <div>
                         
-                        <h4 class="py-2">Sarai cliente premium fino a : {{ $plan_status }}</h4>
-                        
+                        @if($plan_status != 'Il tuo profilo non è sponsorizzato')
+                            <h4 class="py-2">Sarai cliente premium fino a : {{ $plan_status }}</h4>
+                        @endif
+
                         <h5> Bio: {{ $elem['description'] }}</h5>
                         <h5> Specializzazioni: {{ $elem['specializations'] }}</h5>
                         <h5> Indirizzo: {{ $elem['address'] }}</h5>
