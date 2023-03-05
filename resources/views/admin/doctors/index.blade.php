@@ -55,11 +55,11 @@
     }
 
     .fa-solid {
-        font-size: 7rem
+        font-size: 7rem;
     }
 
     a {
-        color: black;
+        color: #0367BE;
         text-decoration-line: none
     }
 
@@ -76,6 +76,11 @@
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
 
+    }
+
+    .ms-dashboard-card:hover{
+        background-color: #0367BE;
+        color: white;
     }
 
     @keyframes trillo {
