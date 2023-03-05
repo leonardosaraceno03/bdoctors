@@ -1,44 +1,137 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container pt-5 d-flex justify-content-between">
+    {{-- <div class="container pt-5 d-flex  m-auto">
 
         @php
             $Colors = ['color-bronze', 'color-silver', 'color-gold'];
             $borderColors = ['border-color-1', 'border-color-2', 'border-color-3'];
             $i = 0;
         @endphp
-
-        @foreach ($plans as $plan)
-            <a href="{{ route('admin.plans.payment.show', ['plan' => $plan->id]) }}" class="text-decoration-none text-dark">
-                <div class="text-center rounded-5 p-5 {{ $borderColors[$i % 3] }}">
-
-
-
-                    <i class="fa-solid fa-trophy {{ $Colors[$i % 3] }}"></i>
-
-                    <h5 class="card-title my-3">
-                        {{ $plan->name }}
-                    </h5>
-
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $plan->price }} €</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $plan->duration }} h</h6>
+        <div class="row m-0 d-flex justify-content-between w-100">
+            @foreach ($plans as $plan)
+                <a href="{{ route('admin.plans.payment.show', ['plan' => $plan->id]) }}"
+                    class="text-decoration-none text-dark col-4">
+                    <div class="text-center rounded-5 py-5  {{ $borderColors[$i % 3] }}">
 
 
 
+                        <i class="fa-solid fa-trophy {{ $Colors[$i % 3] }}"></i>
+
+                        <h5 class="my-3">
+                            {{ $plan->name }}
+                        </h5>
+
+                        <h6 class=" mb-2 text-muted">{{ $plan->price }} €</h6>
+                        <h6 class=" mb-2 text-muted">{{ $plan->duration }} h</h6>
+
+
+
+                    </div>
+                </a>
+
+
+                @php
+                    $i++;
+                @endphp
+            @endforeach
+        </div>
+
+    </div> --}}
+    <div class="container my-5 py-5">
+        <div class="row justify-content-around">
+            <p class="package col-10 p-4">Acquistare un pacchetto per rimanere in evidenza sul sito BDoctors ti permetterà di
+                aumentare
+                la visibilità
+                del tuo profilo professionale e di differenziarti dalla concorrenza. Grazie alla maggiore visibilità, potrai
+                attirare l'attenzione di potenziali clienti e aumentare le tue opportunità di business. </p>
+        </div>
+        <div class="row justify-content-between py-5">
+            @foreach ($plans as $plan)
+                <div class="package col-lg-3 col-md-10 col-sm-10 mx-auto my-5">
+                    <h2>Pacchetto: {{ $plan->name }}</h2>
+                    <p>Prezzo: € {{ $plan->price }}</p>
+                    <p class="">Con questo pacchetto rimarrai in evidenza per {{ $plan->duration }} ore</p>
+                    <a href="{{ route('admin.plans.payment.show', ['plan' => $plan->id]) }}" class="btn-plans ">Scegli
+                        Pacchetto</a>
                 </div>
-            </a>
+            @endforeach
+        </div>
 
 
-            @php
-                $i++;
-            @endphp
-        @endforeach
     </div>
 @endsection
 
 
 <style scoped>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: sans-serif;
+        background: linear-gradient(#141e30, #243b55);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        height: 100vh;
+        color: white
+    }
+
+
+
+    .package {
+        background-color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        text-align: center;
+
+        border-radius: 5px;
+    }
+
+    .package h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .package p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .package ul {
+        list-style: none;
+        margin-bottom: 30px;
+    }
+
+    .package ul li {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .btn-plans {
+        background: rgb(42, 42, 105);
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none
+    }
+
+
+    .btn-plans:hover {
+        background-color: #1a46da;
+        text-decoration: none;
+        color: white
+    }
+
     .color-bronze {
         color: brown;
     }
