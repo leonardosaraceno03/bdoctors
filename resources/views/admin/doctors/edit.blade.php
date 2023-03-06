@@ -210,7 +210,7 @@
     <style scoped>
         section {
             background-color: #80aeea;
-            height: 100vh;
+            height: 100%;
         }
 
         .container-edit {

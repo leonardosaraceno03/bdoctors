@@ -23,17 +23,17 @@
                         </div>
                     </div>
                 @endforeach
-            
+
             </div>
 
 
-            
+
 
         </div>
     </section>
 
     <style scoped>
-        
+
         .card-header{
             background-color: #0367BE;
         }
@@ -56,7 +56,6 @@
 
         span {
             color: rgb(70, 69, 69);
-            font-size: 3rem
         }
     </style>
 @endsection

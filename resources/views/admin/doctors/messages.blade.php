@@ -21,12 +21,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                    </div>
                 @endforeach
 
             </div>
 
-            
+
 
         </div>
     </section>
@@ -52,7 +52,7 @@
 
         span {
             color: rgb(70, 69, 69);
-            font-size: 3rem
+
         }
     </style>
 @endsection

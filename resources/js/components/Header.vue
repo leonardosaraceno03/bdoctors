@@ -12,7 +12,6 @@
         </router-link>
       </div>
       <div>
-
         <div
           class="collapse navbar-collapse text-white"
           id="navbarNav"
@@ -32,10 +31,10 @@
             <i class="fa-solid fa-user-doctor text-white"></i>
           </a>
 
-          <div class="dropdown-menu " style="left: auto; right: 0">
-            <a class="dropdown-item text-muted" href="/admin/doctors/index">Profilo</a>
-            <a class="dropdown-item text-muted" href="/admin/doctors">Dashboard</a>
-            <a class="dropdown-item text-muted" href="#" @click.prevent="logoutUser"
+          <div class="dropdown-menu" style="left: auto; right: 0">
+            <a class="dropdown-item" href="/admin/doctors/index">Profilo</a>
+            <a class="dropdown-item" href="/admin/doctors">Dashboard</a>
+            <a class="dropdown-item" href="#" @click.prevent="logoutUser"
               >Logout</a
             >
           </div>

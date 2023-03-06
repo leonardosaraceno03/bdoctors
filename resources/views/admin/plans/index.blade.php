@@ -1,44 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <div class="container pt-5 d-flex  m-auto">
 
-        @php
-            $Colors = ['color-bronze', 'color-silver', 'color-gold'];
-            $borderColors = ['border-color-1', 'border-color-2', 'border-color-3'];
-            $i = 0;
-        @endphp
-        <div class="row m-0 d-flex justify-content-between w-100">
-            @foreach ($plans as $plan)
-                <a href="{{ route('admin.plans.payment.show', ['plan' => $plan->id]) }}"
-                    class="text-decoration-none text-dark col-4">
-                    <div class="text-center rounded-5 py-5  {{ $borderColors[$i % 3] }}">
-
-
-
-                        <i class="fa-solid fa-trophy {{ $Colors[$i % 3] }}"></i>
-
-                        <h5 class="my-3">
-                            {{ $plan->name }}
-                        </h5>
-
-                        <h6 class=" mb-2 text-muted">{{ $plan->price }} €</h6>
-                        <h6 class=" mb-2 text-muted">{{ $plan->duration }} h</h6>
-
-
-
-                    </div>
-                </a>
-
-
-                @php
-                    $i++;
-                @endphp
-            @endforeach
-        </div>
-
-    </div> --}}
-    
     <div class="container my-5">
         <div class="row justify-content-around">
             <h1 class="text-white text-center py-5">
@@ -164,8 +127,5 @@
         border: 3px solid gold
     }
 
-    span{
-        font-size: 3rem
-    }
 
 </style>

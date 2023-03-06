@@ -100,7 +100,7 @@ return [
     ],
 
     [
-        'name' => 'Giuseppe',
+        'name' => 'Beppe',
         'surname' => 'Bianchi',
         'email' => 'giuseppe.bianchi@example.com',
         'password' => '12345678',
@@ -114,7 +114,7 @@ return [
     ],
 
     [
-        'name' => 'Stefano',
+        'name' => 'Ugo',
         'surname' => 'Esposito',
         'email' => 'stefano.esposito@example.com',
         'password' => '12345678',
@@ -135,7 +135,7 @@ return [
     ],
 
     [
-        'name' => 'Valentina',
+        'name' => 'Valeria',
         'surname' => 'Romano',
         'email' => 'valentina.romano@example.com',
         'password' => '12345678',
@@ -163,7 +163,7 @@ return [
     ],
 
     [
-        'name' => 'Giovanna',
+        'name' => 'Anna',
         'surname' => 'De Luca',
         'email' => 'giovanna.deluca@example.com',
         'password' => '12345678',
@@ -261,13 +261,13 @@ return [
     ],
 
     [
-        'name' => 'Alessandro',
+        'name' => 'Sandro',
         'surname' => 'Conti',
         'email' => 'alessandro.conti@example.com',
         'password' => '12345678',
     ],
 
-    
+
 
 
 ];

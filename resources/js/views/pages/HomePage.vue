@@ -3,10 +3,13 @@
     <div>
       <div>
         <div class="p-5 bg-ms text-white w-100">
+            <div class="py-3 text-white w-75 m-auto">
+                <p>Con la nostra Web App, trova facilmente il dottore specialista che fa per te! Grazie alla nostra vasta selezione di categorie di specializzazione e ai dettagliati profili dei professionisti, puoi trovare subito il medico giusto per le tue esigenze di salute. Inoltre, se sei un dottore specializzato, la nostra piattaforma ti aiuta a connetterti con pazienti in cerca di professionisti come te, aumentando la tua visibilità e la tua reputazione online. </p>
+            </div>
           <h1 class="text-center text-white">Trova il Dottore che fa per te!</h1>
-          
+
           <div class="form-style my-4">
-            
+
           <select v-model="selectedSpecialization" class="form-select text-white bg-ms2 bg-primary">
             <option value="">Qualsiasi</option>
             <option
@@ -28,6 +31,7 @@
           >
             Cerca
           </router-link>
+
         </div>
         </div>
 
@@ -38,7 +42,7 @@
         <SponsoredCardsContainer/>
     </div>
 
-    
+
   </div>
 </template>
 
