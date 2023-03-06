@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg">
+    <section class="bg-custom">
         <div class="container">
             <div class="row text-center">
-                <span class="py-5">Le tue recensioni</span>
+                <h1 class="py-5 text-white">Le tue recensioni</h1>
             </div>
             <div class="row bg-white container-messaggi ms-h-custom overflow-auto">
 
                 @foreach ($reviews as $review)
                     <div class="col-12 py-2">
                         <div class="card h-100 my-2">
-                            <div class="card-header d-flex justify-content-between">
+                            <div class="card-header d-flex justify-content-between text-white">
                                 <div>{{ $review->name }} {{ $review->surname }}</div>
                                 <div>{{$review->created_at}}</div>
                             </div>
@@ -31,6 +31,12 @@
 
     <style scoped>
         
+        .card-header{
+            background-color: #0367BE;
+        }
+        .bg-custom{
+            background-color: #80aeea;
+        }
         .ms-h-custom{
             height: 70vh;
         }

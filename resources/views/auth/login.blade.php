@@ -114,9 +114,9 @@
         .card {
 
 
-            background: rgba(23, 23, 41, 0.5);
+            background-color: #083E76;
             box-sizing: border-box;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, .5);
             border-radius: 10px;
         }
 

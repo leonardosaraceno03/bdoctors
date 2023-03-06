@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <section>
-        <h1 class="text-center ">
-            LE TUE STATISTICHE
+    <section class="bg-custom">
+        <h1 class="text-center py-5 text-white">
+            Le tue statistiche
         </h1>
         <div class="container">
             <div class="row">
@@ -72,7 +72,7 @@
 
 <style scoped>
     section {
-        background-color: rgb(246, 246, 246);
+        background-color: #80aeea;
         height: 94vh;
     }
 

@@ -3,9 +3,9 @@
 @section('content')
     <div class="container mt-5 rounded-3">
         
-        <h2 class="py-5 text-center">
+        <h1 class="py-5 text-center text-white">
             Il tuo Profilo
-        </h2>
+        </h1>
         
         @if (session('success'))
                 <div class="alert alert-success">

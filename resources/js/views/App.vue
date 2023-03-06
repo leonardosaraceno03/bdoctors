@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="ms-bg-app-image">
+  <div id="app" class="ms-bg-app-image min-vh-100">
 
     <Header/>
 

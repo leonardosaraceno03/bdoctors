@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="min-vh-100 bg-dash-custom">
         <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
@@ -101,3 +101,11 @@
 </body>
 
 </html>
+
+<style scoped>
+
+    .bg-dash-custom{
+        background-color: #80aeea;
+    }
+
+</style>

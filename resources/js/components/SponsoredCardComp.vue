@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-12 col-7 pt-4 d-flex justify-content-lg-center">
+                    <div class="col-lg-12 col-7 pt-4 d-flex justify-content-lg-center text-lg-center">
                         <div>
                             <h5>{{ sponsoredDoc.user.name }} {{ sponsoredDoc.user.surname }}</h5>
 
@@ -71,7 +71,7 @@
   <style lang="scss" scoped>
     
     .ms-oro{
-        background-color: gold;
+        background: linear-gradient(to top,  rgb(183, 159, 26), gold,);
 
     }
     

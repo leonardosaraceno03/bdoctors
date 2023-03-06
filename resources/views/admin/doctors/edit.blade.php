@@ -2,6 +2,9 @@
 
 @section('content')
     <section class="py-3">
+        <h1 class="text-center text-white py-5">
+            Modifica il tuo profilo
+        </h1>
         <div class="container container-edit bg-white py-3">
             <form action="{{ route('admin.doctors.update', $doctor->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -206,7 +209,7 @@
 
     <style scoped>
         section {
-            background-color: rgb(246, 246, 246);
+            background-color: #80aeea;
             height: 100vh;
         }
 

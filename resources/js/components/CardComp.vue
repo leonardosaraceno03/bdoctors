@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-12 col-7 pt-4 d-flex justify-content-lg-center">
+                    <div class="col-lg-12 col-7 pt-4 d-flex justify-content-lg-center text-lg-center">
                         <div>
                             <h5>{{ doc.user.name }} {{ doc.user.surname }}</h5>
 

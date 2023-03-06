@@ -38,8 +38,12 @@
         </div>
 
     </div> --}}
-    <div class="container my-5 py-5">
+    
+    <div class="container my-5">
         <div class="row justify-content-around">
+            <h1 class="text-white text-center py-5">
+                Sponsorizza il tuo profilo
+            </h1>
             <p class="package col-10 p-4">Acquistare un pacchetto per rimanere in evidenza sul sito BDoctors ti permetterà di
                 aumentare
                 la visibilità
@@ -159,4 +163,9 @@
     .border-color-3 {
         border: 3px solid gold
     }
+
+    span{
+        font-size: 3rem
+    }
+
 </style>

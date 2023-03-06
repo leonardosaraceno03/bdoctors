@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card bg-light">
             <div class="card-body w-75 m-auto">
                 <form class="w-100" id="form" action="{{ route('admin.plans.checkout', $plan->id) }}" method="POST">
                     @csrf
@@ -136,9 +136,9 @@
         .card {
 
 
-            background: rgba(23, 23, 41, 0.5);
+            
             box-sizing: border-box;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, .5);
             border-radius: 10px;
         }
 
@@ -158,7 +158,7 @@
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             height: 100vh;
-            color: white
+            
         }
 
         @keyframes gradient {

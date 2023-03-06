@@ -7,7 +7,7 @@
           
           <div class="form-style my-4">
             
-          <select v-model="selectedSpecialization" class="form-select text-white bg-ms2">
+          <select v-model="selectedSpecialization" class="form-select text-white bg-ms2 bg-primary">
             <option value="">Qualsiasi</option>
             <option
               v-for="elem in specializationsArray"
@@ -18,7 +18,7 @@
             </option>
           </select>
           <router-link
-            class="btn btn-primary d-inline"
+            class="btn btn-home-custom d-inline"
             :to="{
               name: 'doctors',
               params: {
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="pt-3 container">
+    <div class="p-3 container">
         <SponsoredCardsContainer/>
     </div>
 
@@ -91,7 +91,7 @@ img {
 }
 
 .bg-ms{
-  background: linear-gradient(to bottom, #0088ff, #006891,);
+  background-color: #0c57c8;
 
 }
 
@@ -108,6 +108,15 @@ img {
 .form-style{
     text-align: center;
 
+}
+
+.btn-home-custom{
+  background-color: #0a4399;
+  color: white;
+}
+
+.btn-home-custom:hover{
+  background-color: #093577;
 }
 
 

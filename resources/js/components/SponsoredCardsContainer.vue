@@ -7,14 +7,14 @@
             </h4>
         </div>
         
-        <div v-else class="my-3">
+        <div v-else class="my-3  ">
             <div>
-                <h2 class="text-white text-center">Medici in evidenza</h2>
+                <h2 class="text-center text-white mb-5">Medici in evidenza</h2>
             </div>
             
                 
-            <div class="d-flex row mt-5">
-                <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" class="classe-prova col-lg-4 col-md-6 col-sm-12  mt-5 " />
+            <div class="d-flex row p-3 bg-custom rounded">
+                <SponsoredCardComp v-for="sponsoredDoc in sponsoredDoctors" :key="sponsoredDoc.id" :sponsoredDoc="sponsoredDoc" class="classe-prova col-lg-4 col-md-6 col-sm-12"/>
             </div> 
                 
             
@@ -60,6 +60,8 @@
         .classe-prova{
             gap: 20px;
         }
+
+        
 
 
   </style>

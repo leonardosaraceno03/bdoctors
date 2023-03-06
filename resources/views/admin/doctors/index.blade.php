@@ -1,6 +1,6 @@
 @extends('layouts.doctors')
 @section('content')
-    <div class="container mt-5 p-3 bg-light">
+    <div class="container mt-5 p-3 bg-light rounded">
         
         <div class="text-center mt-5">
             <h1 class="text-primary mb-3">Dashboard</h1>
