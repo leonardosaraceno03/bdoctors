@@ -17,7 +17,8 @@
                 </ul>
                 <h6>Prestazioni: {{doctor.performance}}</h6>
                 <h6>Tel: {{doctor.telephone}}</h6>
-                <h6>Media Voti : {{(this.avg_vote).toFixed(1)}}<i class="fa-solid fa-star"></i></h6>
+                
+                <h6 v-if="doctor.ratings.length > 0">Media Voti : {{(this.avg_vote).toFixed(1)}}<i class="fa-solid fa-star"></i></h6>
                 <h6>Totale recensioni : {{doctor.reviews.length}}</h6>
                 
                 <div class="mt-5">

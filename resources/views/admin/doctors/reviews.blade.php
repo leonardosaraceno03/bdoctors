@@ -6,25 +6,28 @@
             <div class="row text-center">
                 <h1 class="py-5 text-white">Le tue recensioni</h1>
             </div>
-            <div class="row bg-white container-messaggi ms-h-custom overflow-auto">
+            <div class="container bg-white container-messaggi ms-h-custom overflow-auto">
 
                 @foreach ($reviews as $review)
-                    <div class="col-12 py-2">
-                        <div class="card h-100 my-2">
-                            <div class="card-header d-flex justify-content-between text-white">
-                                <div>{{ $review->name }} {{ $review->surname }}</div>
-                                <div>{{$review->created_at}}</div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">{{ $review->body }}</p>
+                    <div class="row">
+                        <div class="col-12 py-2">
+                            <div class="card h-100 my-2">
+                                <div class="card-header d-flex justify-content-between text-white">
+                                    <div>{{ $review->name }} {{ $review->surname }}</div>
+                                    <div>{{$review->created_at}}</div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{ $review->body }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-
-
-
+            
             </div>
+
+
+            
 
         </div>
     </section>

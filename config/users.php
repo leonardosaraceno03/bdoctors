@@ -267,12 +267,7 @@ return [
         'password' => '12345678',
     ],
 
-    [
-        'name' => 'Laura',
-        'surname' => 'Rossi',
-        'email' => 'laura.rossi@example.com',
-        'password' => '12345678',
-    ]
+    
 
 
 ];

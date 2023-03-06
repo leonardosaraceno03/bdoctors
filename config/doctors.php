@@ -235,7 +235,7 @@ return [
         'performance' => 'Oftalmologia, Chirurgia oculare, Visite oculistiche',
         'description' => 'Esperto in oftalmologia e cure per gli occhi',
         'visibility' => true,
-        'user_id' => 23, // ID dell'utente associato
+        'user_id' => 22, // ID dell'utente associato
     ],
     [
         'address' => 'Via Roma, 7',
@@ -245,7 +245,7 @@ return [
         'performance' => 'Pediatria, Vaccinazioni, Visite pediatriche',
         'description' => 'Specializzato in pediatria e cure per i bambini',
         'visibility' => true,
-        'user_id' => 24, // ID dell'utente associato
+        'user_id' => 23, // ID dell'utente associato
     ],
     [
         'address' => 'Via Dante, 45',
@@ -255,7 +255,7 @@ return [
         'performance' => 'Ginecologia, Visite ginecologiche, Ecografie',
         'description' => 'Esperto in ginecologia e cure per la salute femminile',
         'visibility' => true,
-        'user_id' => 25, // ID dell'utente associato
+        'user_id' => 24, // ID dell'utente associato
     ],
     [
         'address' => 'Via Mazzini, 8',
@@ -265,7 +265,7 @@ return [
         'performance' => 'Ortopedia, Fisioterapia, Chirurgia ortopedica',
         'description' => 'Esperto in ortopedia e cure per le patologie muscolo-scheletriche',
         'visibility' => true,
-        'user_id' => 26, // ID dell'utente associato
+        'user_id' => 25, // ID dell'utente associato
     ],
     [
         'address' => 'Via Garibaldi, 75',
@@ -275,7 +275,7 @@ return [
         'performance' => 'Cardiologia, ECG, Ecocardiogramma',
         'description' => 'Esperto in cardiologia e cure per la salute del cuore',
         'visibility' => true,
-        'user_id' => 27, // ID dell'utente associato
+        'user_id' => 26, // ID dell'utente associato
     ],
 
     [
@@ -286,7 +286,7 @@ return [
         'performance' => 'Cardiologia, Medicina interna',
         'description' => 'Specializzato in cardiologia e medicina interna',
         'visibility' => true,
-        'user_id' => 28, // ID dell'utente associato
+        'user_id' => 27, // ID dell'utente associato
     ],
     [
         'address' => 'Via Garibaldi, 73',
@@ -296,7 +296,7 @@ return [
         'performance' => 'Ortopedia',
         'description' => 'Esperto in ortopedia e cura delle malattie ossee',
         'visibility' => true,
-        'user_id' => 29,
+        'user_id' => 28,
     ],
     [
         'address' => 'Via della Libertà, 17',
@@ -306,7 +306,7 @@ return [
         'performance' => 'Oculistica',
         'description' => 'Esperto in oculistica e cura della vista',
         'visibility' => true,
-        'user_id' => 30,
+        'user_id' => 29,
     ],
 
     [
@@ -317,7 +317,7 @@ return [
         'performance' => 'Endocrinologia',
         'description' => 'Specializzato in endocrinologia e cura delle disfunzioni ormonali',
         'visibility' => true,
-        'user_id' => 31,
+        'user_id' => 30,
     ],
 
     [
@@ -328,7 +328,7 @@ return [
         'performance' => 'Pneumologia',
         'description' => 'Esperto in pneumologia e cura delle malattie respiratorie',
         'visibility' => true,
-        'user_id' => 32,
+        'user_id' => 31,
     ],
 
     [
@@ -339,7 +339,7 @@ return [
         'performance' => 'Pediatria,Allergologia',
         'description' => 'Specializzato in pediatria e allergologia pediatrica',
         'visibility' => true,
-        'user_id' => 33,
+        'user_id' => 32,
     ],
 
     [
@@ -350,7 +350,7 @@ return [
         'performance' => 'Oftalmologia',
         'description' => 'Esperto in oftalmologia e malattie degli occhi',
         'visibility' => true,
-        'user_id' => 34,
+        'user_id' => 33,
     ],
 
     [
@@ -361,7 +361,7 @@ return [
         'performance' => 'Chirurgia Plastica',
         'description' => 'Specializzato in chirurgia plastica e ricostruttiva',
         'visibility' => true,
-        'user_id' => 35,
+        'user_id' => 34,
     ],
 
     [
@@ -372,7 +372,7 @@ return [
         'performance' => 'Ortopedia, Traumatologia',
         'description' => 'Esperto in ortopedia e traumatologia',
         'visibility' => true,
-        'user_id' => 36,
+        'user_id' => 35,
     ],
 
     [
@@ -383,7 +383,7 @@ return [
         'performance' => 'Cardiologia, Pneumologia',
         'description' => 'Specializzato in cardiologia e pneumologia',
         'visibility' => true,
-        'user_id' => 37,
+        'user_id' => 36,
     ],
 
     [
@@ -394,7 +394,7 @@ return [
         'performance' => 'Oculistica,Chirurgia refrattiva,Chirurgia della cataratta',
         'description' => 'Esperto in oculistica e interventi chirurgici per la vista',
         'visibility' => true,
-        'user_id' => 38,
+        'user_id' => 37,
     ],
 
     [
@@ -405,7 +405,7 @@ return [
         'performance' => 'Cardiologia,Cardiochirurgia',
         'description' => 'Specializzato in cardiologia e chirurgia cardiovascolare',
         'visibility' => true,
-        'user_id' => 39,
+        'user_id' => 38,
     ],
 
     [
@@ -416,7 +416,7 @@ return [
         'performance' => 'Ortopedia,Traumatologia,Chirurgia della mano',
         'description' => 'Esperto in ortopedia, traumatologia e chirurgia della mano',
         'visibility' => true,
-        'user_id' => 40,
+        'user_id' => 39,
     ],
 
 ];
